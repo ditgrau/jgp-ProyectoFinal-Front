@@ -4,6 +4,7 @@
   font-weight: 300;
   font-size: 1rem;
   color: rgba(19, 19, 19, 0.87);
+  
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -28,6 +29,11 @@
   /* --color-orange-dark: #FFFFFF; */
   --color-grey-first: #F1F1F1;
   --color-grey-shadow: #CDCDCD;
+}
+
+body {
+  /* background-color: #E3D7F8; */
+  background-color: transparent;
 }
 
 h1 {
