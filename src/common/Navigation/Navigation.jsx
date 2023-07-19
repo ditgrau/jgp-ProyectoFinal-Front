@@ -7,7 +7,7 @@ import { Navbar, Container, Nav, Offcanvas } from "react-bootstrap"
 export function Navigation() {
     return (
         <>
-                <Navbar key='lg' expand='lg' className="bg-body-tertiary mb-3" fixed="bottom">
+                <Navbar key='lg' expand='lg' className="bg-body-tertiary" fixed="bottom">
                     <Container fluid>
                         <Navbar.Brand href="#">Navbar Offcanvas</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
