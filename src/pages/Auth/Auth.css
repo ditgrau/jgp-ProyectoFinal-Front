@@ -1,0 +1,9 @@
+.input-shadow {
+    box-shadow: 0 .3rem 0 .05rem var(--color-purple-shadow);
+}
+
+.link-text {
+    color: black;
+    text-decoration: underline black;
+    font-size: 0.9rem;
+}

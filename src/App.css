@@ -2,10 +2,37 @@
   justify-content: center;
 }
 
+.main-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 
+.main-input {
+  border-radius: .7rem;
+  height: 2rem;
+  border: none;
+  line-height: 2rem;
+  outline: none;
+  text-indent: .8rem;
+}
 
+::placeholder {
+  color: var(--color-grey-text);
+  padding-left: .4rem;
+}
 
+.main-big-bttn {
+  height: 2.3rem;
+  width: 2.3rem;
+  border-radius: 0.8rem;
+}
 
+.check-bttn {
+  background-color: var(--color-green-shadow);
+  box-shadow: 0 .3rem 0 .05rem var(--color-green-dark);
+}
 
 /* #root {
 } */
@@ -21,4 +48,3 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 } */
-
