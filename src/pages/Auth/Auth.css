@@ -7,3 +7,8 @@
     text-decoration: underline black;
     font-size: 0.9rem;
 }
+
+.purple-bttn {
+    background-color: var(--color-purple-shadow);
+    box-shadow: 0 .3rem 0 .05rem var(--color-purple-dark);
+  }

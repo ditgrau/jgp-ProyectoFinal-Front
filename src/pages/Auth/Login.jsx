@@ -37,15 +37,15 @@ export function Login() {
         }
     }
 
-const logUser = () => {
-    login(data)
-    .then((res)=> {
-        dispatch(saveUser(res.data));
-        dispatch(saveToken(res.token));
-        navigate('/home');
-    })
-    .catch((error) => setError('No se ha podido establecer la conexión'));
-}
+    const logUser = () => {
+        login(data)
+            .then((res) => {
+                dispatch(saveUser(res.data));
+                dispatch(saveToken(res.token));
+                navigate('/home');
+            })
+            .catch((error) => setError('No se ha podido establecer la conexión'));
+    }
 
     return (
         <Container>
@@ -55,7 +55,8 @@ const logUser = () => {
                     <form className='main-form'
                     // onSubmit={handleSubmit}
                     >
-                        <div>
+                        <div className='elements-row'>
+                            <div className='main-big-bttn purple-bttn'/>
                             <input
                                 type='email'
                                 className='main-input input-shadow'
@@ -66,8 +67,8 @@ const logUser = () => {
                             >
                             </input>
                         </div>
-                        <div>
-                            
+                        <div className='elements-row'>
+                        <div className='main-big-bttn purple-bttn'/>
                             <input
                                 type='password'
                                 className='main-input input-shadow'

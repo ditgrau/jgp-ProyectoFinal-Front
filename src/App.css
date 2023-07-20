@@ -6,7 +6,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: .8rem;
 }
 
 .main-input {
@@ -32,8 +32,15 @@
 .check-bttn {
   background-color: var(--color-green-shadow);
   box-shadow: 0 .3rem 0 .05rem var(--color-green-dark);
+  margin: 1rem;
 }
 
+.elements-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: .8rem;
+}
 /* #root {
 } */
 
