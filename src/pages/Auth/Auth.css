@@ -20,8 +20,8 @@
 .register-row {
     display: flex;
     flex-direction: row;
-    align-items:baseline;
-    gap: .8rem;   
+    align-items: baseline;
+    gap: .8rem;
 }
 
 .text-register {
@@ -34,3 +34,4 @@
 .form-block {
     margin-top: 1rem;
 }
+
