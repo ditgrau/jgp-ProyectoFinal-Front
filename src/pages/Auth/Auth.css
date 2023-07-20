@@ -1,4 +1,4 @@
-.input-shadow {
+.input-purple-shadow {
     box-shadow: 0 .3rem 0 .05rem var(--color-purple-shadow);
 }
 
@@ -11,4 +11,26 @@
 .purple-bttn {
     background-color: var(--color-purple-shadow);
     box-shadow: 0 .3rem 0 .05rem var(--color-purple-dark);
-  }
+}
+
+.input-reg {
+    width: 100%;
+}
+
+.register-row {
+    display: flex;
+    flex-direction: row;
+    align-items:baseline;
+    gap: .8rem;   
+}
+
+.text-register {
+    line-height: 1rem;
+    text-align: left;
+    font-size: .9rem;
+    font-weight: 500;
+}
+
+.form-block {
+    margin-top: 1rem;
+}

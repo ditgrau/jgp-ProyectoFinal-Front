@@ -52,31 +52,27 @@ export function Login() {
             <Row className='main-row'>
                 <Col xs={11} md={6} className='main-col'>
                     <h2>Login</h2>
-                    <form className='main-form'
-                    // onSubmit={handleSubmit}
-                    >
+                    <form className='main-form'>
                         <div className='elements-row'>
                             <div className='main-big-bttn purple-bttn'/>
                             <input
                                 type='email'
-                                className='main-input input-shadow'
-                                placeholder='correo electrónico'
+                                className='main-input input-purple-shadow'
+                                placeholder='Correo electrónico'
                                 name={'email'}
                                 value={data.email}
-                                onChange={(e) => inputHandler(e)}
-                            >
+                                onChange={(e) => inputHandler(e)}>
                             </input>
                         </div>
                         <div className='elements-row'>
                         <div className='main-big-bttn purple-bttn'/>
                             <input
                                 type='password'
-                                className='main-input input-shadow'
-                                placeholder='password'
+                                className='main-input input-purple-shadow'
+                                placeholder='Contraseña'
                                 name={'password'}
                                 value={data.password}
-                                onChange={(e) => inputHandler(e)}
-                            >
+                                onChange={(e) => inputHandler(e)}>
                             </input>
                         </div>
                         <Link>
