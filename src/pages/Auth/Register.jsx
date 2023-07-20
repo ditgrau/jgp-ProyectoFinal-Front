@@ -6,7 +6,6 @@ import '../../App.css'
 import './Auth.css'
 import { Link } from 'react-router-dom';
 import { getAllGroups, register } from '../../services/apiCalls';
-import { resolvePackageData } from 'vite';
 
 export function Register() {
     useBackgroundChanger({ color: '#E3D7F8' })
