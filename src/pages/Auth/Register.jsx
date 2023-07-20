@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 
@@ -7,8 +7,10 @@ import './Auth.css'
 import { Link } from 'react-router-dom';
 
 export function Register() {
-
     useBackgroundChanger({ color: '#E3D7F8' })
+    const [ groups, setGroups ] = useState ({});
+
+    useEffect()
 
     return (
         <Container>
