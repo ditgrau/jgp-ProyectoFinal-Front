@@ -30,6 +30,12 @@
   border-radius: 0.8rem;
 }
 
+.main-small-bttn {
+  height: 1.8rem;
+  width: 1.8rem;
+  border-radius: 0.6rem;
+} 
+
 .check-bttn {
   background-color: var(--color-green-shadow);
   box-shadow: 0 .3rem 0 .05rem var(--color-green-dark);

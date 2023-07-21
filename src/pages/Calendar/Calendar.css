@@ -1,0 +1,8 @@
+.pink-shadow {
+    box-shadow: 0 .5rem 0 .05rem var(--color-pink-shadow);
+}
+
+.pink-bttn {
+    background-color: var(--color-pink-shadow);
+    box-shadow: 0 .3rem 0 .05rem var(--color-pink-dark);
+}
