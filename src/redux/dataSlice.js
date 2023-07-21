@@ -21,5 +21,6 @@ const dataSlice = createSlice({
     }
 })
 
+export const userData = (state) => state.auth;
 export const { saveUser , saveToken , logout } = dataSlice.actions;
 export default dataSlice.reducer;

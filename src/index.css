@@ -21,7 +21,7 @@
   --color-blue-first: #B7DDFF;
   --color-blue-shadow: #90CBFF;
   --color-blue-dark: #5FB4FF;
-  --color-green-first: #CEF8BF;
+  --color-green-first: #c8edbb;
   --color-green-shadow: #ABDDA2;
   --color-green-dark: #8ABF81;
   --color-pink-first: #FFE2FB;
@@ -49,14 +49,16 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 1.6rem;
+  margin-bottom: 1.5rem;
+  margin-top: 1.8rem;
 }
 
 h3 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
+  margin-bottom: 1rem;
 }
 
 
