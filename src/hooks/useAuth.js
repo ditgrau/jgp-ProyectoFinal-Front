@@ -5,6 +5,6 @@ export const useAuth = () => {
     const dataSlice = useSelector(userData);
     const token = dataSlice?.token;
     const role = dataSlice?.data?.role_id
-    const name = dataSlice?.data?.name
-    return {token, role}
+    const nameUser = dataSlice?.data?.name
+    return {token, role, nameUser}
 }
