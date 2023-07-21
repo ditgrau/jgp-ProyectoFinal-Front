@@ -43,6 +43,11 @@
   gap: .8rem;
 }
 
+.elements-column {
+  display: flex;
+  flex-direction: column;
+}
+
 .span-bold {
   font-weight: 500;
   margin-right: .5rem;
@@ -55,7 +60,13 @@
   text-align: start;
 }
 
+.title-left {
+  text-align: start;
+}
 
+.small-card {
+  display: inline-block;
+}
 /* .logo {
   will-change: filter;
   transition: filter 300ms;

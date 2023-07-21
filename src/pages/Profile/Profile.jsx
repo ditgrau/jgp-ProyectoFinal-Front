@@ -62,7 +62,7 @@ export function Profile() {
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h2 className='title-profile'>Datos del perfil</h2>
+                    <h2 className='title-left'>Datos del perfil</h2>
                     <div className='main-card green-shadow'>
                         <h3>{fullname.name} {fullname.surname}</h3>
                         <div>
@@ -82,7 +82,7 @@ export function Profile() {
                             <span> {user.data.group.name}</span>
                         </div>
                     </div>
-                    <h2 className='title-profile'>Datos de contacto</h2>
+                    <h2 className='title-left'>Datos de contacto</h2>
                     <div className='main-card green-shadow'>
                         <div>
                             <span className='span-bold'>Email</span>
