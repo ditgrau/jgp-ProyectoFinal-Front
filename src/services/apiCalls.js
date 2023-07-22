@@ -51,3 +51,20 @@ export const profile = async (token) => {
         return { status: "error", error: error };
     }
 }
+
+export const updateProfile = async (body, token) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        const res = await axios.put(`${ENDPOINT}/updateProfile`, body, configToken);
+        return res.data
+    }
+    catch (error) {
+        console.error("Error updating profile:", error);
+        return { status: "error", error: error };
+    }
+}

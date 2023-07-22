@@ -10,3 +10,16 @@
 .display-btt {
     justify-content: end;
 }
+
+.input-green-shadow {
+    box-shadow: 0 .3rem 0 .05rem var(--color-green-shadow);
+}
+
+.prof-card {
+    background-color: var(--color-green-shadow);
+    border-radius: .7rem;
+    padding: .5rem;
+    text-align: start;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
