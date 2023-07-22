@@ -7,6 +7,7 @@ import { Profile } from "../Profile/Profile";
 import { Calendar } from "../Calendar/Calendar";
 import { Results } from "../Results/Results";
 import { Control } from "../Control/Control";
+import { Users } from "../Users/Users";
 
 export function Body() {
     return (
@@ -19,6 +20,7 @@ export function Body() {
             <Route path="/profile" element={<Profile/>}/>
             <Route path="/calendar" element={<Calendar/>}/>
             <Route path="/results" element={<Results/>}/>
+            <Route path="/users" element={<Users/>}/>
         </Routes>
 
     )

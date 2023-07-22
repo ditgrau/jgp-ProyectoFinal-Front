@@ -88,7 +88,6 @@ export function Register() {
                             className='main-input input-purple-shadow input-reg'
                             placeholder='DNI'
                             name={'dni'}
-                            // value={data.email}
                             onChange={(e) => inputHandler(e)} />
                         <select onChange={handleSelect} className='main-input input-purple-shadow input-reg'>
                             <option value="">Selecciona grupo</option>

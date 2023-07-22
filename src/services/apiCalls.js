@@ -103,5 +103,22 @@ export const updateConfirmation = async (data, id, token) => {
         console.error("Error confirming:", error);
         return { status: "error", error: error };
     }
+}
 
+export const getAllUsers = async (token) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        
+        const res = await axios.get(`${ENDPOINT}/getAllUsers`, configToken)
+        return res.data.data
+    }
+    catch (error) {
+        console.error("Error getting all users:", error);
+        return { status: "error", error: error };
+    }
 }

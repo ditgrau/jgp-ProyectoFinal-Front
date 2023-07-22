@@ -52,7 +52,6 @@ export function Profile() {
                     surname: capitalizeFirstLetter(res.data.surname),
                 })
                 setUser(res);
-                console.log(res);
             } catch (error) {
                 console.error(error);
             }
