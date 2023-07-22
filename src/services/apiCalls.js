@@ -68,3 +68,40 @@ export const updateProfile = async (body, token) => {
         return { status: "error", error: error };
     }
 }
+
+export const userUnconfirmed = async (token) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        const confirmed = false;
+        const res = await axios.get(`${ENDPOINT}/getUserUnconfirmed/${confirmed}`, configToken);
+        return res.data
+    }
+    catch (error) {
+        console.error("Error confirming:", error);
+        return { status: "error", error: error };
+    }
+}
+
+export const updateConfirmation = async (data, id, token) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+
+        const res = await axios.put(`${ENDPOINT}/updateConfirmation/${id}`, configToken, data);
+        return res
+    }
+    catch (error) {
+        console.error("Error confirming:", error);
+        return { status: "error", error: error };
+    }
+
+}
