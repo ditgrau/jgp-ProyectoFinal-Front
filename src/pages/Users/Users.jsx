@@ -89,7 +89,7 @@ export function Users() {
 
                             }
                             </>)
-                            : (<><h3 className='form-block'>{message}</h3></>)
+                            : (<><h3 className='form-block'></h3></>)
                     }
                     </div>
                 </Col>

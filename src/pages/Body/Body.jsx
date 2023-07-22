@@ -8,6 +8,7 @@ import { Calendar } from "../Calendar/Calendar";
 import { Results } from "../Results/Results";
 import { Control } from "../Control/Control";
 import { Users } from "../Users/Users";
+import { Credentials } from "../Credentials/Credentials";
 
 export function Body() {
     return (
@@ -21,6 +22,7 @@ export function Body() {
             <Route path="/calendar" element={<Calendar/>}/>
             <Route path="/results" element={<Results/>}/>
             <Route path="/users" element={<Users/>}/>
+            <Route path="/credentials" element={<Credentials/>}/>
         </Routes>
 
     )
