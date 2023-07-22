@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
+import { Link } from 'react-router-dom';
+import { getAllGroups, register } from '../../services/apiCalls';
 
 import '../../App.css'
 import './Auth.css'
-import { Link } from 'react-router-dom';
-import { getAllGroups, register } from '../../services/apiCalls';
 
 export function Register() {
     useBackgroundChanger({ color: '#E3D7F8' })
     const [groups, setGroups] = useState([]);
     const [userData, setUserData] = useState({});
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
         const selectorGroups = async () => {
@@ -30,7 +31,7 @@ export function Register() {
             group: e.target.value,
         }))
     };
-    console.log(groups)
+
     const inputHandler = (e) => {
         setUserData((prevState) => ({
             ...prevState,
@@ -41,17 +42,19 @@ export function Register() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const res = await register(userData);
+            const res = await register(userData)
+            if (res.success === true) {
+                setMessage('¡Usuario registrado!')
+            }
         } catch (error) {
             console.error(error);
         }
     }
 
-    console.log(userData);
     return (
-        <Container>
+        <Container className='p-0'>
             <Row className='main-row mb-5'>
-                <Col xs={11} md={4} >
+                <Col xs={11} md={8} lg={6} xl={4}>
                     <h2>Registro</h2>
                     <form className='main-form'>
                         <div className='register-row'>
@@ -136,7 +139,7 @@ export function Register() {
                         <Link>
                             <div className='main-big-bttn check-bttn' onClick={handleSubmit}></div>
                         </Link>
-                        {/* <div className="errorText">{badRequest}</div> */}
+                        <h3>{message}</h3>
                     </form>
                 </Col>
             </Row>

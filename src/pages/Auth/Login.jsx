@@ -42,6 +42,9 @@ export function Login() {
             .then((res) => {
                 dispatch(saveUser(res.data));
                 dispatch(saveToken(res.token));
+                if (res.data.role_id === 1) {
+                    navigate('/control');
+                } else
                 navigate('/home');
             })
             .catch((error) => setError('No se ha podido establecer la conexión'));
