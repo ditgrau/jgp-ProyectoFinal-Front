@@ -7,6 +7,7 @@ import { profile, updateProfile } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
 
 import './Profile.css'
+import { Navigation } from '../../common/Navigation/Navigation';
 
 
 export function Profile() {
@@ -82,123 +83,126 @@ export function Profile() {
     }
 
     return (
-        <Container className='p-0'>
-            <Row className='main-row mb-5'>
-                <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h2 className='title-left'>Datos del perfil</h2>
-                    {editing
-                        ? (<><form className='main-form'>
-                            <input
-                                type='name'
-                                className='main-input input-green-shadow input-reg'
-                                placeholder={fullname.name} name={'name'}
-                                onChange={(e) => inputHandler(e)}
-                            />
-                            <input
-                                type='surname'
-                                className='main-input input-green-shadow input-reg'
-                                placeholder={fullname.surname} name={'surname'}
-                                onChange={(e) => inputHandler(e)}
-                            />
-                            <div className='elements-row input-reg'>
-                                <span className='text-register'>Fecha de nacimiento</span>
+        <>
+            <Container className='p-0'>
+                <Row className='main-row mb-5'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                        <h2 className='title-left'>Datos del perfil</h2>
+                        {editing
+                            ? (<><form className='main-form'>
                                 <input
-                                    type='date'
-                                    className='main-input input-green-shadow input-reg' name={'birth_date'}
-                                    onChange={(e) => inputHandler(e)} />
-                            </div>
-                            <input
-                                type='dni'
-                                className='main-input input-green-shadow input-reg'
-                                placeholder={user.info.dni} name={'dni'}
-                                onChange={(e) => inputHandler(e)} />
-                        </form>
-                            <div className='prof-card'>
-                                <div>
-                                    <span className='span-bold'>Grupo</span>
-                                    <span> {user.data.group.name}</span>
-                                </div>
-                            </div></>
-                        )
-                        : (
-                            <div className='main-card green-shadow'>
-                                <h3>{fullname.name} {fullname.surname}</h3>
-                                <div>
-                                    <span className='span-bold'>Fecha de nacimiento</span>
-                                    <span> {user.info.birth_date}</span>
-                                </div>
-                                <div>
-                                    <span className='span-bold'>DNI</span>
-                                    <span> {user.info.dni}</span>
-                                </div>
-                                <div>
-                                    <span className='span-bold'>Email</span>
-                                    <span> {user.data.email}</span>
-                                </div>
-                                <div>
-                                    <span className='span-bold'>Grupo</span>
-                                    <span> {user.data.group.name}</span>
-                                </div>
-                            </div>
-                        )
-                    }
-                    <h2 className='title-left'>Datos de contacto</h2>
-                    {editing
-                        ? (<form className='main-form'>
-                            <input
-                                type='email'
-                                className='main-input input-green-shadow input-reg'
-                                placeholder={user.info.contact_email} name={'contact_email'}
-                                onChange={(e) => inputHandler(e)} />
-                            <div className='register-row input-reg'>
-                                <input
-                                    type='first_phone'
+                                    type='name'
                                     className='main-input input-green-shadow input-reg'
-                                    placeholder={user.info.first_phone} name={'first_phone'}
-                                    onChange={(e) => inputHandler(e)} />
+                                    placeholder={fullname.name} name={'name'}
+                                    onChange={(e) => inputHandler(e)}
+                                />
                                 <input
-                                    type='second_phone'
+                                    type='surname'
                                     className='main-input input-green-shadow input-reg'
-                                    placeholder={user.info.second_phone} name={'second_phone'}
+                                    placeholder={fullname.surname} name={'surname'}
+                                    onChange={(e) => inputHandler(e)}
+                                />
+                                <div className='elements-row input-reg'>
+                                    <span className='text-register'>Fecha de nacimiento</span>
+                                    <input
+                                        type='date'
+                                        className='main-input input-green-shadow input-reg' name={'birth_date'}
+                                        onChange={(e) => inputHandler(e)} />
+                                </div>
+                                <input
+                                    type='dni'
+                                    className='main-input input-green-shadow input-reg'
+                                    placeholder={user.info.dni} name={'dni'}
                                     onChange={(e) => inputHandler(e)} />
-                            </div>
-                        </form>)
-                        : (
-                            <>
+                            </form>
+                                <div className='prof-card'>
+                                    <div>
+                                        <span className='span-bold'>Grupo</span>
+                                        <span> {user.data.group.name}</span>
+                                    </div>
+                                </div></>
+                            )
+                            : (
                                 <div className='main-card green-shadow'>
+                                    <h3>{fullname.name} {fullname.surname}</h3>
+                                    <div>
+                                        <span className='span-bold'>Fecha de nacimiento</span>
+                                        <span> {user.info.birth_date}</span>
+                                    </div>
+                                    <div>
+                                        <span className='span-bold'>DNI</span>
+                                        <span> {user.info.dni}</span>
+                                    </div>
                                     <div>
                                         <span className='span-bold'>Email</span>
-                                        <span> {user.info.contact_email}</span>
+                                        <span> {user.data.email}</span>
                                     </div>
                                     <div>
-                                        <span className='span-bold'>Móvil 1</span>
-                                        <span> {user.info.first_phone}</span>
-                                    </div>
-                                    <div>
-                                        <span className='span-bold'>Móvil 2</span>
-                                        <span> {user.info.second_phone}</span>
+                                        <span className='span-bold'>Grupo</span>
+                                        <span> {user.data.group.name}</span>
                                     </div>
                                 </div>
+                            )
+                        }
+                        <h2 className='title-left'>Datos de contacto</h2>
+                        {editing
+                            ? (<form className='main-form'>
+                                <input
+                                    type='email'
+                                    className='main-input input-green-shadow input-reg'
+                                    placeholder={user.info.contact_email} name={'contact_email'}
+                                    onChange={(e) => inputHandler(e)} />
+                                <div className='register-row input-reg'>
+                                    <input
+                                        type='first_phone'
+                                        className='main-input input-green-shadow input-reg'
+                                        placeholder={user.info.first_phone} name={'first_phone'}
+                                        onChange={(e) => inputHandler(e)} />
+                                    <input
+                                        type='second_phone'
+                                        className='main-input input-green-shadow input-reg'
+                                        placeholder={user.info.second_phone} name={'second_phone'}
+                                        onChange={(e) => inputHandler(e)} />
+                                </div>
+                            </form>)
+                            : (
+                                <>
+                                    <div className='main-card green-shadow'>
+                                        <div>
+                                            <span className='span-bold'>Email</span>
+                                            <span> {user.info.contact_email}</span>
+                                        </div>
+                                        <div>
+                                            <span className='span-bold'>Móvil 1</span>
+                                            <span> {user.info.first_phone}</span>
+                                        </div>
+                                        <div>
+                                            <span className='span-bold'>Móvil 2</span>
+                                            <span> {user.info.second_phone}</span>
+                                        </div>
+                                    </div>
+                                </>
+                            )
+                        }
+                        {editing
+                            ? (<>
+                                <div className='register-row mt-4 display-btt'>
+                                    <div className='main-big-bttn green-bttn' onClick={handleUpdate} />
+                                </div>
+                            </>)
+                            : (<>
+                                <div className='register-row mt-4 display-btt'>
+                                    <div className='main-big-bttn green-bttn' onClick={handleClic} />
+                                    <div className='main-big-bttn green-bttn' />
+                                </div>
                             </>
-                        )
-                    }
-                    {editing
-                        ? (<>
-                            <div className='register-row mt-4 display-btt'>
-                                <div className='main-big-bttn green-bttn' onClick={handleUpdate} />
-                            </div>
-                        </>)
-                        : (<>
-                            <div className='register-row mt-4 display-btt'>
-                                <div className='main-big-bttn green-bttn' onClick={handleClic} />
-                                <div className='main-big-bttn green-bttn' />
-                            </div>
-                        </>
-                        )
-                    }
-                    <h3 className='form-block'>{message}</h3>
-                </Col>
-            </Row>
-        </Container>
+                            )
+                        }
+                        <h3 className='form-block'>{message}</h3>
+                    </Col>
+                </Row>
+            </Container>
+            <Navigation green />
+        </>
     )
 }

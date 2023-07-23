@@ -6,6 +6,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { updateConfirmation, userUnconfirmed } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
 import './Admin.css'
+import { Navigation } from '../../common/Navigation/Navigation';
 
 export function Control() {
     const { token, nameUser } = useAuth();
@@ -48,6 +49,7 @@ export function Control() {
 
     console.log(users)
     return (
+        <>
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
@@ -72,5 +74,7 @@ export function Control() {
                 </Col>
             </Row>
         </Container>
+        <Navigation/>
+        </>
     )
 }

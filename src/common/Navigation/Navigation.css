@@ -1,0 +1,29 @@
+.grey-navbar {
+    background-color: var(--color-grey-shadow);
+}
+
+.pink-navbar {
+    background-color: var(--color-pink-shadow);
+}
+
+.green-navbar {
+    background-color: var(--color-green-shadow);
+}
+
+.blue-navbar {
+    background-color: var(--color-blue-shadow);
+}
+
+.yellow-navbar {
+    background-color: var(--color-yellow-shadow);
+}
+
+div#offcanvasNavbar-expand-lg {
+    width: 15rem;
+    background-color: white;
+}
+
+button.navbar-toggler.collapsed {
+    border: none;
+}
+
