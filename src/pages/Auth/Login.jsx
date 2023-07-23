@@ -52,8 +52,9 @@ export function Login() {
 
     return (
         <Container>
-            <Row className='main-row'>
+            <Row className='main-row mt-5'>
                 <Col xs={11} md={6} className='main-col'>
+                    <p className='supertitle'>clabs</p>
                     <h2>Login</h2>
                     <form className='main-form'>
                         <div className='elements-row'>
@@ -79,7 +80,7 @@ export function Login() {
                             </input>
                         </div>
                         <Link>
-                            <div className='main-big-bttn check-bttn' onClick={handleSubmit}></div>
+                            <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}></div>
                         </Link>
                         <Link to='/register'><span className='link-text'>Regístrate aquí</span></Link>
                         {/* <div className="errorText">{badRequest}</div> */}

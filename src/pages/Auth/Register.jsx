@@ -55,10 +55,11 @@ export function Register() {
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} md={8} lg={6} xl={4}>
+                <p className='supertitle'>clabs</p>
                     <h2>Registro</h2>
                     <form className='main-form'>
                         <div className='register-row'>
-                            <div className='main-big-bttn purple-bttn' />
+                            <div className='main-small-bttn purple-bttn' />
                             <h3>Información gimnasta</h3>
                         </div>
                         <input
@@ -96,7 +97,7 @@ export function Register() {
                             })}
                         </select>
                         <div className='register-row form-block'>
-                            <div className='main-big-bttn purple-bttn' />
+                            <div className='main-small-bttn purple-bttn' />
                             <h3>Información de contacto</h3>
                         </div>
                         <input
@@ -120,7 +121,7 @@ export function Register() {
                                 onChange={(e) => inputHandler(e)} />
                         </div>
                         <div className='register-row form-block'>
-                            <div className='main-big-bttn purple-bttn' />
+                            <div className='main-small-bttn purple-bttn' />
                             <h3>Información de acceso</h3>
                         </div>
                         <input
@@ -136,7 +137,7 @@ export function Register() {
                             name={'password'}
                             onChange={(e) => inputHandler(e)} />
                         <Link>
-                            <div className='main-big-bttn check-bttn' onClick={handleSubmit}></div>
+                            <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}></div>
                         </Link>
                         <h3>{message}</h3>
                     </form>

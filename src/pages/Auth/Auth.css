@@ -35,3 +35,9 @@
     margin-top: 1rem;
 }
 
+.supertitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--color-purple-shadow);
+    text-shadow: 0 .3rem 0 var(--color-purple-dark);
+}

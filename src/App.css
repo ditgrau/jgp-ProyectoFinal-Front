@@ -28,14 +28,12 @@
   height: 2.3rem;
   width: 2.3rem;
   border-radius: 0.8rem;
-  cursor: pointer;
 }
 
 .main-small-bttn {
   height: 1.8rem;
   width: 1.8rem;
   border-radius: 0.6rem;
-  cursor: pointer;
 } 
 
 .check-bttn {
@@ -84,6 +82,9 @@
   margin: .4rem;
 }
 
+.cursor {
+  cursor:pointer;
+}
 /* .logo {
   will-change: filter;
   transition: filter 300ms;
