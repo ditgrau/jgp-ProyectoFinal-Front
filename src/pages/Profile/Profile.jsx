@@ -202,7 +202,7 @@ export function Profile() {
                     </Col>
                 </Row>
             </Container>
-            <Navigation green />
+            <Navigation color='green'/>
         </>
     )
 }

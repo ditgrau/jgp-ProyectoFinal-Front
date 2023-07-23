@@ -46,7 +46,7 @@ export function Home() {
                     </Col>
                 </Row>
             </Container>
-            <Navigation color='blue'/>
+            <Navigation color='blue' />
         </>
     )
 }
