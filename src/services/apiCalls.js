@@ -122,3 +122,20 @@ export const getAllUsers = async (token) => {
         return { status: "error", error: error };
     }
 }
+
+export const getMyEvents = async (token) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        const res = await axios.get(`${ENDPOINT}/getMyEvents`, configToken);
+        return res.data;
+    }
+    catch (error) {
+        console.error(error);
+        return { status: "error", error: error };
+    }
+}
