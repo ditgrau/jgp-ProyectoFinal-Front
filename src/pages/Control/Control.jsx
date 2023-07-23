@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { updateConfirmation, userUnconfirmed } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
-import './Admin.css'
 import { Navigation } from '../../common/Navigation/Navigation';
+import './Admin.css'
 
 export function Control() {
     const { token, nameUser } = useAuth();

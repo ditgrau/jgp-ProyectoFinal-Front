@@ -139,3 +139,37 @@ export const getMyEvents = async (token) => {
         return { status: "error", error: error };
     }
 }
+
+export const getAllEvents = async (token) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        const res = await axios.get(`${ENDPOINT}/getAllEvents`, configToken);
+        return res.data;
+    }
+    catch (error) {
+        console.error(error);
+        return { status: "error", error: error };
+    }
+}
+
+export const getEventsByType = async (token, id) => {
+    try {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        const res = await axios.get(`${ENDPOINT}/getEventsByType/${id}`, configToken);
+        return res.data.data;
+    }
+    catch (error) {
+        console.error(error);
+        return { status: "error", error: error };
+    }
+}

@@ -10,6 +10,7 @@ import { Control } from "../Control/Control";
 import { Users } from "../Users/Users";
 import { Credentials } from "../Credentials/Credentials";
 import { useAuth } from '../../hooks/useAuth';
+import { Agenda } from "../Agenda/Agenda";
 
 export function Body() {
     const { token, role } = useAuth();
@@ -39,6 +40,7 @@ export function Body() {
             <Route path="/results" element={<Results />} />
             <Route path="/users" element={<Users />} />
             <Route path="/credentials" element={<Credentials />} />
+            <Route path="/agenda" element={<Agenda />} />
         </Routes>
 
     )
