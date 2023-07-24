@@ -58,7 +58,7 @@ export function Users() {
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h2 className='title-left'>Usuarios</h2>
+                    <h2 className='title-left my-3'>Usuarios</h2>
                     <select onChange={handleSelect} className='main-input input-reg'>
                         <option value="">Grupo</option>
                         {groups.map((group) => {
@@ -78,19 +78,26 @@ export function Users() {
                         </div>
                     </div>
                     <div className='main-card my-4'>
-                    {
-                        users.length > 0
-                            ? (<>{users.map((user) => (
-                                <div className='elements-column my-1' key={user.id}>
+                        {
+                            users.length > 0
+                                ? (<>{users.map((user) => (
+                                    <div className='elements-column my-2 division' key={user.id}>
                                         <span className='span-bold'>{user.name} {user.surname}</span>
-                                        <span>{user.group.name}</span>
-                                </div>
-                            ))
+                                        {
+                                            (user.group).length > 0
+                                            && (<>{
+                                                (user.group).map((group) => (
+                                                    <span>{group.name}</span>
+                                                ))
+                                            }</>)
+                                        }
+                                    </div>
+                                ))
 
-                            }
-                            </>)
-                            : (<><h3 className='form-block'></h3></>)
-                    }
+                                }
+                                </>)
+                                : (<><h3 className='form-block'></h3></>)
+                        }
                     </div>
                 </Col>
             </Row>
