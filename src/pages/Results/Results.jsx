@@ -26,7 +26,6 @@ export function Results() {
         }
         getResults()
     }, [])
-    console.log(results)
 
     useEffect(() => {
         if (results.length === 0) {
