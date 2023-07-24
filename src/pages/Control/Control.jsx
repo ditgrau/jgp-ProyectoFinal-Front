@@ -15,14 +15,12 @@ export function Control() {
     const [confirming, setConfirming] = useState(false);
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
-    // const [data, setData] = useState('false');
 
     useEffect(() => {
         const getUnconfirmed = async () => {
             try {
                 const res = await userUnconfirmed(token);
                 setUsers(res.data)
-                setConfirming(false)
             } catch (error) {
                 console.error(error);
             }
@@ -38,15 +36,11 @@ export function Control() {
         }
     }, [users])
 
-    const confirmHandler = (id) => {
-        console.log(id)
-        console.log(token)
-        const data = true;
-        console.log(data)
-        updateConfirmation(data, id, token)
-            .then(res => setConfirming(true))
+    const confirmHandler = (id) => {   
+        updateConfirmation({ confirmed: true }, id, token)
+            .then(res => setConfirming(!confirming))
     }
-
+console.log(confirming)
     console.log(users)
     return (
         <>
@@ -58,12 +52,12 @@ export function Control() {
                     {
                         users.length > 0
                             ? (<>{users.map((user) => (
-                                <div className='elements-row' key={user.id}>
+                                <div className='elements-row space' key={user.id}>
                                     <div className='main-target grey-shadow'>
                                         <span className='span-bold'>{user.name} {user.surname}</span>
                                         <span>{user.group.name}</span>
                                     </div>
-                                    <div className='main-small-bttn green-bttn' onClick={() => { confirmHandler(user.id) }} />
+                                    <div className='main-small-bttn green-bttn cursor' onClick={() => {confirmHandler(user.id)}} />
                                 </div>
                             ))
 

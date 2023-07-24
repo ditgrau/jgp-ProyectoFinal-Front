@@ -96,7 +96,7 @@ export const updateConfirmation = async (data, id, token) => {
             }
         };
 
-        const res = await axios.put(`${ENDPOINT}/updateConfirmation/${id}`, configToken, data);
+        const res = await axios.put(`${ENDPOINT}/updateConfirmation/${id}`, data, configToken);
         return res
     }
     catch (error) {
