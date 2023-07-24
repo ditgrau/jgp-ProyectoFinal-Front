@@ -43,6 +43,7 @@ export function Register() {
         e.preventDefault();
         try {
             const res = await register(userData)
+            console.log(res.error.response.data)
             if (res.success === true) {
                 setMessage('¡Usuario registrado!')
             }

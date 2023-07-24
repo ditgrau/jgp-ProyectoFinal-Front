@@ -9,8 +9,14 @@ const config = {
 };
 
 export const login = async (data) => {
-    let res = await axios.post(`${ENDPOINT}/login`, data)
-    return res.data
+    try {
+        let res = await axios.post(`${ENDPOINT}/login`, data)
+        return res.data
+    }
+    catch (error) {
+        console.error("Error:", error);
+        return { status: "error", error: error };
+    }
 }
 
 export const getAllGroups = async () => {
@@ -113,7 +119,7 @@ export const getAllUsers = async (token) => {
                 Authorization: `Bearer ${token}`,
             }
         };
-        
+
         const res = await axios.get(`${ENDPOINT}/getAllUsers`, configToken)
         return res.data.data
     }
