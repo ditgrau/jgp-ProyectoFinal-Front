@@ -6,6 +6,7 @@ import { Navigation } from '../../common/Navigation/Navigation';
 import { getMyResults } from '../../services/apiCalls';
 
 import './Results.css'
+import { Link } from 'react-router-dom';
 
 export function Results() {
     const { token } = useAuth();
@@ -46,11 +47,14 @@ export function Results() {
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                         <h2 className='title-left'>Estadística</h2>
                         <h2 className='title-left'>Mis resultados</h2>
+                        <div className=' elements-row display-btt'>
+                            <div className='main-big-bttn yellow-bttn cursor'/>
+                        </div>
                         {
                             results.length > 0
                                 ? (<>{results.map((result) => (
                                     <div className='elements-row my-1' key={result.id}>
-                                        <div className='main-big-bttn green-bttn cursor' onClick={() => {detailHandler(result.id) }} />
+                                        <div className='main-big-bttn yellow-bttn cursor' onClick={() => { detailHandler(result.id) }} />
                                         <div className='main-target px-3 yellow-shadow space elements-row'>
                                             <div>{result.name}</div> <div className='span-bold'>{result.total}</div>
                                         </div>
