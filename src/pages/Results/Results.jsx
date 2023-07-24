@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
 import { Navigation } from '../../common/Navigation/Navigation';
-import { getMyResults } from '../../services/apiCalls';
+import { getAverage, getMyResults } from '../../services/apiCalls';
 
 import './Results.css'
 import { Link } from 'react-router-dom';
@@ -11,6 +11,10 @@ import { Link } from 'react-router-dom';
 export function Results() {
     const { token } = useAuth();
     const [results, setResults] = useState([])
+    const [stadistics, setStadistics] = useState({
+        average: null,
+        ranking: null
+    })
     const [message, setMessage] = useState('')
 
     useBackgroundChanger({ color: '#FFEDAE' })
@@ -24,7 +28,20 @@ export function Results() {
                 console.error(error)
             }
         }
+        const getMyStadistics = async () => {
+            try {
+                const res = await getAverage(token)
+                setStadistics((prevData) => ({
+                    ...prevData,
+                    average: res.average,
+                    ranking: res.ranking
+                }))
+            } catch (error) {
+                console.error(error)
+            }
+        }
         getResults()
+        getMyStadistics()
     }, [])
 
     useEffect(() => {
@@ -45,9 +62,19 @@ export function Results() {
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                         <h2 className='title-left'>Estadística</h2>
+                        <div className='elements-row'>
+                            <div className='main-card small-card yellow-shadow'>
+                                <h1>{stadistics.average}</h1>
+                                <span>Mi nota media</span>
+                            </div>
+                            <div className='main-card small-card yellow-shadow'>
+                                <h1>{stadistics.ranking}</h1>
+                                <span>Mi media ranking</span>
+                            </div>
+                        </div>
                         <h2 className='title-left'>Mis resultados</h2>
                         <div className=' elements-row display-btt'>
-                            <div className='main-big-bttn yellow-bttn cursor'/>
+                            <div className='main-big-bttn yellow-bttn cursor' />
                         </div>
                         {
                             results.length > 0
