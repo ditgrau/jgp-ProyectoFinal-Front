@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { profile, updateProfile } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';

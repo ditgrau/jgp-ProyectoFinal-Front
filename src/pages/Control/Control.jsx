@@ -40,8 +40,7 @@ export function Control() {
         updateConfirmation({ confirmed: true }, id, token)
             .then(res => setConfirming(!confirming))
     }
-console.log(confirming)
-    console.log(users)
+
     return (
         <>
         <Container className='p-0'>
