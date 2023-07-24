@@ -1,9 +1,9 @@
 .input-purple-shadow {
-    box-shadow: 0 .3rem 0 .05rem var(--color-purple-shadow);
+    box-shadow: 0 .2rem 0 .05rem var(--color-purple-shadow);
 }
 
 .purple-shadow {
-    box-shadow: 0 .5rem 0 .05rem var(--color-purple-shadow);
+    box-shadow: 0 .4rem 0 .05rem var(--color-purple-shadow);
 }
 
 .link-text {
@@ -14,7 +14,7 @@
 
 .purple-bttn {
     background-color: var(--color-purple-shadow);
-    box-shadow: 0 .3rem 0 .05rem var(--color-purple-dark);
+    box-shadow: 0 .2rem 0 .05rem var(--color-purple-dark);
 }
 
 .input-reg {
@@ -43,5 +43,5 @@
     font-size: 3.5rem;
     font-weight: 800;
     color: var(--color-purple-shadow);
-    text-shadow: 0 .3rem 0 var(--color-purple-dark);
+    text-shadow: 0 .2rem 0 var(--color-purple-dark);
 }

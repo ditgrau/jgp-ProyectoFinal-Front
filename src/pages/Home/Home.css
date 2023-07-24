@@ -1,8 +1,8 @@
 .blue-shadow {
-    box-shadow: 0 .5rem 0 .05rem var(--color-blue-shadow);
+    box-shadow: 0 .4rem 0 .05rem var(--color-blue-shadow);
 }
 
 .blue-bttn {
     background-color: var(--color-blue-shadow);
-    box-shadow: 0 .3rem 0 .05rem var(--color-blue-dark);
+    box-shadow: 0 .2rem 0 .05rem var(--color-blue-dark);
 }

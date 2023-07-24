@@ -38,7 +38,7 @@
 
 .check-bttn {
   background-color: var(--color-green-shadow);
-  box-shadow: 0 .3rem 0 .05rem var(--color-green-dark);
+  box-shadow: 0 .2rem 0 .05rem var(--color-green-dark);
   margin: 1rem;
 }
 
@@ -77,9 +77,10 @@
 .main-target {
   background-color: white;
   border-radius: .7rem;
-  padding: .5rem;
+  padding: .25rem;
   text-align: start;
   margin: .4rem;
+  width: 80%
 }
 
 .cursor {

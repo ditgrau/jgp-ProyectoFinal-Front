@@ -1,10 +1,10 @@
 .green-shadow {
-    box-shadow: 0 .5rem 0 .05rem var(--color-green-shadow);
+    box-shadow: 0 .4rem 0 .05rem var(--color-green-shadow);
 }
 
 .green-bttn {
     background-color: var(--color-green-shadow);
-    box-shadow: 0 .3rem 0 .05rem var(--color-green-dark);
+    box-shadow: 0 .2rem 0 .05rem var(--color-green-dark);
 }
 
 .display-btt {
@@ -12,7 +12,7 @@
 }
 
 .input-green-shadow {
-    box-shadow: 0 .3rem 0 .05rem var(--color-green-shadow);
+    box-shadow: 0 .2rem 0 .05rem var(--color-green-shadow);
 }
 
 .prof-card {

@@ -53,7 +53,7 @@ console.log(confirming)
                         users.length > 0
                             ? (<>{users.map((user) => (
                                 <div className='elements-row space' key={user.id}>
-                                    <div className='main-target grey-shadow'>
+                                    <div className='main-target px-3 grey-shadow'>
                                         <span className='span-bold'>{user.name} {user.surname}</span>
                                         <span>{user.group.name}</span>
                                     </div>
