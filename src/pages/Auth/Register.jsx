@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getAllGroups, register } from '../../services/apiCalls';
+import { useDispatch } from 'react-redux';
+import { saveToken } from '../../redux/dataSlice';
 
 import '../../App.css'
 import './Auth.css'
 
+
 export function Register() {
     useBackgroundChanger({ color: '#E3D7F8' })
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
     const [groups, setGroups] = useState([]);
     const [userData, setUserData] = useState({});
     const [message, setMessage] = useState('');
@@ -43,9 +48,12 @@ export function Register() {
         e.preventDefault();
         try {
             const res = await register(userData)
-            console.log(res.error.response.data)
             if (res.success === true) {
+                dispatch(saveToken(res.token));
                 setMessage('¡Usuario registrado!')
+                navigate('/unconfirmed')
+            } else {
+                console.log(res.error.response.data)
             }
         } catch (error) {
             console.error(error);

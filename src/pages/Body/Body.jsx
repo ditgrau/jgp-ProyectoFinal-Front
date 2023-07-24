@@ -11,6 +11,7 @@ import { Users } from "../Users/Users";
 import { Credentials } from "../Credentials/Credentials";
 import { useAuth } from '../../hooks/useAuth';
 import { Agenda } from "../Agenda/Agenda";
+import { Unconfirmed } from "../Auth/Unconfirmed";
 
 export function Body() {
     const { token, role } = useAuth();
@@ -33,6 +34,7 @@ export function Body() {
             <Route path="/" element={<Navigate to={view} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/unconfirmed" element={<Unconfirmed />} />
             <Route path="/home" element={<Home />} />
             <Route path="/control" element={<Control />} />
             <Route path="/profile" element={<Profile />} />

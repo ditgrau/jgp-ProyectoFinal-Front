@@ -2,6 +2,10 @@
     box-shadow: 0 .3rem 0 .05rem var(--color-purple-shadow);
 }
 
+.purple-shadow {
+    box-shadow: 0 .5rem 0 .05rem var(--color-purple-shadow);
+}
+
 .link-text {
     color: black;
     text-decoration: underline black;
