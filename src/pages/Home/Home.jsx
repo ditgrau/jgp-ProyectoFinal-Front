@@ -7,10 +7,11 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 
 import './Home.css'
 import { Navigation } from '../../common/Navigation/Navigation';
-import { myLastResults } from '../../services/apiCalls';
+import { getAverage, myLastResults } from '../../services/apiCalls';
 
 export function Home() {
     const [bestResults, setBestResults] = useState([]);
+    const [average, setAverage] = useState([]);
     const { token, nameUser } = useAuth();
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#B7DDFF' })
@@ -18,14 +19,24 @@ export function Home() {
     useEffect(() => {
         const getResults = async () => {
             try {
-                const res = await myLastResults(token)
-                setBestResults(res.data)
+                const result = await myLastResults(token)
+                setBestResults(result.data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        const getMyAverage = async () => {
+            try {
+                const average = await getAverage(token)
+                setAverage(average.average)
             } catch (error) {
                 console.error(error)
             }
         }
         getResults()
+        getMyAverage()
     }, [])
+console.log(average);
 
     return (
         <>
@@ -42,7 +53,7 @@ export function Home() {
                             <div className='elements-column'>
                                 <h2 className='title-left'>Mi media</h2>
                                 <div className='main-card small-card blue-shadow'>
-                                    <h1>16.855</h1>
+                                    <h1>{average}</h1>
                                 </div>
                             </div>
                             <div className='elements-column'>
@@ -57,7 +68,7 @@ export function Home() {
                         {
                             bestResults.length > 0 ? (
                                 bestResults.map((result) => (
-                                    <div className='py-1 space elements-row'>
+                                    <div className='py-1 space elements-row' key={result.id}>
                                             <div>{result.name}</div> <div className='span-bold'>{result.total}</div>
                                         </div>
                                 ))

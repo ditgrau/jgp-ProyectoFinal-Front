@@ -207,3 +207,14 @@ export const myLastResults = async (token) => {
     let res = await axios.get(`${ENDPOINT}/myLastResults`, configToken)
     return res.data;
 }
+
+export const getAverage = async (token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    let res = await axios.get(`${ENDPOINT}/getAverage`, configToken)
+    return res.data;
+}
