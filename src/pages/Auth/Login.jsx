@@ -34,6 +34,8 @@ export function Login() {
         e.preventDefault()
         if (data.email && data.password) {
             logUser();
+        } else {
+            setError('Rellene todos los campos')
         }
     }
 
@@ -52,6 +54,8 @@ export function Login() {
                 setError(errorMessage);
             });
     }
+
+    let hidden = (error === '' )? 'hidden' :'' 
 
     return (
         <Container>
@@ -86,7 +90,7 @@ export function Login() {
                             <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}></div>
                         </Link>
                         <Link to='/register'><span className='link-text'>Regístrate aquí</span></Link>
-                        <div className='infoMessage px-3'>{error}</div>
+                        <div className={`infoMessage px-3 mt-4 ${hidden}`}>{error}</div>
                     </form>
                 </Col>
             </Row>

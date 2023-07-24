@@ -88,10 +88,15 @@
 
 .infoMessage {
   border-radius: 1rem;
-  border: solid var(--color-purple-dark);
+  border: solid .05rem var(--color-purple-dark);
   background-color: var(--color-purple-shadow);
   font-size: .9rem;
   font-weight: 600;
+  padding: .2rem;
+}
+
+.hidden {
+  display: none;
 }
 /* .logo {
   will-change: filter;
