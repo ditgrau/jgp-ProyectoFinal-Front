@@ -74,7 +74,7 @@ export function Results() {
                         </div>
                         <h2 className='title-left'>Mis resultados</h2>
                         <div className=' elements-row display-btt'>
-                            <div className='main-big-bttn yellow-bttn cursor' />
+                            <div className='main-big-bttn yellow-bttn cursor mb-3' />
                         </div>
                         {
                             results.length > 0

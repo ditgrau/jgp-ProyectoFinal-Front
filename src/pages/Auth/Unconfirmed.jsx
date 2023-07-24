@@ -18,10 +18,10 @@ export function Unconfirmed() {
     return (<>
         <Container className='p-0'>
             <Row className='main-row mb-5'>
-                <Col xs={11} md={8} lg={6} xl={4}>
-                    <h2 className='title-left'>¡Usuario registrado!</h2>
+                <Col xs={11} md={6} lg={4} xl={4}>
+                    <h1 className='title-left my-4'>¡Usuario registrado!</h1>
                     <div className='main-card purple-shadow elements-column'>
-                        <span>Cuando se confirme tu cuenta, podrás acceder a ella.</span>
+                        <h3>Cuando se confirme tu cuenta, podrás acceder a ella.</h3>
                         <span>De momento, tendrás que esperar.</span>
                     </div>
                 </Col>

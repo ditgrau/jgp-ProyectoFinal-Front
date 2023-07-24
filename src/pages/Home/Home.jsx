@@ -43,8 +43,8 @@ console.log(average);
             <Container>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                        <h1 className='title-left'> Hola, {formattedName}</h1>
-                        <h2 className='title-left'>Calendario</h2>
+                        <h1 className='title-left my-4'> Hola, {formattedName}</h1>
+                        <h2 className='title-left my-3'>Calendario</h2>
                         <div className='main-card blue-shadow'></div>
                         <div className='register-row mt-4 display-btt'>
                             <Link to='/calendar' className='main-big-bttn blue-bttn' />
@@ -63,7 +63,7 @@ console.log(average);
                                 </div>
                             </div>
                         </div>
-                        <h2 className='title-left'>Mis mejores resultados</h2>
+                        <h2 className='title-left mb-3 mt-4'>Mis mejores resultados</h2>
                         <div className='main-card blue-shadow'>
                         {
                             bestResults.length > 0 ? (

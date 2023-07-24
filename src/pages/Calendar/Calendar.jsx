@@ -47,7 +47,7 @@ console.log(groups)
             <Container>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                        <h2 className='title-left'>Mi grupo y horario</h2>
+                        <h2 className='title-left mx-2 my-3'>Mi grupo y horario</h2>
                         <div className='main-card pink-shadow'>
                         {
                             groups.length > 0 ? (
@@ -64,7 +64,7 @@ console.log(groups)
                         }
 
                         </div>
-                        <h2 className='title-left'>Eventos próximos</h2>
+                        <h2 className='title-left mx-2 mb-3 mt-5'>Eventos próximos</h2>
                         <div className='elements-row mb-4'>
                             <div className='main-big-bttn pink-bttn' />
                             <div className='main-big-bttn pink-bttn' />

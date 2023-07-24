@@ -63,7 +63,7 @@ export function Login() {
                 <Col xs={11} md={6} className='main-col'>
                     <p className='supertitle'>clabs</p>
                     <h2>Login</h2>
-                    <form className='main-form'>
+                    <form className='main-form mt-4'>
                         <div className='elements-row'>
                             <div className='main-big-bttn purple-bttn' />
                             <input

@@ -87,7 +87,7 @@ export function Profile() {
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                        <h2 className='title-left'>Datos del perfil</h2>
+                        <h2 className='title-left my-3'>Datos del perfil</h2>
                         {editing
                             ? (<><form className='main-form'>
                                 <input
@@ -144,7 +144,7 @@ export function Profile() {
                                 </div>
                             )
                         }
-                        <h2 className='title-left'>Datos de contacto</h2>
+                        <h2 className='title-left mt-5 mb-3'>Datos de contacto</h2>
                         {editing
                             ? (<form className='main-form'>
                                 <input

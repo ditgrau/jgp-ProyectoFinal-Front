@@ -4,3 +4,8 @@
 .space {
     justify-content: space-between;
 }
+
+.division {
+    padding-bottom: .3rem;
+    border-bottom: solid .1rem var(--color-grey-first);
+}

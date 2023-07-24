@@ -46,8 +46,8 @@ export function Control() {
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h1 className='title-left'> Hola, {formattedName}</h1>
-                    <h2 className='title-left'>Usuarios por confirmar</h2>
+                    <h1 className='title-left my-4'> Hola, {formattedName}</h1>
+                    <h2 className='title-left mx-2 my-3'>Usuarios por confirmar</h2>
                     {
                         users.length > 0
                             ? (<>{users.map((user) => (
