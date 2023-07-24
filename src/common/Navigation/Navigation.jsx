@@ -1,13 +1,23 @@
 import React from "react"
 import { Navbar, Container, Nav, Offcanvas } from "react-bootstrap"
 import { useAuth } from '../../hooks/useAuth';
-
+import { logout } from "../../redux/dataSlice";
+import { useDispatch } from "react-redux";
 import './Navigation.css'
+import { useNavigate } from "react-router";
+
 ///////////////////////////////////
 
 export function Navigation({ color }) {
     const { role } = useAuth();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const colorNavbar = (role === 1) ? 'grey-navbar' : `${color}-navbar`
+
+    const handleLogout = () => {
+        navigate('/login')
+        dispatch(logout())       
+    }
 
     return (
         <>
@@ -26,7 +36,7 @@ export function Navigation({ color }) {
                                 <Nav.Link href="#action1">Home</Nav.Link>
                                 <Nav.Link href="#action2">Link</Nav.Link>
                                 <Nav.Link href="#action2">Link</Nav.Link>
-                                <Nav.Link href="#action2">Link</Nav.Link>
+                                <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
