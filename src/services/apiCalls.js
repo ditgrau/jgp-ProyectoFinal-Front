@@ -196,3 +196,14 @@ export const getAllResults = async (token) => {
     let res = await axios.get(`${ENDPOINT}/getAllResults`, configToken)
     return res.data;
 }
+
+export const myLastResults = async (token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    let res = await axios.get(`${ENDPOINT}/myLastResults`, configToken)
+    return res.data;
+}

@@ -7,11 +7,25 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 
 import './Home.css'
 import { Navigation } from '../../common/Navigation/Navigation';
+import { myLastResults } from '../../services/apiCalls';
 
 export function Home() {
+    const [bestResults, setBestResults] = useState([]);
     const { token, nameUser } = useAuth();
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#B7DDFF' })
+
+    useEffect(() => {
+        const getResults = async () => {
+            try {
+                const res = await myLastResults(token)
+                setBestResults(res.data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getResults()
+    }, [])
 
     return (
         <>
@@ -38,8 +52,20 @@ export function Home() {
                                 </div>
                             </div>
                         </div>
-                        <h2 className='title-left'>Mis resultados</h2>
-                        <div className='main-card blue-shadow'></div>
+                        <h2 className='title-left'>Mis mejores resultados</h2>
+                        <div className='main-card blue-shadow'>
+                        {
+                            bestResults.length > 0 ? (
+                                bestResults.map((result) => (
+                                    <div className='py-1 space elements-row'>
+                                            <div>{result.name}</div> <div className='span-bold'>{result.total}</div>
+                                        </div>
+                                ))
+                            ) : (
+                                <></>
+                            )
+                        }
+                        </div>
                         <div className='register-row mt-4 display-btt'>
                             <Link to='/results' className='main-big-bttn blue-bttn' />
                         </div>
