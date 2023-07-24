@@ -86,6 +86,13 @@
   cursor:pointer;
 }
 
+.infoMessage {
+  border-radius: 1rem;
+  border: solid var(--color-purple-dark);
+  background-color: var(--color-purple-shadow);
+  font-size: .9rem;
+  font-weight: 600;
+}
 /* .logo {
   will-change: filter;
   transition: filter 300ms;

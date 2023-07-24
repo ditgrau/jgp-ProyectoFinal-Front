@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useDispatch } from "react-redux";
-
+import { gettingErrors } from '../../utils/errors';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/apiCalls';
@@ -45,9 +45,12 @@ export function Login() {
                 if (res.data.role_id === 1) {
                     navigate('/control');
                 } else
-                navigate('/home');
+                    navigate('/home');
             })
-            .catch((error) => setError('No se ha podido establecer la conexión'));
+            .catch((error) => {
+                const errorMessage = gettingErrors(error.response.status);
+                setError(errorMessage);
+            });
     }
 
     return (
@@ -58,7 +61,7 @@ export function Login() {
                     <h2>Login</h2>
                     <form className='main-form'>
                         <div className='elements-row'>
-                            <div className='main-big-bttn purple-bttn'/>
+                            <div className='main-big-bttn purple-bttn' />
                             <input
                                 type='email'
                                 className='main-input input-purple-shadow'
@@ -69,7 +72,7 @@ export function Login() {
                             </input>
                         </div>
                         <div className='elements-row'>
-                        <div className='main-big-bttn purple-bttn'/>
+                            <div className='main-big-bttn purple-bttn' />
                             <input
                                 type='password'
                                 className='main-input input-purple-shadow'
@@ -83,7 +86,7 @@ export function Login() {
                             <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}></div>
                         </Link>
                         <Link to='/register'><span className='link-text'>Regístrate aquí</span></Link>
-                        {/* <div className="errorText">{badRequest}</div> */}
+                        <div className='infoMessage px-3'>{error}</div>
                     </form>
                 </Col>
             </Row>
