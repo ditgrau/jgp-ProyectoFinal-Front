@@ -24,7 +24,6 @@ export function Agenda() {
         }
         getEvents()
     }, [restore])
-    console.log(events)
 
     const clickHandler = (id) => {
         getEventsByType(token, id)

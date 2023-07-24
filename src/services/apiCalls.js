@@ -218,3 +218,14 @@ export const getAverage = async (token) => {
     let res = await axios.get(`${ENDPOINT}/getAverage`, configToken)
     return res.data;
 }
+
+export const getMyGroups = async (token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    let res = await axios.get(`${ENDPOINT}/getMyGroups`, configToken)
+    return res.data.data;
+}
