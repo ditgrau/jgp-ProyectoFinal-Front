@@ -18,7 +18,7 @@ export function Results() {
                     </Col>
                 </Row>
             </Container>
-            <Navigation yellow />
+            <Navigation color='yellow' />
         </>
     )
 }
