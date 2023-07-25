@@ -12,6 +12,7 @@ import { Credentials } from "../Credentials/Credentials";
 import { useAuth } from '../../hooks/useAuth';
 import { Agenda } from "../Agenda/Agenda";
 import { Unconfirmed } from "../Auth/Unconfirmed";
+import { NewEvent } from "../newEvent/newEvent";
 
 export function Body() {
     const { token, role } = useAuth();
@@ -35,14 +36,18 @@ export function Body() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/unconfirmed" element={<Unconfirmed />} />
+            
             <Route path="/home" element={<Home />} />
             <Route path="/control" element={<Control />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/credentials" element={<Credentials />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/results" element={<Results />} />
+
             <Route path="/users" element={<Users />} />
-            <Route path="/credentials" element={<Credentials />} />
             <Route path="/agenda" element={<Agenda />} />
+            <Route path="/newEvent" element={<NewEvent/>} />
+
         </Routes>
 
     )

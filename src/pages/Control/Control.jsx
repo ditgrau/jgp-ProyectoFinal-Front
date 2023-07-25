@@ -36,38 +36,42 @@ export function Control() {
         }
     }, [users])
 
-    const confirmHandler = (id) => {   
+    const confirmHandler = (id) => {
         updateConfirmation({ confirmed: true }, id, token)
             .then(res => setConfirming(!confirming))
     }
 
     return (
         <>
-        <Container className='p-0'>
-            <Row className='main-row mb-5'>
-                <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h1 className='title-left my-4'> Hola, {formattedName}</h1>
-                    <h2 className='title-left mx-2 my-3'>Usuarios por confirmar</h2>
-                    {
-                        users.length > 0
-                            ? (<>{users.map((user) => (
-                                <div className='elements-row space' key={user.id}>
-                                    <div className='main-target px-3 grey-shadow'>
-                                        <span className='span-bold'>{user.name} {user.surname}</span>
-                                        <span>{user.group.name}</span>
+            <Container className='p-0'>
+                <Row className='main-row mb-5'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                        <h1 className='title-left my-4'> Hola, {formattedName}</h1>
+                        <h2 className='title-left mx-2 my-3'>Usuarios por confirmar</h2>
+                        {
+                            users.length > 0
+                                ? (<>{users.map((user) => (
+                                    <div className='elements-row space' key={user.id}>
+                                        <div className='main-target px-3 grey-shadow'>
+                                            <span className='span-bold'>{user.name} {user.surname}</span>
+                                            <span>{user.group.name}</span>
+                                        </div>
+                                        <div className='main-small-bttn green-bttn cursor' onClick={() => { confirmHandler(user.id) }} />
                                     </div>
-                                    <div className='main-small-bttn green-bttn cursor' onClick={() => {confirmHandler(user.id)}} />
-                                </div>
-                            ))
+                                ))
 
-                            }
-                            </>)
-                            : (<><h3 className='form-block'>{message}</h3></>)
-                    }
-                </Col>
-            </Row>
-        </Container>
-        <Navigation/>
+                                }
+                                </>)
+                                : (<><h3 className='form-block'>{message}</h3></>)
+                        }
+                        <div className='register-row mt-4'>
+                            <div className='main-big-bttn blue-bttn'/>
+                            <div className='main-big-bttn blue-bttn' />
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            <Navigation />
         </>
     )
 }

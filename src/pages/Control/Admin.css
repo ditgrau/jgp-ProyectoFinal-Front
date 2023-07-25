@@ -9,3 +9,8 @@
     padding-bottom: .3rem;
     border-bottom: solid .1rem var(--color-grey-first);
 }
+
+.big-box {
+    height: 6.5rem;
+    padding-bottom: 4rem;
+}
