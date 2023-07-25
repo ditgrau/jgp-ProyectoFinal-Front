@@ -2,33 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
-import { getAllGroups, getAllUsers } from '../../services/apiCalls';
+import { getAllGroups, getAllUsers, getUsersByGroup } from '../../services/apiCalls';
 import '../Control/Admin.css'
 
 export function Users() {
     useBackgroundChanger({ color: '#F1F1F1' })
     const { token } = useAuth();
-    const [users, setUsers] = useState({})
+    const [users, setUsers] = useState([])
+    const [members, setMembers] = useState([])
     const [groups, setGroups] = useState([]);
-    const [groupFilter, setGroupFilter] = useState('');
+    const [groupId, setGroupId] = useState('');
     const [userFilter, setUserFilter] = useState('');
-    console.log(token)
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const getUsers = async () => {
             try {
                 const res = await getAllUsers(token)
                 setUsers(res)
-                console.log(res)
             }
             catch (error) {
                 console.error(error);
             }
         }
-        getUsers();
-    }, [])
-    console.log(users)
-    useEffect(() => {
         const selectorGroups = async () => {
             const res = await getAllGroups();
             if (Array.isArray(res)) {
@@ -37,14 +33,35 @@ export function Users() {
                 console.error(res)
             }
         };
+        getUsers();
         selectorGroups();
-    }, []);
+    }, [])
+
+    useEffect(() => {
+        const usersByGroup = async () => {
+            try {
+                if (groupId !== "") {
+                    const res = await getUsersByGroup(groupId, token);
+                    setMembers(res.data);
+                    setUsers([])
+                } else {
+                    const res = await getAllUsers(token);
+                    setUsers(res);
+                    setMembers([])
+                }
+            } catch (error) {
+                console.error(error)
+            }
+        };
+        usersByGroup()
+    }, [isActive])
+
+    console.log(members)
 
     const handleSelect = (e) => {
-        setGroupFilter((prevState) => ({
-            ...prevState,
-            group: e.target.value,
-        }))
+        setGroupId(e.target.value)
+        setIsActive(!isActive)
+
     };
 
     const inputHandler = (e) => {
@@ -59,12 +76,14 @@ export function Users() {
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                     <h2 className='title-left my-3'>Usuarios</h2>
+
                     <select onChange={handleSelect} className='main-input input-reg'>
                         <option value="">Grupo</option>
                         {groups.map((group) => {
                             return <option key={group.id} value={group.id}>{group.name}</option>
                         })}
                     </select>
+
                     <div className='elements-row mt-2 space'>
                         <input
                             type='name'
@@ -86,17 +105,28 @@ export function Users() {
                                         {
                                             (user.group).length > 0
                                             && (<>{
-                                                (user.group).map((group) => (
-                                                    <span>{group.name}</span>
+                                                (user.group).map((group, i) => (
+                                                    <span key={i}>{group.name}</span>
                                                 ))
                                             }</>)
                                         }
                                     </div>
                                 ))
-
                                 }
                                 </>)
-                                : (<><h3 className='form-block'></h3></>)
+                                : (<>
+                                    {
+                                        members.length > 0
+                                            ? (<>
+                                                {members[0].map((mem) => (
+                                                    <div className= 'my-2 division' key={mem.id}>
+                                                        <span className='span-bold'>{mem.name}{mem.surname}</span>
+                                                    </div>
+                                                ))}
+                                            </>)
+                                            : (<><h3 className='form-block'>No hay users</h3></>)
+                                    }
+                                </>)
                         }
                     </div>
                 </Col>

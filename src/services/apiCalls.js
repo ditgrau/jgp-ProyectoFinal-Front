@@ -262,3 +262,14 @@ export const usersByGroupId = async (id, token) => {
         const res = await axios.get(`${ENDPOINT}/usersByGroupId/${id}`, configToken);
         return res.data
 }
+
+export const getUsersByGroup = async (id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.get(`${ENDPOINT}/getUsersByGroup/${id}`, configToken);
+    return res.data
+}
