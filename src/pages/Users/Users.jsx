@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
+import { useDispatch } from "react-redux";
 import { getAllGroups, getAllUsers, getUserByName, getUsersByGroup } from '../../services/apiCalls';
 import '../Control/Admin.css'
+import { saveId } from '../../redux/detailUserSlice';
+import { useNavigate } from 'react-router-dom';
 
 export function Users() {
     useBackgroundChanger({ color: '#F1F1F1' })
@@ -14,6 +17,8 @@ export function Users() {
     const [groupId, setGroupId] = useState('');
     const [userFilter, setUserFilter] = useState('');
     const [isActive, setIsActive] = useState(false);
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const getUsers = async () => {
@@ -56,12 +61,9 @@ export function Users() {
         usersByGroup()
     }, [isActive])
 
-    console.log(members)
-
     const handleSelect = (e) => {
         setGroupId(e.target.value)
         setIsActive(!isActive)
-
     };
 
     const searchHandler = async () => {
@@ -72,6 +74,12 @@ export function Users() {
             console.error(error);
         }
     }
+
+    const clickHandler = (UserId) => {
+        dispatch(saveId({id: UserId}))
+        navigate('/detail')
+    }
+
     const inputHandler = (e) => {
         setUserFilter(e.target.value)
     };
@@ -97,7 +105,7 @@ export function Users() {
                             onChange={(e) => inputHandler(e)}
                         />
                         <div className='elements-row'>
-                            <div className='main-small-bttn green-bttn cursor' onClick={searchHandler}/>
+                            <div className='main-small-bttn green-bttn cursor' onClick={searchHandler} />
                             <div className='main-small-bttn green-bttn cursor' />
                         </div>
                     </div>
@@ -105,7 +113,7 @@ export function Users() {
                         {
                             users.length > 0
                                 ? (<>{users.map((user) => (
-                                    <div className='elements-column my-2 division' key={user.id}>
+                                    <div className='elements-column my-2 division cursor' key={user.id} onClick={() => {clickHandler(user.id)}}>
                                         <span className='span-bold '>{user.name} {user.surname}</span>
                                         {
                                             (user.group).length > 0
@@ -124,7 +132,7 @@ export function Users() {
                                         members.length > 0
                                             ? (<>
                                                 {members[0].map((mem) => (
-                                                    <div className= 'my-2 division' key={mem.id}>
+                                                    <div className='my-2 division' key={mem.id}>
                                                         <span className='span-bold'>{mem.name}{mem.surname}</span>
                                                     </div>
                                                 ))}
