@@ -6,6 +6,7 @@ import { Navigation } from '../../common/Navigation/Navigation';
 import { getAllEvents, getEventsByType } from '../../services/apiCalls';
 
 import '../Control/Admin.css'
+import { Link } from 'react-router-dom';
 
 export function Agenda() {
     const { token } = useAuth();
@@ -25,16 +26,20 @@ export function Agenda() {
         getEvents()
     }, [restore])
 
+// el boton trae el id del tipo de evento
     const clickHandler = (id) => {
         getEventsByType(token, id)
             .then((res) => {
                 setEvents(res)
             })
     }
+
+// click sobre el titulo restaura la llamada a allEvents
     const resetHandler = () => {
         setRestore(!restore)
         console.log(restore)
     }
+    console.log(restore)
 
     return (
         <>
@@ -42,14 +47,15 @@ export function Agenda() {
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                         
-                        <h2 className='title-left cursor'  onClick={() => {resetHandler()}} >Agenda</h2>
+                        <h2 className='title-left cursor my-4'  onClick={() => {resetHandler()}} >Agenda</h2>
                         <div className='elements-row mb-4 space'>
                             <div className='elements-row'>
-                                <div className='main-big-bttn pink-bttn' onClick={() => { clickHandler(1) }} />
-                                <div className='main-big-bttn pink-bttn' onClick={() => { clickHandler(2) }} />
-                                <div className='main-big-bttn pink-bttn' onClick={() => { clickHandler(3) }} />
+                                <div className='main-big-bttn pink-bttn cursor' onClick={() => { clickHandler(1) }} />
+                                <div className='main-big-bttn pink-bttn cursor' onClick={() => { clickHandler(2) }} />
+                                <div className='main-big-bttn pink-bttn cursor' onClick={() => { clickHandler(3) }} />
                             </div>
-                            <div className='main-big-bttn pink-bttn' />
+                            <Link to= '/newEvent'>
+                                <div className='main-big-bttn pink-bttn'/></Link>
                         </div>
                         <div className='main-card'>
                             {

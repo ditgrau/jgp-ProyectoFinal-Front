@@ -64,9 +64,10 @@ export function Control() {
                                 </>)
                                 : (<><h3 className='form-block'>{message}</h3></>)
                         }
-                        <div className='register-row mt-4'>
-                            <div className='main-big-bttn blue-bttn'/>
-                            <div className='main-big-bttn blue-bttn' />
+                        <h2 className='title-left mx-2 mt-4'>Crear nuevo</h2>
+                        <div className='register-row mt-3 ms-2'>
+                        <Link to= '/'><div className='main-big-bttn blue-bttn'/></Link>
+                        <Link to= '/newEvent'><div className='main-big-bttn blue-bttn'/></Link>
                         </div>
                     </Col>
                 </Row>
