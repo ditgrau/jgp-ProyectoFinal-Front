@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from '../../utils/functions';
 
 import '../Control/Admin.css'
-import { getUserById } from "../../services/apiCalls";
+import { getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
 
 export function DetailUser() {
     useBackgroundChanger({ color: '#F1F1F1' })
@@ -24,6 +24,11 @@ export function DetailUser() {
         name: '',
         surname: ''
     })
+    const [editing, setEditing] = useState(false)
+    const [groupSelector, setGroupSelector] = useState([])
+    const [roleSelector, setRoleSelector] = useState([])
+
+
     useEffect(() => {
         const dataUser = async () => {
             try {
@@ -45,13 +50,48 @@ export function DetailUser() {
         dataUser()
     }, [])
 
+    useEffect (()=>{
+        const groupSelector = async()=> {
+            try {
+                const res = await getAllGroups(token);
+                setGroupSelector(res)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        const roleSelector = async()=> {
+            try {
+                const res = await getAllRoles(token);
+                setRoleSelector(res)
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        roleSelector()
+        groupSelector()
+    }, [editing])
+
+    const handleClic = () => setEditing(true);
+
     return (<>
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                     <div className="elements-column">
                         <h1 className='title-left'>{fullname.name} {fullname.surname}</h1>
-                        <span className='title-left' key={role.id}>{role.name}</span>
+                        {editing ? (<>
+                            <select 
+                                // onChange={handleSelect} 
+                                className='main-input input-green-shadow input-reg mt-3'>
+                                <option value="">Selecciona role</option>
+                                {roleSelector.map((role) => {
+                                    return <option key={role.id} value={role.id}>{role.name}</option>
+                                })}
+                            </select>
+                        </>)
+                            : (<>
+                                <span className='title-left' key={role.id}>{role.name}</span>
+                            </>)}
                     </div>
                     <div className='main-card my-4'>
                         <div className="elements-row my-1">
@@ -83,18 +123,31 @@ export function DetailUser() {
                         </div>
                     </div>
                     <h2 className='title-left'>Grupos</h2>
-                    <div className='main-card my-4'>
-                        {group.length > 0 ? (
-                            <>
-                                {group.map((g) => (
-                                    <div className="elements-row my-1" key={g.id}>
-                                        <span className='title-left span-bold'>Grupo </span>
-                                        <span className='title-left'>{g.name}</span>
-                                    </div>
-                                ))}
-                            </>
-                        ) : (<><span className='title-left span-bold'>No pertenece a ningún grupo </span></>)}
-                    </div>
+                    {editing
+                        ? (<>
+                            <select 
+                            // onChange={handleSelect} 
+                            className='main-input input-green-shadow input-reg mb-4 mt-2'>
+                            <option value="">Selecciona grupo</option>
+                            {groupSelector.map((group) => {
+                                return <option key={group.id} value={group.id}>{group.name}</option>
+                            })}
+                        </select>
+                        </>)
+                        : (<>
+                            <div className='main-card my-4'>
+                                {group.length > 0 ? (
+                                    <>
+                                        {group.map((g) => (
+                                            <div className="elements-row my-1" key={g.id}>
+                                                <span className='title-left span-bold'>Grupo </span>
+                                                <span className='title-left'>{g.name}</span>
+                                            </div>
+                                        ))}
+                                    </>
+                                ) : (<><span className='title-left span-bold'>No pertenece a ningún grupo </span></>)}
+                            </div>
+                        </>)}
                     <h2 className='title-left'>Calendario</h2>
                     <div className='main-card my-4'>
                         {event.length > 0 ? (
@@ -120,6 +173,10 @@ export function DetailUser() {
                                 ))}
                             </>
                         ) : (<><span className='title-left span-bold'>No pertenece a ningún grupo </span></>)}
+                    </div>
+                    <div className='elements-row display-btt'>
+                        <div className='main-big-bttn green-bttn cursor' onClick={handleClic}/>
+                        <div className='main-big-bttn green-bttn cursor' />
                     </div>
 
                 </Col>

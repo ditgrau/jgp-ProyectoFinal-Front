@@ -296,3 +296,14 @@ export const getUserById = async (id, token) => {
     const res = await axios.get(`${ENDPOINT}/getUserById/${id}`, configToken);
     return res.data.data
 }
+
+export const getAllRoles = async (token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.get(`${ENDPOINT}/getAllRoles`, configToken);
+    return res.data.data
+}
