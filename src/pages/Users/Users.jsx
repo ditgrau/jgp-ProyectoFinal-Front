@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
-import { getAllGroups, getAllUsers, getUsersByGroup } from '../../services/apiCalls';
+import { getAllGroups, getAllUsers, getUserByName, getUsersByGroup } from '../../services/apiCalls';
 import '../Control/Admin.css'
 
 export function Users() {
@@ -64,11 +64,16 @@ export function Users() {
 
     };
 
+    const searchHandler = async () => {
+        try {
+            const res = await getUserByName(userFilter, token)
+            console.log(res.data)
+        } catch (error) {
+            console.error(error);
+        }
+    }
     const inputHandler = (e) => {
-        setUserFilter((prevState) => ({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }))
+        setUserFilter(e.target.value)
     };
 
     return (
@@ -87,13 +92,13 @@ export function Users() {
                     <div className='elements-row mt-2 space'>
                         <input
                             type='name'
-                            className='main-input'
-                            placeholder='Nombre' name={'name'}
+                            className='main-input input-longer'
+                            placeholder='Buscar por nombre' name={'name'}
                             onChange={(e) => inputHandler(e)}
                         />
                         <div className='elements-row'>
-                            <div className='main-small-bttn green-bttn' />
-                            <div className='main-small-bttn green-bttn' />
+                            <div className='main-small-bttn green-bttn cursor' onClick={searchHandler}/>
+                            <div className='main-small-bttn green-bttn cursor' />
                         </div>
                     </div>
                     <div className='main-card my-4'>
@@ -101,7 +106,7 @@ export function Users() {
                             users.length > 0
                                 ? (<>{users.map((user) => (
                                     <div className='elements-column my-2 division' key={user.id}>
-                                        <span className='span-bold'>{user.name} {user.surname}</span>
+                                        <span className='span-bold '>{user.name} {user.surname}</span>
                                         {
                                             (user.group).length > 0
                                             && (<>{
