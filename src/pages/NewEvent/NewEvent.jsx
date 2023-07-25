@@ -16,6 +16,7 @@ export function NewEvent() {
     const [gimnasts, setGimnasts] = useState([]);
     const [isActive, setIsActive] = useState(false);
 
+    //de inicio: llamada a la api para el renderizado de los dos selectores 
     useEffect(() => {
         const selectorEvents = async () => {
             try {
@@ -36,8 +37,8 @@ export function NewEvent() {
         selectorEvents();
         selectorGroups();
     }, []);
-    console.log(groups)
 
+    // construyendo el body de la request con la info de los inputs
     const inputHandler = (e) => {
         setDataEvent((prevState) => ({
             ...prevState,
@@ -45,6 +46,7 @@ export function NewEvent() {
         }))
     };
 
+    // set del estado como parte del body de la request
     const handleEvent = (e) => {
         setDataEvent((prevState) => ({
             ...prevState,
@@ -52,7 +54,7 @@ export function NewEvent() {
         }))
     };
 
-
+    // el condicional hace reset de estado para cuando deselecciona grupo
     useEffect(() => {
         const getUsersByGroup = async () => {
             try {
@@ -69,29 +71,20 @@ export function NewEvent() {
         getUsersByGroup()
     }, [isActive])
 
+    // este handle trae el id del grupo para el filtrado de gimnastas, setea estado para efecto toggle
     const handleGroup = (e) => {
         setDataGroup(e.target.value),
-        setIsActive(!isActive)
+            setIsActive(!isActive)
     }
 
-    console.log(isActive)
-    console.log(dataEvent)
-    console.log(dataGroup)
-    console.log(gimnasts)
-
-    //revisar este codigo
     return (
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                     <h2 className='title-left my-3'>Nuevo evento</h2>
                     <form className='main-form'>
-                        <input
-                            type='name'
-                            className='main-input input-reg'
-                            placeholder='Título del evento'
-                            name={'name'}
-                            onChange={(e) => inputHandler(e)}
+                        <input type='name' className='main-input input-reg' placeholder='Título del evento'
+                            name={'name'} onChange={(e) => inputHandler(e)}
                         />
                         <select onChange={handleEvent} className='main-input input-reg'>
                             <option value="">Tipo de evento</option>
@@ -102,34 +95,20 @@ export function NewEvent() {
                         <div className='elements-row input-reg'>
                             <div className='elements-column'>
                                 <span className='span-bold title-left mb-2'>Empieza</span>
-                                <input
-                                    type='date'
-                                    className='main-input input-reg'
-                                    name={'start_date'}
-                                    onChange={(e) => inputHandler(e)} />
+                                <input type='date' className='main-input input-reg'
+                                    name={'start_date'} onChange={(e) => inputHandler(e)} />
                             </div>
                             <div className='elements-column'>
                                 <span className='span-bold title-left mb-2'>Termina</span>
-                                <input
-                                    type='date'
-                                    className='main-input input-reg'
-                                    name={'end_date'}
-                                    onChange={(e) => inputHandler(e)} />
+                                <input type='date' className='main-input input-reg'
+                                    name={'end_date'} onChange={(e) => inputHandler(e)} />
                             </div>
                         </div>
-                        <input
-                            type='text'
-                            className='main-input input-reg'
-                            placeholder='Localización'
-                            name={'location'}
-                            onChange={(e) => inputHandler(e)}
+                        <input type='text' className='main-input input-reg' placeholder='Localización'
+                            name={'location'} onChange={(e) => inputHandler(e)}
                         />
-                        <input
-                            type='text'
-                            className='main-input input-reg big-box'
-                            placeholder='Añadir comentario'
-                            name={'comment'}
-                            onChange={(e) => inputHandler(e)}
+                        <input type='text' className='main-input input-reg big-box' placeholder='Añadir comentario'
+                            name={'comment'} onChange={(e) => inputHandler(e)}
                         />
                         <span className='span-bold title-left mb-2'>Asignar a:</span>
                         <select onChange={handleGroup} className='main-input input-reg'>
@@ -141,19 +120,15 @@ export function NewEvent() {
                         <select onChange={handleGroup} className='main-input input-reg'>
                             <option value="">Selecciona gimnastas</option>
                             {
-                                gimnasts.length > 0
-                                    && (<>{
-                                    gimnasts.map((gim) => {
-                                    return <option key={gim.id} value={gim.user_id}>{gim.user.name}</option>
-                                })}                           
-                                    </>)
-
-                            }                              
+                                gimnasts.length > 0 && (<>
+                                    {gimnasts.map((gim) => {
+                                        return <option key={gim.id} value={gim.user_id}>{gim.user.name}</option>
+                                    })}
+                                </>)
+                            }
                         </select>
                         <input
-                            type='name'
-                            className='main-input input-reg'
-                            placeholder='Nombre'
+                            type='name' className='main-input input-reg' placeholder='Nombre'
                             name={'name'}
                         // onChange={(e) => inputHandler(e)}
                         />
