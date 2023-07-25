@@ -240,3 +240,25 @@ export const newEvent = async (data, token) => {
     let res = await axios.post(`${ENDPOINT}/newEvent`, data, configToken)
     return res.data;
 }
+
+export const getAllEventTypes = async (token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    let res = await axios.get(`${ENDPOINT}/getAllEventTypes`, configToken)
+    return res.data;
+}
+
+export const usersByGroupId = async (id, token) => {
+        const configToken = {
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+            }
+        };
+        const res = await axios.get(`${ENDPOINT}/usersByGroupId/${id}`, configToken);
+        return res.data
+}
