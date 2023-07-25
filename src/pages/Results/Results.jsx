@@ -72,7 +72,7 @@ export function Results() {
                                 <span>Mi media ranking</span>
                             </div>
                         </div>
-                        <h2 className='title-left'>Mis resultados</h2>
+                        <h2 className='title-left mt-5 mb-0'>Mis resultados</h2>
                         <div className=' elements-row display-btt'>
                             <div className='main-big-bttn yellow-bttn cursor mb-3' />
                         </div>
