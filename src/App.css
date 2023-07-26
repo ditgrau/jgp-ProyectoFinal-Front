@@ -107,6 +107,10 @@
 .emoji-sm {
   font-size: 1.4rem;
 }
+
+.emoji-xs {
+  font-size: 1.1rem;
+}
 /* .logo {
   will-change: filter;
   transition: filter 300ms;

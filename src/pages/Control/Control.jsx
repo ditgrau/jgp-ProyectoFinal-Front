@@ -56,9 +56,20 @@ export function Control() {
                                     <div className='elements-row space' key={user.id}>
                                         <div className='main-target px-3 grey-shadow'>
                                             <span className='span-bold'>{user.name} {user.surname}</span>
+                                            {user.group.length > 0
+                                            && (<> {user.group.map((g, i) => (
+                                                <div className='ms-4' key={i}>
+                                                    <span>{g.name}</span>
+                                                </div>
+                                            ))}
+                                            </>)
+                                        }
+                                            
                                             <span>{user.group.name}</span>
                                         </div>
-                                        <div className='main-small-bttn green-bttn cursor' onClick={() => { confirmHandler(user.id) }} />
+                                        <div className='main-small-bttn green-bttn cursor' onClick={()=>{confirmHandler(user.id)}}>
+                                            <div className='emoji-xs'>✔️</div>
+                                        </div>
                                     </div>
                                 ))
 
