@@ -13,6 +13,6 @@ const detailEventSlice = createSlice({
     }
 })
 
-export const userDetail = (state) => state.eventDetail;
+export const eventDetail = (state) => state.eventDetail;
 export const { saveId } = detailEventSlice.actions;
 export default detailEventSlice.reducer;
