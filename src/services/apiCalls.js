@@ -274,7 +274,6 @@ export const getUsersByGroup = async (id, token) => {
     return res.data
 }
 
-
 export const getUserByName = async (name, token) => {
     const configToken = {
         headers: {
@@ -317,4 +316,26 @@ export const addResult = async (data, token) => {
     };
     let res = await axios.post(`${ENDPOINT}/addResult`, data, configToken)
     return res.data;
+}
+
+export const getClubAverage = async (token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    let res = await axios.get(`${ENDPOINT}/clubAverage`, configToken)
+    return res.data;
+}
+
+export const getResultById = async (id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.get(`${ENDPOINT}/getResultById/${id}`, configToken);
+    return res.data.data
 }
