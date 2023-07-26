@@ -4,12 +4,12 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
 import { Navigation } from '../../common/Navigation/Navigation';
 import { getAverage, getMyResults } from '../../services/apiCalls';
-
-import './Results.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { saveId } from '../../redux/detailResultSlice';
 import { Header } from '../../common/Header/Header';
+
+import './Results.css'
 
 export function Results() {
     const { token } = useAuth();

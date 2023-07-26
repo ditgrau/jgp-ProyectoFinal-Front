@@ -15,6 +15,7 @@ import { Unconfirmed } from "../Auth/Unconfirmed";
 import { NewEvent } from "../newEvent/newEvent";
 import { DetailUser } from "../DetailUser/DetailUser";
 import { DetailResult } from "../Results/DetailResult";
+import { AddResult } from "../Results/AddResult";
 
 export function Body() {
     const { token, role } = useAuth();
@@ -46,6 +47,7 @@ export function Body() {
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/results" element={<Results />} />
             <Route path="/detailResult" element={<DetailResult/>} />
+            <Route path="/addResult" element={<AddResult/>} />
 
             <Route path="/users" element={<Users />} />
             <Route path="/agenda" element={<Agenda />} />
