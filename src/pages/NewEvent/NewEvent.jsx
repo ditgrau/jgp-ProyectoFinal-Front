@@ -5,6 +5,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getAllEventTypes, getAllGroups, usersByGroupId } from '../../services/apiCalls';
 import '../Control/Admin.css'
 import { Link } from 'react-router-dom';
+import { NavAdmin } from '../../common/Navigation/NavAdmin';
 
 export function NewEvent() {
     const { token } = useAuth();
@@ -78,71 +79,74 @@ export function NewEvent() {
     }
 
     return (
-        <Container className='p-0'>
-            <Row className='main-row mb-5'>
-                <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h2 className='title-left my-3'>Nuevo evento</h2>
-                    <form className='main-form'>
-                        <input type='name' className='main-input input-reg' placeholder='Título del evento'
-                            name={'name'} onChange={(e) => inputHandler(e)}
-                        />
-                        <select onChange={handleEvent} className='main-input input-reg'>
-                            <option value="">Tipo de evento</option>
-                            {events.map((e) => {
-                                return <option key={e.id} value={e.id}>{e.name}</option>
-                            })}
-                        </select>
-                        <div className='elements-row input-reg'>
-                            <div className='elements-column'>
-                                <span className='span-bold title-left mb-2'>Empieza</span>
-                                <input type='date' className='main-input input-reg'
-                                    name={'start_date'} onChange={(e) => inputHandler(e)} />
+        <>
+            <Container className='p-0'>
+                <Row className='main-row mb-5'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-5'>
+                        <h2 className='title-left my-3'>Nuevo evento</h2>
+                        <form className='main-form'>
+                            <input type='name' className='main-input input-reg' placeholder='Título del evento'
+                                name={'name'} onChange={(e) => inputHandler(e)}
+                            />
+                            <select onChange={handleEvent} className='main-input input-reg'>
+                                <option value="">Tipo de evento</option>
+                                {events.map((e) => {
+                                    return <option key={e.id} value={e.id}>{e.name}</option>
+                                })}
+                            </select>
+                            <div className='elements-row input-reg'>
+                                <div className='elements-column'>
+                                    <span className='span-bold title-left mb-2'>Empieza</span>
+                                    <input type='date' className='main-input input-reg'
+                                        name={'start_date'} onChange={(e) => inputHandler(e)} />
+                                </div>
+                                <div className='elements-column'>
+                                    <span className='span-bold title-left mb-2'>Termina</span>
+                                    <input type='date' className='main-input input-reg'
+                                        name={'end_date'} onChange={(e) => inputHandler(e)} />
+                                </div>
                             </div>
-                            <div className='elements-column'>
-                                <span className='span-bold title-left mb-2'>Termina</span>
-                                <input type='date' className='main-input input-reg'
-                                    name={'end_date'} onChange={(e) => inputHandler(e)} />
-                            </div>
-                        </div>
-                        <input type='text' className='main-input input-reg' placeholder='Localización'
-                            name={'location'} onChange={(e) => inputHandler(e)}
-                        />
-                        <input type='text' className='main-input input-reg big-box' placeholder='Añadir comentario'
-                            name={'comment'} onChange={(e) => inputHandler(e)}
-                        />
-                        <span className='span-bold title-left mb-2'>Asignar a:</span>
-                        <select onChange={handleGroup} className='main-input input-reg'>
-                            <option value="">Selecciona grupo</option>
-                            {groups.map((g) => {
-                                return <option key={g.id} value={g.id}>{g.name}</option>
-                            })}
-                        </select>
-                        <select onChange={handleGroup} className='main-input input-reg'>
-                            <option value="">Selecciona gimnastas</option>
-                            {
-                                gimnasts.length > 0 && (<>
-                                    {gimnasts.map((gim) => {
-                                        return <option key={gim.id} value={gim.user_id}>{gim.user.name}</option>
-                                    })}
-                                </>)
-                            }
-                        </select>
-                        <input
-                            type='name' className='main-input input-reg' placeholder='Nombre'
-                            name={'name'}
-                        // onChange={(e) => inputHandler(e)}
-                        />
+                            <input type='text' className='main-input input-reg' placeholder='Localización'
+                                name={'location'} onChange={(e) => inputHandler(e)}
+                            />
+                            <input type='text' className='main-input input-reg big-box' placeholder='Añadir comentario'
+                                name={'comment'} onChange={(e) => inputHandler(e)}
+                            />
+                            <span className='span-bold title-left mb-2'>Asignar a:</span>
+                            <select onChange={handleGroup} className='main-input input-reg'>
+                                <option value="">Selecciona grupo</option>
+                                {groups.map((g) => {
+                                    return <option key={g.id} value={g.id}>{g.name}</option>
+                                })}
+                            </select>
+                            <select onChange={handleGroup} className='main-input input-reg'>
+                                <option value="">Selecciona gimnastas</option>
+                                {
+                                    gimnasts.length > 0 && (<>
+                                        {gimnasts.map((gim) => {
+                                            return <option key={gim.id} value={gim.user_id}>{gim.user.name}</option>
+                                        })}
+                                    </>)
+                                }
+                            </select>
+                            <input
+                                type='name' className='main-input input-reg' placeholder='Nombre'
+                                name={'name'}
+                            // onChange={(e) => inputHandler(e)}
+                            />
 
-                    </form>
-                    <div className='elements-row display-btt me-3'>
-                        <Link>
-                            <div className='main-big-bttn pink-bttn cursor display-btt'
-                            // onClick={handleSubmit}
-                            ></div>
-                        </Link>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
+                        </form>
+                        <div className='elements-row display-btt me-3'>
+                            <Link>
+                                <div className='main-big-bttn pink-bttn cursor display-btt'
+                                // onClick={handleSubmit}
+                                ></div>
+                            </Link>
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            <NavAdmin />
+        </>
     )
 }

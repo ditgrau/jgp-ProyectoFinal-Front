@@ -9,11 +9,10 @@ import './Navigation.css'
 
 ///////////////////////////////////
 
-export function Navigation({ color }) {
+export function NavAdmin() {
     const { role } = useAuth();
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const colorNavbar = (role === 3) && `${color}-navbar`
 
     const handleLogout = () => {
         navigate('/login')
@@ -22,7 +21,7 @@ export function Navigation({ color }) {
 
     return (
         <>
-            <Navbar key='lg' expand='lg' className={colorNavbar} fixed="bottom">
+            <Navbar key='lg' expand='lg' className='grey-navbar' fixed="bottom">
                 <Container fluid>
                     <Navbar.Brand href="/home">
                         <div className="emoji">🏠</div>
@@ -36,9 +35,10 @@ export function Navigation({ color }) {
                         <Offcanvas.Header closeButton/>
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Nav.Link href="/calendar">Calendario</Nav.Link>
-                                <Nav.Link href="/results">Resultados</Nav.Link>
-                                <Nav.Link href="/profile">Mi perfil</Nav.Link>
+                                <Nav.Link href="/control">Confirmar</Nav.Link>
+                                <Nav.Link href="/users">Usuarios</Nav.Link>
+                                <Nav.Link href="/agenda">Agenda</Nav.Link>
+                                <Nav.Link href="/newEvent">Crear evento</Nav.Link>
                                 <Nav.Link onClick={handleLogout}>Cerrar sesión</Nav.Link>
                             </Nav>
                         </Offcanvas.Body>

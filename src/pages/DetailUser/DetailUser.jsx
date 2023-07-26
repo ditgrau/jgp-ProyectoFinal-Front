@@ -8,6 +8,7 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 import { getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
 
 import '../Control/Admin.css'
+import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 export function DetailUser() {
     useBackgroundChanger({ color: '#F1F1F1' })
@@ -178,9 +179,9 @@ export function DetailUser() {
                         <div className='main-big-bttn green-bttn cursor' onClick={handleClic}/>
                         <div className='main-big-bttn green-bttn cursor' />
                     </div>
-
                 </Col>
             </Row>
         </Container>
+        <NavAdmin/>
     </>)
 }

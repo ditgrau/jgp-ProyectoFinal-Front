@@ -7,6 +7,7 @@ import { getAllGroups, getAllUsers, getUserByName, getUsersByGroup } from '../..
 import '../Control/Admin.css'
 import { saveId } from '../../redux/detailUserSlice';
 import { useNavigate } from 'react-router-dom';
+import { NavAdmin } from '../../common/Navigation/NavAdmin';
 
 export function Users() {
     useBackgroundChanger({ color: '#F1F1F1' })
@@ -76,7 +77,7 @@ export function Users() {
     }
 
     const detailHandler = (UserId) => {
-        dispatch(saveId({id: UserId}))
+        dispatch(saveId({ id: UserId }))
         navigate('/detailUser')
     }
 
@@ -85,65 +86,68 @@ export function Users() {
     };
 
     return (
-        <Container className='p-0'>
-            <Row className='main-row mb-5'>
-                <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <h2 className='title-left my-3'>Usuarios</h2>
+        <>
+            <Container className='p-0'>
+                <Row className='main-row mb-5'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-5'>
+                        <h2 className='title-left my-3'>Usuarios</h2>
 
-                    <select onChange={handleSelect} className='main-input input-reg'>
-                        <option value="">Grupo</option>
-                        {groups.map((group) => {
-                            return <option key={group.id} value={group.id}>{group.name}</option>
-                        })}
-                    </select>
+                        <select onChange={handleSelect} className='main-input input-reg'>
+                            <option value="">Grupo</option>
+                            {groups.map((group) => {
+                                return <option key={group.id} value={group.id}>{group.name}</option>
+                            })}
+                        </select>
 
-                    <div className='elements-row mt-2 space'>
-                        <input
-                            type='name'
-                            className='main-input input-longer'
-                            placeholder='Buscar por nombre' name={'name'}
-                            onChange={(e) => inputHandler(e)}
-                        />
-                        <div className='elements-row'>
-                            <div className='main-small-bttn green-bttn cursor' onClick={searchHandler} />
-                            <div className='main-small-bttn green-bttn cursor' />
+                        <div className='elements-row mt-2 space'>
+                            <input
+                                type='name'
+                                className='main-input input-longer'
+                                placeholder='Buscar por nombre' name={'name'}
+                                onChange={(e) => inputHandler(e)}
+                            />
+                            <div className='elements-row'>
+                                <div className='main-small-bttn green-bttn cursor' onClick={searchHandler} />
+                                <div className='main-small-bttn green-bttn cursor' />
+                            </div>
                         </div>
-                    </div>
-                    <div className='main-card my-4'>
-                        {
-                            users.length > 0
-                                ? (<>{users.map((user) => (
-                                    <div className='elements-column my-2 division cursor' key={user.id} onClick={() => {detailHandler(user.id)}}>
-                                        <span className='span-bold '>{user.name} {user.surname}</span>
-                                        {
-                                            (user.group).length > 0
-                                            && (<>{
-                                                (user.group).map((group, i) => (
-                                                    <span key={i}>{group.name}</span>
-                                                ))
-                                            }</>)
-                                        }
-                                    </div>
-                                ))
-                                }
-                                </>)
-                                : (<>
-                                    {
-                                        members.length > 0
-                                            ? (<>
-                                                {members[0].map((mem) => (
-                                                    <div className='my-2 division' key={mem.id}>
-                                                        <span className='span-bold'>{mem.name}{mem.surname}</span>
-                                                    </div>
-                                                ))}
-                                            </>)
-                                            : (<><h3 className='form-block'>No hay users</h3></>)
+                        <div className='main-card my-4'>
+                            {
+                                users.length > 0
+                                    ? (<>{users.map((user) => (
+                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={() => { detailHandler(user.id) }}>
+                                            <span className='span-bold '>{user.name} {user.surname}</span>
+                                            {
+                                                (user.group).length > 0
+                                                && (<>{
+                                                    (user.group).map((group, i) => (
+                                                        <span key={i}>{group.name}</span>
+                                                    ))
+                                                }</>)
+                                            }
+                                        </div>
+                                    ))
                                     }
-                                </>)
-                        }
-                    </div>
-                </Col>
-            </Row>
-        </Container>
+                                    </>)
+                                    : (<>
+                                        {
+                                            members.length > 0
+                                                ? (<>
+                                                    {members[0].map((mem) => (
+                                                        <div className='my-2 division' key={mem.id}>
+                                                            <span className='span-bold'>{mem.name}{mem.surname}</span>
+                                                        </div>
+                                                    ))}
+                                                </>)
+                                                : (<><h3 className='form-block'>No hay users</h3></>)
+                                        }
+                                    </>)
+                            }
+                        </div>
+                    </Col>
+                </Row>
+            </Container>
+            <NavAdmin />
+        </>
     )
 }

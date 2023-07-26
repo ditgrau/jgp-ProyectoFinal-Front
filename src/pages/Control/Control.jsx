@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
-import { Link } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { updateConfirmation, userUnconfirmed } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
-import { Navigation } from '../../common/Navigation/Navigation';
-import './Admin.css'
 import { Header } from '../../common/Header/Header';
+import { NavAdmin } from '../../common/Navigation/NavAdmin';
+
+import './Admin.css'
+import { useNavigate } from 'react-router-dom';
 
 export function Control() {
     const { token, nameUser } = useAuth();
@@ -16,6 +17,7 @@ export function Control() {
     const [confirming, setConfirming] = useState(false);
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
+    const navigate = useNavigate()
 
     useEffect(() => {
         const getUnconfirmed = async () => {
@@ -42,12 +44,14 @@ export function Control() {
             .then(res => setConfirming(!confirming))
     }
 
+    const handleClic = () => navigate('/newEvent')
+
     return (
         <>
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                        <Header/>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mb-4'>
+                        <Header />
                         <h1 className='title-left my-4'> Hola, {formattedName}</h1>
                         <h2 className='title-left mx-2 my-3'>Usuarios por confirmar</h2>
                         {
@@ -57,17 +61,17 @@ export function Control() {
                                         <div className='main-target px-3 grey-shadow'>
                                             <span className='span-bold'>{user.name} {user.surname}</span>
                                             {user.group.length > 0
-                                            && (<> {user.group.map((g, i) => (
-                                                <div className='ms-4' key={i}>
-                                                    <span>{g.name}</span>
-                                                </div>
-                                            ))}
-                                            </>)
-                                        }
-                                            
+                                                && (<> {user.group.map((g, i) => (
+                                                    <div className='ms-4' key={i}>
+                                                        <span>{g.name}</span>
+                                                    </div>
+                                                ))}
+                                                </>)
+                                            }
+
                                             <span>{user.group.name}</span>
                                         </div>
-                                        <div className='main-small-bttn green-bttn cursor' onClick={()=>{confirmHandler(user.id)}}>
+                                        <div className='main-small-bttn green-bttn cursor' onClick={() => { confirmHandler(user.id) }}>
                                             <div className='emoji-xs'>✔️</div>
                                         </div>
                                     </div>
@@ -78,14 +82,18 @@ export function Control() {
                                 : (<><h3 className='form-block'>{message}</h3></>)
                         }
                         <h2 className='title-left mx-2 mt-4'>Crear nuevo</h2>
-                        <div className='register-row mt-3 ms-2'>
-                        <Link to= '/'><div className='main-big-bttn blue-bttn'/></Link>
-                        <Link to= '/newEvent'><div className='main-big-bttn blue-bttn'/></Link>
+                        <div className='register-row mt-3 ms-3'>
+                            {/* <div className='main-big-bttn blue-bttn cursor' onClick={()=>{handleClic(1)}}>
+                                <div className='emoji'>🙂</div>
+                            </div> */}
+                            <div className='main-big-bttn blue-bttn cursor' onClick={handleClic}>
+                                <div className='emoji'>🗓️</div>
+                            </div>
                         </div>
                     </Col>
                 </Row>
             </Container>
-            <Navigation />
+            <NavAdmin />
         </>
     )
 }
