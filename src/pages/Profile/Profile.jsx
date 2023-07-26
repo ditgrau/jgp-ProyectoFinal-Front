@@ -52,7 +52,6 @@ export function Profile() {
                     surname: capitalizeFirstLetter(res.data.surname),
                 })
                 setUser(res);
-                console.log(res.data.group)
             } catch (error) {
                 console.error(error);
             }
@@ -60,7 +59,6 @@ export function Profile() {
         getMyProfile()
     }, [editing])
 
-    console.log(user.data.group)
     const inputHandler = (e) => {
         setBody((prevState) => ({
             ...prevState,
@@ -69,11 +67,11 @@ export function Profile() {
     };
 
     const handleClic = () => setEditing(true);
-
+    const handleNavigate = () => navigate('/credentials');
+    
     const handleUpdate = async () => {
         try {
             const res = await updateProfile(body, token)
-            console.log(res)
             if (res.success === true) {
                 setMessage('¡Datos actualizados!')
                 setEditing(false);
@@ -212,7 +210,7 @@ export function Profile() {
                                     <div className='main-big-bttn green-bttn cursor' onClick={handleClic}>
                                         <div className='emoji'>✏️</div>
                                     </div>
-                                    <div className='main-big-bttn green-bttn cursor'>
+                                    <div className='main-big-bttn green-bttn cursor' onClick={handleNavigate}>
                                         <div className='emoji'>🔐</div>
                                     </div>
                                 </div>
