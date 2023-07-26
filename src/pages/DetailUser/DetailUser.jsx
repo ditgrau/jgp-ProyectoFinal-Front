@@ -5,9 +5,9 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { userDetail } from "../../redux/detailUserSlice";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from '../../utils/functions';
+import { getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
 
 import '../Control/Admin.css'
-import { getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
 
 export function DetailUser() {
     useBackgroundChanger({ color: '#F1F1F1' })

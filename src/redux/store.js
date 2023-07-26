@@ -6,6 +6,7 @@ import storage from "redux-persist/lib/storage";
 import dataSlice from "./dataSlice";
 import detailUserSlice from "./detailUserSlice";
 import detailEventSlice from "./detailEventSlice";
+import detailResultSlice from "./detailResultSlice";
 
 const persistConfig = {
     key: 'root',
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
     auth: dataSlice,
     userDetail: detailUserSlice,
     eventDetail: detailEventSlice,
+    resultDetail: detailResultSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

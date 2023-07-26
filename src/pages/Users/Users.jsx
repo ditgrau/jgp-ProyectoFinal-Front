@@ -75,9 +75,9 @@ export function Users() {
         }
     }
 
-    const clickHandler = (UserId) => {
+    const detailHandler = (UserId) => {
         dispatch(saveId({id: UserId}))
-        navigate('/detail')
+        navigate('/detailUser')
     }
 
     const inputHandler = (e) => {
@@ -113,7 +113,7 @@ export function Users() {
                         {
                             users.length > 0
                                 ? (<>{users.map((user) => (
-                                    <div className='elements-column my-2 division cursor' key={user.id} onClick={() => {clickHandler(user.id)}}>
+                                    <div className='elements-column my-2 division cursor' key={user.id} onClick={() => {detailHandler(user.id)}}>
                                         <span className='span-bold '>{user.name} {user.surname}</span>
                                         {
                                             (user.group).length > 0

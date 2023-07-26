@@ -6,7 +6,9 @@ import { Navigation } from '../../common/Navigation/Navigation';
 import { getAverage, getMyResults } from '../../services/apiCalls';
 
 import './Results.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { saveId } from '../../redux/detailResultSlice';
 
 export function Results() {
     const { token } = useAuth();
@@ -16,6 +18,8 @@ export function Results() {
         ranking: null
     })
     const [message, setMessage] = useState('')
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useBackgroundChanger({ color: '#FFEDAE' })
 
@@ -52,8 +56,9 @@ export function Results() {
         }
     }, [results])
 
-    const detailHandler = (id) => {
-        console.log(id)
+    const detailHandler = (resultId) => {
+        dispatch(saveId({id: resultId}))
+        navigate('/detailResult')
     }
 
     return (
