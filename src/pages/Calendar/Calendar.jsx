@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Navigation } from '../../common/Navigation/Navigation';
 import { useAuth } from '../../hooks/useAuth';
 import { getMyEvents, getEventsByType, getMyGroups } from '../../services/apiCalls';
+import { Header } from '../../common/Header/Header';
+import { useDispatch } from 'react-redux';
+import { saveId } from '../../redux/detailEventSlice';
 
 import './Calendar.css'
-import { Header } from '../../common/Header/Header';
 
 export function Calendar() {
     useBackgroundChanger({ color: '#FFE2FB' })
@@ -15,6 +17,8 @@ export function Calendar() {
     const [events, setEvents] = useState([]);
     const [groups, setGroups] = useState([]);
     const [message, setMessage] = useState('');
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getEvents = async () => {
@@ -38,8 +42,9 @@ export function Calendar() {
         }
     }, [events])
 
-    const detailHandler = (id) => {
-        console.log(id)
+    const detailHandler = (eventId) => {
+        dispatch(saveId({ id: eventId }))
+        navigate('/detailCalendar')
     }
 
     return (
@@ -78,7 +83,7 @@ export function Calendar() {
                             events.length > 0
                                 ? (<>{events.map((event) => (
                                     <div className='elements-row my-1' key={event.id}>
-                                        <div className='main-big-bttn pink-bttn cursor' onClick={() => { detailHandler(event.event.id) }} >
+                                        <div className='main-big-bttn pink-bttn cursor' onClick={()=>{detailHandler(event.event.id)}} >
                                             <div className='emoji-sm'>🔎</div>
                                         </div>
                                         <div className='main-target px-3 pink-shadow elements-column'>

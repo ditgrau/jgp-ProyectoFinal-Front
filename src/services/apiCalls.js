@@ -339,3 +339,14 @@ export const getResultById = async (id, token) => {
     const res = await axios.get(`${ENDPOINT}/getResultById/${id}`, configToken);
     return res.data.data
 }
+
+export const myEventById = async (id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.get(`${ENDPOINT}/myEventById/${id}`, configToken);
+    return res.data.data
+}

@@ -7,7 +7,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { saveId } from '../../redux/detailResultSlice';
 import { getMyResults, getResultById } from "../../services/apiCalls";
 import { Header } from "../../common/Header/Header";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Navigation } from "../../common/Navigation/Navigation";
 
 export function DetailResult() {
     useBackgroundChanger({ color: '#FFEDAE' })
@@ -82,7 +83,7 @@ export function DetailResult() {
         <>
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className="mb-5">
                         <Header />
                         <section className="elements-column my-3">
                             <h1 className='title-left'>{data.name}</h1>
@@ -150,7 +151,7 @@ export function DetailResult() {
                     </Col>
                 </Row>
             </Container>
-
+            <Navigation color='yellow' />
         </>
     )
 }
