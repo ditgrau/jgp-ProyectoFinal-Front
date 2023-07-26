@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { saveId } from '../../redux/detailResultSlice';
 import { getMyResults, getResultById } from "../../services/apiCalls";
 import { Header } from "../../common/Header/Header";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function DetailResult() {
     useBackgroundChanger({ color: '#FFEDAE' })
@@ -138,6 +138,11 @@ export function DetailResult() {
                                 </>)
 
                             }
+                        </section>
+                        <section className=" display-btt me-4">
+                            <Link to='/results'>
+                                <div className='main-big-bttn yellow-bttn cursor' />
+                            </Link>
                         </section>
                     </Col>
                 </Row>

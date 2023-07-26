@@ -7,7 +7,7 @@ import { Navigation } from "../../common/Navigation/Navigation";
 import { addResult } from "../../services/apiCalls";
 
 import './Results.css'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 
@@ -16,14 +16,14 @@ export function AddResult() {
     const [data, setData] = useState({})
     const { token } = useAuth();
     const navigate = useNavigate()
-    
+
     const inputHandler = (e) => {
         setData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
         }))
     };
-    
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -103,10 +103,13 @@ export function AddResult() {
 
                             </div>
                         </form>
-                        <div className='elements-row display-btt me-3'>
-                            <div className='main-big-bttn pink-bttn cursor display-btt'
+                        <section className=" display-btt me-4 elements-row ">
+                            <div className='main-big-bttn yellow-bttn cursor display-btt'
                                 onClick={handleSubmit}></div>
-                        </div>
+                            <Link to='/results'>
+                                <div className='main-big-bttn yellow-bttn cursor' />
+                            </Link>
+                        </section>
                     </Col>
                 </Row>
             </Container>
