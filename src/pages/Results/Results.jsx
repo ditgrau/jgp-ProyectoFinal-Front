@@ -28,7 +28,8 @@ export function Results() {
         const getResults = async () => {
             try {
                 const res = await getMyResults(token)
-                setResults(res.data)
+                const orderedResults = (res.data).reverse()
+                setResults(orderedResults)
             } catch (error) {
                 console.error(error)
             }
