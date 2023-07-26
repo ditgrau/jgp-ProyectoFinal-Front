@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
-import { getAllEventTypes, getAllGroups, usersByGroupId } from '../../services/apiCalls';
+import { getAllEventTypes, getAllGroups, getUserById, usersByGroupId } from '../../services/apiCalls';
 import '../Control/Admin.css'
 import { Link } from 'react-router-dom';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
@@ -16,6 +16,9 @@ export function NewEvent() {
     const [groups, setGroups] = useState([]);
     const [gimnasts, setGimnasts] = useState([]);
     const [isActive, setIsActive] = useState(false);
+    const [selected, setSelected] = useState([]);
+    const [names, setNames] = useState([]);
+
 
     //de inicio: llamada a la api para el renderizado de los dos selectores 
     useEffect(() => {
@@ -78,6 +81,23 @@ export function NewEvent() {
             setIsActive(!isActive)
     }
 
+
+    const handleGimnasts = (e) => {
+        const userId = e.target.value;
+        const nameUser = e.target.name;
+        setSelected((prevSelected) => [...prevSelected, userId]);
+
+        getUserById(userId, token)
+            .then((res) => setNames((prevNames) => [...prevNames, res.name]))
+            .catch((error) => console.log("Error fetching user data:", error));
+
+        console.log(userId);
+    };
+
+
+    console.log(selected)
+    console.log(names)
+
     return (
         <>
             <Container className='p-0'>
@@ -91,7 +111,7 @@ export function NewEvent() {
                             <select onChange={handleEvent} className='main-input input-reg'>
                                 <option value="">Tipo de evento</option>
                                 {events.map((e) => {
-                                    return <option key={e.id} value={e.id}>{e.name}</option>
+                                    return <option key={e.id} value={e.id} name={e.name}>{e.name}</option>
                                 })}
                             </select>
                             <div className='elements-row input-reg'>
@@ -119,12 +139,12 @@ export function NewEvent() {
                                     return <option key={g.id} value={g.id}>{g.name}</option>
                                 })}
                             </select>
-                            <select onChange={handleGroup} className='main-input input-reg'>
+                            <select onChange={handleGimnasts} className='main-input input-reg'>
                                 <option value="">Selecciona gimnastas</option>
                                 {
                                     gimnasts.length > 0 && (<>
                                         {gimnasts.map((gim) => {
-                                            return <option key={gim.id} value={gim.user_id}>{gim.user.name}</option>
+                                            return <option key={gim.id} value={gim.user_id}>{gim.user.name} {gim.user.surname}</option>
                                         })}
                                     </>)
                                 }
@@ -143,6 +163,16 @@ export function NewEvent() {
                                 ></div>
                             </Link>
                         </div>
+                        <>
+                            {
+                                names.length > 0
+                                && (<>
+                                {names.map((name, i)=>(
+                                    <span className='tag mx-1' key={i}>{name}</span>
+                                ))}
+                                </>)
+                            }
+                        </>
                     </Col>
                 </Row>
             </Container>

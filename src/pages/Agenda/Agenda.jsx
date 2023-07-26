@@ -47,7 +47,7 @@ export function Agenda() {
         <>
             <Container className='p-0'>
                 <Row className='main-row'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-5'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-4'>
 
                         <h2 className='title-left cursor my-4' onClick={() => { resetHandler() }} >Agenda</h2>
                         <div className='elements-row mb-4 space'>

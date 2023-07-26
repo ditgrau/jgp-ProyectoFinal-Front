@@ -111,6 +111,14 @@
 .emoji-xs {
   font-size: 1.1rem;
 }
+
+.tag {
+  font-size: 0.8rem;
+  border-radius: 1rem;
+  border: solid var(--color-grey-shadow) .1rem;
+  padding-left: .5rem;
+  padding-right: .5rem;
+}
 /* .logo {
   will-change: filter;
   transition: filter 300ms;

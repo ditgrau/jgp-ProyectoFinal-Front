@@ -5,14 +5,18 @@ import { useAuth } from '../../hooks/useAuth';
 import { Header } from '../../common/Header/Header';
 import { Navigation } from '../../common/Navigation/Navigation';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 
 export function Credentials() {
     const { token } = useAuth();
     useBackgroundChanger({ color: '#c8edbb' })
     const navigate = useNavigate();
+    const dispatch = useDispatch()
 
-    const handleClick = () => navigate(('/login'));
+    const handleClick = () => {
+        navigate(('/login'))
+        dispatch(logout()) }
 
     return (
         <>
@@ -43,9 +47,9 @@ export function Credentials() {
                                 name={'password'}
                                 onChange={(e) => inputHandler(e)} />
                         </form>
-                        <div className='register-row mt-4 display-btt'>
+                        <div className='register-row mt-3 me-2 display-btt'>
                             <div className=' main-big-bttn green-bttn my-4'>
-                                <div className='emoji cursor' onClick={handleClick}>➕</div>
+                                <div className='emoji cursor' onClick={handleClick}>✔️</div>
                             </div>
                         </div>
                     </Col>
