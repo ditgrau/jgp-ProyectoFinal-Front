@@ -7,12 +7,13 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 
 import './Home.css'
 import { Navigation } from '../../common/Navigation/Navigation';
-import { getAverage, myLastResults } from '../../services/apiCalls';
+import { getAverage, myLastResults, getClubAverage } from '../../services/apiCalls';
 import { Header } from '../../common/Header/Header';
 
 export function Home() {
     const [bestResults, setBestResults] = useState([]);
     const [average, setAverage] = useState([]);
+    const [clubAvg, setClubAvg] = useState([]);
     const { token, nameUser } = useAuth();
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#B7DDFF' })
@@ -34,10 +35,20 @@ export function Home() {
                 console.error(error)
             }
         }
+        const clubAverage = async () => {
+            try {
+                const club = await getClubAverage(token)
+                setClubAvg(club)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        clubAverage()
         getResults()
         getMyAverage()
     }, [])
 
+    console.log(clubAvg)
     return (
         <>
             <Container>
@@ -60,7 +71,7 @@ export function Home() {
                             <div className='elements-column'>
                                 <h2 className='title-left'>La del club</h2>
                                 <div className='main-card small-card blue-shadow'>
-                                    <h1>16.855</h1>
+                                    <h1>{clubAvg.club}</h1>
                                 </div>
                             </div>
                         </div>
