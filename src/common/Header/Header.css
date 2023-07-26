@@ -1,0 +1,27 @@
+.circleProfile {
+    background-color: white;
+    border-radius: 50%;
+    width: 5rem;
+    height: 5rem;
+    margin: 0rem;
+    display: flex;
+    justify-content: center;
+
+}
+
+.supercapital {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-purple-shadow);
+    text-shadow: 0 .1rem 0 var(--color-purple-dark);
+    margin: 0
+}
+
+.tothe-right {
+    display: flex;
+    justify-content: end;
+}
+
+.not-link {
+    text-decoration: none;
+}

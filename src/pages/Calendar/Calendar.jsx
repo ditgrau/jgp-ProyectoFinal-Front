@@ -7,6 +7,7 @@ import { useAuth } from '../../hooks/useAuth';
 import { getMyEvents, getEventsByType, getMyGroups } from '../../services/apiCalls';
 
 import './Calendar.css'
+import { Header } from '../../common/Header/Header';
 
 export function Calendar() {
     useBackgroundChanger({ color: '#FFE2FB' })
@@ -47,6 +48,7 @@ console.log(groups)
             <Container>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                        <Header/>
                         <h2 className='title-left mx-2 my-3'>Mi grupo y horario</h2>
                         <div className='main-card pink-shadow'>
                         {

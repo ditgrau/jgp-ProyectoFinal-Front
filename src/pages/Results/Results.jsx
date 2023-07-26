@@ -9,6 +9,7 @@ import './Results.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { saveId } from '../../redux/detailResultSlice';
+import { Header } from '../../common/Header/Header';
 
 export function Results() {
     const { token } = useAuth();
@@ -60,12 +61,14 @@ export function Results() {
         dispatch(saveId({id: resultId}))
         navigate('/detailResult')
     }
-
+console.log(results)
+console.log(stadistics)
     return (
         <>
             <Container>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Header/>
                         <h2 className='title-left'>Estadística</h2>
                         <div className='elements-row'>
                             <div className='main-card small-card yellow-shadow'>

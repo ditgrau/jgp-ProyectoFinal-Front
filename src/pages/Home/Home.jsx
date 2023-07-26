@@ -8,6 +8,7 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 import './Home.css'
 import { Navigation } from '../../common/Navigation/Navigation';
 import { getAverage, myLastResults } from '../../services/apiCalls';
+import { Header } from '../../common/Header/Header';
 
 export function Home() {
     const [bestResults, setBestResults] = useState([]);
@@ -36,13 +37,13 @@ export function Home() {
         getResults()
         getMyAverage()
     }, [])
-console.log(average);
 
     return (
         <>
             <Container>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Header/>
                         <h1 className='title-left my-4'> Hola, {formattedName}</h1>
                         <h2 className='title-left my-3'>Calendario</h2>
                         <div className='main-card blue-shadow'></div>

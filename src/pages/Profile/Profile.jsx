@@ -8,6 +8,7 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 
 import './Profile.css'
 import { Navigation } from '../../common/Navigation/Navigation';
+import { Header } from '../../common/Header/Header';
 
 
 export function Profile() {
@@ -87,6 +88,7 @@ export function Profile() {
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Header/>
                         <h2 className='title-left my-3'>Datos del perfil</h2>
                         {editing
                             ? (<><form className='main-form'>

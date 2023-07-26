@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
+import { Header } from '../../common/Header/Header';
 
 
 export function Credentials() {
@@ -12,6 +13,7 @@ export function Credentials() {
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Header/>
                         <h2 className='title-left'>Contraseña actual</h2>
                         <input
                             type='password'

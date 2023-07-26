@@ -7,6 +7,7 @@ import { updateConfirmation, userUnconfirmed } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
 import { Navigation } from '../../common/Navigation/Navigation';
 import './Admin.css'
+import { Header } from '../../common/Header/Header';
 
 export function Control() {
     const { token, nameUser } = useAuth();
@@ -46,6 +47,7 @@ export function Control() {
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                        <Header/>
                         <h1 className='title-left my-4'> Hola, {formattedName}</h1>
                         <h2 className='title-left mx-2 my-3'>Usuarios por confirmar</h2>
                         {

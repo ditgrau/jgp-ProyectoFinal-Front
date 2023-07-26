@@ -43,6 +43,7 @@ export function Login() {
         login(data)
             .then((res) => {
                 dispatch(saveUser(res.data));
+                console.log(res.data);
                 dispatch(saveToken(res.token));
                 if (res.data.role_id === 1) {
                     navigate('/control');
