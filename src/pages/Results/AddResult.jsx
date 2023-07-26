@@ -23,9 +23,7 @@ export function AddResult() {
             [e.target.name]: e.target.value,
         }))
     };
-    console.log(token)
-    console.log(data)
-
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {

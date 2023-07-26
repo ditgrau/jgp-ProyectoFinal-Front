@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { login } from '../../services/apiCalls';
 import { saveToken, saveUser } from '../../redux/dataSlice';
 
-import '../../App.css'
 import './Auth.css'
 
 export function Login() {
@@ -43,7 +42,6 @@ export function Login() {
         login(data)
             .then((res) => {
                 dispatch(saveUser(res.data));
-                console.log(res.data);
                 dispatch(saveToken(res.token));
                 if (res.data.role_id === 1) {
                     navigate('/control');

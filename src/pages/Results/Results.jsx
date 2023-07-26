@@ -4,7 +4,7 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
 import { Navigation } from '../../common/Navigation/Navigation';
 import { getAverage, getMyResults } from '../../services/apiCalls';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { saveId } from '../../redux/detailResultSlice';
 import { Header } from '../../common/Header/Header';
@@ -52,24 +52,23 @@ export function Results() {
 
     useEffect(() => {
         if (results.length === 0) {
-            setMessage('¡Añade tus eventos!')
+            setMessage('¡Añade tus resultados!')
         } else {
             setMessage('')
         }
     }, [results])
 
     const detailHandler = (resultId) => {
-        dispatch(saveId({id: resultId}))
+        dispatch(saveId({ id: resultId }))
         navigate('/detailResult')
     }
-console.log(results)
-console.log(stadistics)
+
     return (
         <>
             <Container>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <Header/>
+                        <Header />
                         <h2 className='title-left'>Estadística</h2>
                         <div className='elements-row'>
                             <div className='main-card small-card yellow-shadow'>
@@ -82,8 +81,10 @@ console.log(stadistics)
                             </div>
                         </div>
                         <h2 className='title-left mt-5 mb-0'>Mis resultados</h2>
-                        <div className=' elements-row display-btt'>
-                            <div className='main-big-bttn yellow-bttn cursor mb-3' />
+                        <div className=' elements-row'>
+                            <Link to='/addResult'>
+                                <div className='main-big-bttn yellow-bttn cursor my-3' />
+                            </Link>
                         </div>
                         {
                             results.length > 0
