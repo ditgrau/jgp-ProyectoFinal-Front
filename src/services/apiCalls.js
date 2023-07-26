@@ -307,3 +307,14 @@ export const getAllRoles = async (token) => {
     const res = await axios.get(`${ENDPOINT}/getAllRoles`, configToken);
     return res.data.data
 }
+
+export const addResult = async (data, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    let res = await axios.post(`${ENDPOINT}/addResult`, data, configToken)
+    return res.data;
+}

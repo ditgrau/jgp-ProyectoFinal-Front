@@ -4,19 +4,42 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { Header } from "../../common/Header/Header";
 import { Navigation } from "../../common/Navigation/Navigation";
+import { addResult } from "../../services/apiCalls";
 
 import './Results.css'
+import { useNavigate } from "react-router-dom";
+
+
 
 export function AddResult() {
     useBackgroundChanger({ color: '#FFEDAE' })
     const [data, setData] = useState({})
-
+    const { token } = useAuth();
+    const navigate = useNavigate()
+    
     const inputHandler = (e) => {
         setData((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
         }))
     };
+    console.log(token)
+    console.log(data)
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await addResult(data, token)
+            if (res.success === true) {
+                navigate('/results')
+            } else {
+                console.log(res)
+            }
+            console.log(res)
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
@@ -37,51 +60,55 @@ export function AddResult() {
                                 />
                             </div>
                             <div className='register-column'>
-                            <h3 className="mt-3">Notas</h3>
+                                <h3 className="mt-3">Notas</h3>
                                 <div className='register-row'>
-                                <input
-                                    type='name'
-                                    className='main-input input-yellow-shadow input-reg'
-                                    placeholder='D'
-                                    name={'difficulty'}
-                                    onChange={(e) => inputHandler(e)}
-                                />
-                                <input
-                                    type='name'
-                                    className='main-input input-yellow-shadow input-reg'
-                                    placeholder='A'
-                                    name={'artistic'}
-                                    onChange={(e) => inputHandler(e)}
-                                />
-                                <input
-                                    type='name'
-                                    className='main-input input-yellow-shadow input-reg'
-                                    placeholder='E'
-                                    name={'execution'}
-                                    onChange={(e) => inputHandler(e)}
-                                />
-                                <input
-                                    type='name'
-                                    className='main-input input-yellow-shadow input-reg'
-                                    placeholder='Total'
-                                    name={'total'}
-                                    onChange={(e) => inputHandler(e)}
-                                />
+                                    <input
+                                        type='name'
+                                        className='main-input input-yellow-shadow input-reg'
+                                        placeholder='D'
+                                        name={'difficulty'}
+                                        onChange={(e) => inputHandler(e)}
+                                    />
+                                    <input
+                                        type='name'
+                                        className='main-input input-yellow-shadow input-reg'
+                                        placeholder='A'
+                                        name={'artistic'}
+                                        onChange={(e) => inputHandler(e)}
+                                    />
+                                    <input
+                                        type='name'
+                                        className='main-input input-yellow-shadow input-reg'
+                                        placeholder='E'
+                                        name={'execution'}
+                                        onChange={(e) => inputHandler(e)}
+                                    />
+                                    <input
+                                        type='name'
+                                        className='main-input input-yellow-shadow input-reg'
+                                        placeholder='Total'
+                                        name={'total'}
+                                        onChange={(e) => inputHandler(e)}
+                                    />
                                 </div>
                             </div>
                             <div className='register-column'>
-                            
-                            <h3 className="mt-3">Posición ranking</h3>
-                            <input
+
+                                <h3 className="mt-3">Posición ranking</h3>
+                                <input
                                     type='name'
                                     className='main-input input-yellow-shadow input-reg'
-                                    placeholder='Total'
-                                    name={'total'}
+                                    placeholder='Ranking'
+                                    name={'ranking'}
                                     onChange={(e) => inputHandler(e)}
                                 />
-                            
+
                             </div>
                         </form>
+                        <div className='elements-row display-btt me-3'>
+                            <div className='main-big-bttn pink-bttn cursor display-btt'
+                                onClick={handleSubmit}></div>
+                        </div>
                     </Col>
                 </Row>
             </Container>
