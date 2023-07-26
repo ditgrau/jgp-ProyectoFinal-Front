@@ -23,9 +23,7 @@ export function Profile() {
         },
         data: {
             email: '',
-            group: {
-                name: ''
-            }
+            group: ['']
         }
     });
     const [fullname, setFullname] = useState({
@@ -54,6 +52,7 @@ export function Profile() {
                     surname: capitalizeFirstLetter(res.data.surname),
                 })
                 setUser(res);
+                console.log(res.data.group)
             } catch (error) {
                 console.error(error);
             }
@@ -61,6 +60,7 @@ export function Profile() {
         getMyProfile()
     }, [editing])
 
+    console.log(user.data.group)
     const inputHandler = (e) => {
         setBody((prevState) => ({
             ...prevState,
@@ -88,7 +88,7 @@ export function Profile() {
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
-                    <Header/>
+                        <Header />
                         <h2 className='title-left my-3'>Datos del perfil</h2>
                         {editing
                             ? (<><form className='main-form'>
@@ -120,7 +120,14 @@ export function Profile() {
                                 <div className='prof-card'>
                                     <div>
                                         <span className='span-bold'>Grupo</span>
-                                        <span> {user.data.group.name}</span>
+                                        {user.data.group.length > 0
+                                            && (<> {user.data.group.map((g, i) => (
+                                                <div className='ms-4' key={i}>
+                                                    <span>{g.name}</span>
+                                                </div>
+                                            ))}
+                                            </>)
+                                        }
                                     </div>
                                 </div></>
                             )
@@ -141,7 +148,14 @@ export function Profile() {
                                     </div>
                                     <div>
                                         <span className='span-bold'>Grupo</span>
-                                        <span> {user.data.group.name}</span>
+                                        {user.data.group.length > 0
+                                            && (<> {user.data.group.map((g, i) => (
+                                                <div className='ms-4' key={i}>
+                                                    <span>{g.name}</span>
+                                                </div>
+                                            ))}
+                                            </>)
+                                        }
                                     </div>
                                 </div>
                             )
@@ -204,7 +218,7 @@ export function Profile() {
                     </Col>
                 </Row>
             </Container>
-            <Navigation color='green'/>
+            <Navigation color='green' />
         </>
     )
 }
