@@ -29,7 +29,7 @@ export function Calendar() {
         }
         getEvents()
     }, [])
-console.log(groups)
+
     useEffect(() => {
         if (events.length === 0) {
             setMessage('¡Aquí aparecerán tus próximos eventos!')
@@ -42,12 +42,11 @@ console.log(groups)
         console.log(id)
     }
 
-    console.log(events)
     return (
         <>
             <Container>
                 <Row className='main-row mb-5'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mb-5'>
                         <Header/>
                         <h2 className='title-left mx-2 my-3'>Mi grupo y horario</h2>
                         <div className='main-card pink-shadow'>
@@ -68,15 +67,20 @@ console.log(groups)
                         </div>
                         <h2 className='title-left mx-2 mb-3 mt-5'>Eventos próximos</h2>
                         <div className='elements-row mb-4'>
-                            <div className='main-big-bttn pink-bttn' />
-                            <div className='main-big-bttn pink-bttn' />
-                            <div className='main-big-bttn pink-bttn' />
+                            <div className='main-big-bttn pink-bttn cursor'><div className='
+                            emoji'>🎖️</div></div>
+                            <div className='main-big-bttn pink-bttn cursor'><div className='
+                            emoji'>⚡</div></div>
+                            <div className='main-big-bttn pink-bttn cursor'><div className='
+                            emoji'>🎉</div></div>
                         </div>
                         {
                             events.length > 0
                                 ? (<>{events.map((event) => (
                                     <div className='elements-row my-1' key={event.id}>
-                                        <div className='main-big-bttn pink-bttn cursor' onClick={() => { detailHandler(event.event.id) }} />
+                                        <div className='main-big-bttn pink-bttn cursor' onClick={() => { detailHandler(event.event.id) }} >
+                                            <div className='emoji-sm'>🔎</div>
+                                        </div>
                                         <div className='main-target px-3 pink-shadow elements-column'>
                                             <div className='span-bold'>{event.event.name}</div> 
                                             <div >{event.event.start_date} / {event.event.end_date}</div>

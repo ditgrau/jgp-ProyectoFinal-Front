@@ -28,7 +28,6 @@ export function DetailResult() {
             try {
                 const res = await getResultById(resultId, token);
                 setData(res)
-                console.log(res)
             } catch (error) {
                 console.error(error);
             }
@@ -76,6 +75,8 @@ export function DetailResult() {
         dispatch(saveId({ id: resultId }))
         setRestore(!restore)
     }
+
+    const handleClick = () => navigate('/results')
 
     return (
         <>
@@ -128,7 +129,9 @@ export function DetailResult() {
                                     {
                                         threeRes.map((res) => (
                                             <div className='elements-row my-1' key={res.id}>
-                                                <div className='main-big-bttn yellow-bttn cursor' onClick={() => { detailHandler(res.id) }} />
+                                                <div className='main-big-bttn yellow-bttn cursor' onClick={() => { detailHandler(res.id) }}>
+                                                    <div className='emoji-sm'>🔎</div>
+                                                </div>
                                                 <div className='main-target px-3 yellow-shadow space elements-row'>
                                                     <div>{res.name}</div> <div className='span-bold'>{res.total}</div>
                                                 </div>
@@ -140,9 +143,9 @@ export function DetailResult() {
                             }
                         </section>
                         <section className=" display-btt me-4">
-                            <Link to='/results'>
-                                <div className='main-big-bttn yellow-bttn cursor' />
-                            </Link>
+                            <div className='main-big-bttn yellow-bttn cursor' onClick={handleClick}>
+                                <div className='emoji-sm'>👈🏽</div>
+                            </div>
                         </section>
                     </Col>
                 </Row>

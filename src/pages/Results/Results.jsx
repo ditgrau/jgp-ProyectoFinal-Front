@@ -63,11 +63,13 @@ export function Results() {
         navigate('/detailResult')
     }
 
+    const handleClick = () => navigate('/addResult')
+
     return (
         <>
             <Container>
                 <Row className='main-row mb-5'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mb-5'>
                         <Header />
                         <h2 className='title-left'>Estadística</h2>
                         <div className='elements-row'>
@@ -81,16 +83,16 @@ export function Results() {
                             </div>
                         </div>
                         <h2 className='title-left mt-5 mb-0'>Mis resultados</h2>
-                        <div className=' elements-row'>
-                            <Link to='/addResult'>
-                                <div className='main-big-bttn yellow-bttn cursor my-3' />
-                            </Link>
+                        <div className=' main-big-bttn yellow-bttn my-4'>
+                            <div className='emoji cursor' onClick={handleClick}>➕</div>
                         </div>
                         {
                             results.length > 0
                                 ? (<>{results.map((result) => (
                                     <div className='elements-row my-1' key={result.id}>
-                                        <div className='main-big-bttn yellow-bttn cursor' onClick={() => { detailHandler(result.id) }} />
+                                        <div className='main-big-bttn yellow-bttn cursor' onClick={() => { detailHandler(result.id) }}>
+                                            <div className='emoji-sm'>🔎</div>
+                                        </div>
                                         <div className='main-target px-3 yellow-shadow space elements-row'>
                                             <div>{result.name}</div> <div className='span-bold'>{result.total}</div>
                                         </div>

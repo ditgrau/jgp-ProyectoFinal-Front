@@ -99,6 +99,14 @@
 .hidden {
   display: none;
 }
+
+.emoji {
+  font-size: 1.5rem;
+}
+
+.emoji-sm {
+  font-size: 1.4rem;
+}
 /* .logo {
   will-change: filter;
   transition: filter 300ms;

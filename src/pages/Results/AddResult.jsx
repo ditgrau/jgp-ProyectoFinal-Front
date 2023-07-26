@@ -39,6 +39,8 @@ export function AddResult() {
         }
     }
 
+    const handleClick = () => navigate('/results')
+
     return (
         <>
             <Container>
@@ -47,8 +49,8 @@ export function AddResult() {
                         <Header />
                         <h2 className='title-left mt-5'>Nuevo resultado</h2>
                         <form className='main-form'>
-                            <div className='register-column input-reg'>
-                                <h3 className="mt-3">Nombre de la competición</h3>
+                            <div className='elements-column input-reg'>
+                                <h3 className="mt-3 title-left">Nombre de la competición</h3>
                                 <input
                                     type='name'
                                     className='main-input input-yellow-shadow input-reg'
@@ -58,7 +60,7 @@ export function AddResult() {
                                 />
                             </div>
                             <div className='register-column'>
-                                <h3 className="mt-3">Notas</h3>
+                                <h3 className="mt-3 title-left">Notas</h3>
                                 <div className='register-row'>
                                     <input
                                         type='name'
@@ -90,9 +92,8 @@ export function AddResult() {
                                     />
                                 </div>
                             </div>
-                            <div className='register-column'>
-
-                                <h3 className="mt-3">Posición ranking</h3>
+                            <div className='elements-column'>
+                                <h3 className="mt-3 title-left">Posición ranking</h3>
                                 <input
                                     type='name'
                                     className='main-input input-yellow-shadow input-reg'
@@ -100,15 +101,16 @@ export function AddResult() {
                                     name={'ranking'}
                                     onChange={(e) => inputHandler(e)}
                                 />
-
                             </div>
                         </form>
-                        <section className=" display-btt me-4 elements-row ">
-                            <div className='main-big-bttn yellow-bttn cursor display-btt'
-                                onClick={handleSubmit}></div>
-                            <Link to='/results'>
-                                <div className='main-big-bttn yellow-bttn cursor' />
-                            </Link>
+                        <section className=" display-btt me-4 mt-5 elements-row">
+                            <div className='main-big-bttn yellow-bttn cursor'
+                                onClick={handleSubmit}>
+                                    <div className='emoji-sm'>👍🏿</div>
+                                </div>
+                            <div className='main-big-bttn yellow-bttn cursor' onClick={handleClick}>
+                                <div className='emoji-sm'>👈🏽</div>
+                            </div>
                         </section>
                     </Col>
                 </Row>

@@ -133,7 +133,7 @@ export function Profile() {
                             )
                             : (
                                 <div className='main-card green-shadow'>
-                                    <h3>{fullname.name} {fullname.surname}</h3>
+                                    <h2>{fullname.name} {fullname.surname}</h2>
                                     <div>
                                         <span className='span-bold'>Fecha de nacimiento</span>
                                         <span> {user.info.birth_date}</span>
@@ -203,13 +203,18 @@ export function Profile() {
                         {editing
                             ? (<>
                                 <div className='register-row mt-4 display-btt'>
-                                    <div className='main-big-bttn green-bttn' onClick={handleUpdate} />
+                                    <div className='main-big-bttn green-bttn cursor' onClick={handleUpdate}>
+                                        <div className='emoji-sm'>👍🏻</div></div>
                                 </div>
                             </>)
                             : (<>
                                 <div className='register-row mt-4 display-btt'>
-                                    <div className='main-big-bttn green-bttn' onClick={handleClic} />
-                                    <div className='main-big-bttn green-bttn' />
+                                    <div className='main-big-bttn green-bttn cursor' onClick={handleClic}>
+                                        <div className='emoji'>✏️</div>
+                                    </div>
+                                    <div className='main-big-bttn green-bttn cursor'>
+                                        <div className='emoji'>🔐</div>
+                                    </div>
                                 </div>
                             </>
                             )

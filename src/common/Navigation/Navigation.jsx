@@ -24,7 +24,9 @@ export function Navigation({ color }) {
         <>
             <Navbar key='lg' expand='lg' className={colorNavbar} fixed="bottom">
                 <Container fluid>
-                    <Navbar.Brand href="#">Link a home</Navbar.Brand>
+                    <Navbar.Brand href="/home">
+                        <div className="emoji">🏠</div>
+                    </Navbar.Brand>
                     <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-lg`} />
                     <Navbar.Offcanvas
                         id={`offcanvasNavbar-expand-lg`}
@@ -34,10 +36,10 @@ export function Navigation({ color }) {
                         <Offcanvas.Header closeButton/>
                         <Offcanvas.Body>
                             <Nav className="justify-content-end flex-grow-1 pe-3">
-                                <Nav.Link href="#action1">Home</Nav.Link>
-                                <Nav.Link href="#action2">Link</Nav.Link>
-                                <Nav.Link href="#action2">Link</Nav.Link>
-                                <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                                <Nav.Link href="/calendar">Calendario</Nav.Link>
+                                <Nav.Link href="/results">Resultados</Nav.Link>
+                                <Nav.Link href="/profile">Mi perfil</Nav.Link>
+                                <Nav.Link onClick={handleLogout}>Cerrar sesión</Nav.Link>
                             </Nav>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
