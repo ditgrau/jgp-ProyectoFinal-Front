@@ -5,16 +5,18 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { userDetail } from "../../redux/detailUserSlice";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from '../../utils/functions';
-import { getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
+import { deleteUserById, getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
 import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 import '../Control/Admin.css'
+import { useNavigate } from "react-router-dom";
 
 
 export function DetailUser() {
     useBackgroundChanger({ color: '#F1F1F1' })
     const dataSlice = useSelector(userDetail)
     const userId = dataSlice.data.id
+    const navigate = useNavigate()
     const { token } = useAuth();
     const [data, setData] = useState({});
     const [role, setRole] = useState({});
@@ -76,7 +78,7 @@ export function DetailUser() {
 
     const handleClic = () => setEditing(true);
 
-    const handleRole = () => {
+    const handleRole = (e) => {
         setRoleId((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -85,7 +87,7 @@ export function DetailUser() {
     }
     const roleClick = () => console.log(e.target.value)
 
-    const handleGroup = () => {
+    const handleGroup = (e) => {
         setGroupId((prevState) => ({
             ...prevState,
             [e.target.name]: e.target.value,
@@ -93,7 +95,13 @@ export function DetailUser() {
         }))
     }
     const groupClick = () => console.log(e.target.value)
+    const handleNav = () => navigate('/users')
 
+    const deleteHandler = (id) => {
+        deleteUserById(id, token)
+            .then(() => navigate('/users'))
+    }
+    
     return (<>
         <Container className='p-0'>
             <Row className='main-row mb-5'>
@@ -121,7 +129,7 @@ export function DetailUser() {
                                     <div className='main-big-bttn green-bttn cursor' onClick={handleClic}>
                                         <div className='emoji'>✏️</div>
                                     </div>
-                                    <div className='main-big-bttn green-bttn cursor'>
+                                    <div className='main-big-bttn green-bttn cursor' onClick={() => { deleteHandler(userId) }}>
                                         <div className='emoji'>🗑️</div>
                                     </div>
                                 </div>
@@ -160,7 +168,7 @@ export function DetailUser() {
                     {editing
                         ? (<>
                             <select
-                                onChange={handleGroup} 
+                                onChange={handleGroup}
                                 className='main-input input-green-shadow input-reg my-2'>
                                 <option value="">Selecciona grupo</option>
                                 {groupSelector.map((group) => {
@@ -212,6 +220,12 @@ export function DetailUser() {
                                 ))}
                             </>
                         ) : (<><span className='title-left span-bold'>No pertenece a ningún grupo </span></>)}
+                    </div>
+                    <div className='elements-row display-btt mb-3'>
+                        <div className='main-big-bttn green-bttn cursor display-btt'
+                            onClick={handleNav}>
+                            <div className='emoji'>👈🏾</div>
+                        </div>
                     </div>
                 </Col>
             </Row>
