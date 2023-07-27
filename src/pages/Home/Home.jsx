@@ -61,7 +61,7 @@ export function Home() {
         <>
             <Container>
                 <Row className='main-row mb-5'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mb-4'>
                         <Header />
                         <h1 className='title-left my-4'> Hola, {formattedName}</h1>
                         <h2 className='title-left my-3'>Calendario</h2>

@@ -28,7 +28,8 @@ export function DetailUser() {
     const [editing, setEditing] = useState(false)
     const [groupSelector, setGroupSelector] = useState([])
     const [roleSelector, setRoleSelector] = useState([])
-
+    const [roleId, setRoleId] = useState({})
+    const [groupId, setGroupId] = useState({})
 
     useEffect(() => {
         const dataUser = async () => {
@@ -51,8 +52,8 @@ export function DetailUser() {
         dataUser()
     }, [])
 
-    useEffect (()=>{
-        const groupSelector = async()=> {
+    useEffect(() => {
+        const groupSelector = async () => {
             try {
                 const res = await getAllGroups(token);
                 setGroupSelector(res)
@@ -60,7 +61,7 @@ export function DetailUser() {
                 console.error(error);
             }
         }
-        const roleSelector = async()=> {
+        const roleSelector = async () => {
             try {
                 const res = await getAllRoles(token);
                 setRoleSelector(res)
@@ -74,24 +75,55 @@ export function DetailUser() {
 
     const handleClic = () => setEditing(true);
 
+    const handleRole = () => {
+        setRoleId((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+            "user_id": userId
+        }))
+    }
+    const roleClick = () => console.log(e.target.value)
+
+    const handleGroup = () => {
+        setGroupId((prevState) => ({
+            ...prevState,
+            [e.target.name]: e.target.value,
+            "user_id": userId
+        }))
+    }
+    const groupClick = () => console.log(e.target.value)
+
     return (<>
         <Container className='p-0'>
             <Row className='main-row mb-5'>
-                <Col xs={11} sm={8} md={7} lg={5} xl={4}>
+                <Col xs={11} sm={8} md={7} lg={5} xl={4} className="mb-3 mt-5">
                     <div className="elements-column">
                         <h1 className='title-left'>{fullname.name} {fullname.surname}</h1>
                         {editing ? (<>
-                            <select 
-                                // onChange={handleSelect} 
+                            <select
+                                onChange={handleRole}
                                 className='main-input input-green-shadow input-reg mt-3'>
                                 <option value="">Selecciona role</option>
                                 {roleSelector.map((role) => {
-                                    return <option key={role.id} value={role.id}>{role.name}</option>
+                                    return <option key={role.id} value={role.id} name={'role_id'}>{role.name}</option>
                                 })}
                             </select>
+                            <div className='elements-row display-btt mt-3'>
+                                <div className='main-small-bttn green-bttn cursor' onClick={roleClick}>
+                                    <div className='emoji-xs'>✔️</div>
+                                </div>
+                            </div>
                         </>)
                             : (<>
                                 <span className='title-left' key={role.id}>{role.name}</span>
+                                <div className='elements-row display-btt'>
+                                    <div className='main-big-bttn green-bttn cursor' onClick={handleClic}>
+                                        <div className='emoji'>✏️</div>
+                                    </div>
+                                    <div className='main-big-bttn green-bttn cursor'>
+                                        <div className='emoji'>🗑️</div>
+                                    </div>
+                                </div>
                             </>)}
                     </div>
                     <div className='main-card my-4'>
@@ -126,14 +158,19 @@ export function DetailUser() {
                     <h2 className='title-left'>Grupos</h2>
                     {editing
                         ? (<>
-                            <select 
-                            // onChange={handleSelect} 
-                            className='main-input input-green-shadow input-reg mb-4 mt-2'>
-                            <option value="">Selecciona grupo</option>
-                            {groupSelector.map((group) => {
-                                return <option key={group.id} value={group.id}>{group.name}</option>
-                            })}
-                        </select>
+                            <select
+                                onChange={handleGroup} 
+                                className='main-input input-green-shadow input-reg my-2'>
+                                <option value="">Selecciona grupo</option>
+                                {groupSelector.map((group) => {
+                                    return <option key={group.id} value={group.id} name={'group_id'}>{group.name}</option>
+                                })}
+                            </select>
+                            <div className='elements-row display-btt mt-2'>
+                                <div className='main-small-bttn green-bttn cursor' onClick={groupClick}>
+                                    <div className='emoji-xs'>✔️</div>
+                                </div>
+                            </div>
                         </>)
                         : (<>
                             <div className='main-card my-4'>
@@ -175,13 +212,9 @@ export function DetailUser() {
                             </>
                         ) : (<><span className='title-left span-bold'>No pertenece a ningún grupo </span></>)}
                     </div>
-                    <div className='elements-row display-btt'>
-                        <div className='main-big-bttn green-bttn cursor' onClick={handleClic}/>
-                        <div className='main-big-bttn green-bttn cursor' />
-                    </div>
                 </Col>
             </Row>
-        </Container>
-        <NavAdmin/>
+        </Container >
+        <NavAdmin />
     </>)
 }

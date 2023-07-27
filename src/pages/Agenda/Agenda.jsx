@@ -47,7 +47,7 @@ export function Agenda() {
         <>
             <Container className='p-0'>
                 <Row className='main-row'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-4'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mt-3 mb-5'>
 
                         <h2 className='title-left cursor my-4' onClick={() => { resetHandler() }} >Agenda</h2>
                         <div className='elements-row mb-4 space'>
@@ -62,24 +62,21 @@ export function Agenda() {
                                     <div className='emoji-sm'>🎉</div>
                                 </div>
                             </div>
-                            <div className='main-big-bttn pink-bttn' onClick= {navigateHandler}>
+                            <div className='main-big-bttn pink-bttn cursor' onClick={navigateHandler}>
                                 <div className='emoji-sm'>➕</div>
                             </div>
                         </div>
-                        <div className='main-card'>
+                        <div className='main-card mb-5'>
                             {
                                 events.length > 0
-                                    ? (<>{events.map((event) => (
+                                && (<>
+                                    {events.map((event) => (
                                         <div className='elements-column my-2 mx-2' key={event.id}>
                                             <span className='span-bold'>{event.name}</span>
                                             <span>{event.start_date} / {event.end_date}</span>
                                         </div>
-                                    ))
-                                    }
-                                    </>)
-                                    : (<>
-                                        {/* <h3 className='form-block'>{message}</h3> */}
-                                    </>)
+                                    ))}
+                                </>)
                             }
                         </div>
                     </Col>

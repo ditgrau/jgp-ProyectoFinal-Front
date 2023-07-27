@@ -2,16 +2,19 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
-import { getAllEventTypes, getAllGroups, getUserById, usersByGroupId } from '../../services/apiCalls';
+import { getAllEventTypes, getAllGroups, getUserById, newEvent, usersByGroupId } from '../../services/apiCalls';
 import '../Control/Admin.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
 
 export function NewEvent() {
     const { token } = useAuth();
     useBackgroundChanger({ color: '#F1F1F1' })
+    const navigate = useNavigate();
+
     const [dataEvent, setDataEvent] = useState({});
     const [dataGroup, setDataGroup] = useState('');
+    const [message, setMessage] = useState('');
     const [events, setEvents] = useState([]);
     const [groups, setGroups] = useState([]);
     const [gimnasts, setGimnasts] = useState([]);
@@ -55,6 +58,7 @@ export function NewEvent() {
         setDataEvent((prevState) => ({
             ...prevState,
             event_type_id: e.target.value,
+            'pdf_path': null,
         }))
     };
 
@@ -94,9 +98,21 @@ export function NewEvent() {
         console.log(userId);
     };
 
-
-    console.log(selected)
-    console.log(names)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await newEvent(dataEvent, token)
+            if (res.success === true) {
+                console.log(res)
+                setMessage('¡Evento registrado!')
+                setTimeout(() => navigate('/agenda'), 2000)
+            } else {
+                console.log(res.error)
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
 
     return (
         <>
@@ -159,10 +175,11 @@ export function NewEvent() {
                         <div className='elements-row display-btt me-3'>
                             <Link>
                                 <div className='main-big-bttn pink-bttn cursor display-btt'
-                                // onClick={handleSubmit}
+                                onClick={handleSubmit}
                                 ></div>
                             </Link>
                         </div>
+                        <span className='span-bold'>{message}</span>
                         <>
                             {
                                 names.length > 0
