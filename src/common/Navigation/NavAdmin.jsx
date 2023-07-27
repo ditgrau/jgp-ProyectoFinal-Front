@@ -39,6 +39,7 @@ export function NavAdmin() {
                                 <Nav.Link href="/users">Usuarios</Nav.Link>
                                 <Nav.Link href="/agenda">Agenda</Nav.Link>
                                 <Nav.Link href="/newEvent">Crear evento</Nav.Link>
+                                <Nav.Link href="/podium">Podium</Nav.Link>
                                 <Nav.Link onClick={handleLogout}>Cerrar sesión</Nav.Link>
                             </Nav>
                         </Offcanvas.Body>

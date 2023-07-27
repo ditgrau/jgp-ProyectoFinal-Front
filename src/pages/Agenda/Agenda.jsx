@@ -51,6 +51,7 @@ export function Agenda() {
     }
 
     const navigateHandler = () => navigate('/newEvent')
+    const handleNav = () => navigate('/control')
 
     return (
         <>
@@ -75,7 +76,7 @@ export function Agenda() {
                                 <div className='emoji-sm'>➕</div>
                             </div>
                         </div>
-                        <div className='main-card mb-5'>
+                        <div className='main-card mb-3'>
                             {
                                 events.length > 0
                                 && (<>
@@ -87,6 +88,12 @@ export function Agenda() {
                                     ))}
                                 </>)
                             }
+                        </div>
+                        <div className='elements-row display-btt mb-5'>
+                            <div className='main-big-bttn pink-bttn cursor display-btt'
+                                onClick={handleNav}>
+                                <div className='emoji'>👈🏿</div>
+                            </div>
                         </div>
                     </Col>
                 </Row>

@@ -26,7 +26,6 @@ export function Users() {
             try {
                 const res = await getAllUsers(token)
                 setUsers(res)
-                console.log(res)
             }
             catch (error) {
                 console.error(error);
@@ -87,12 +86,14 @@ export function Users() {
     const inputHandler = (e) => {
         setUserFilter(e.target.value)
     };
+
+    const handleNav = () => navigate('/control')
     
     return (
         <>
             <Container className='p-0'>
                 <Row className='main-row mb-2'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-5'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mt-3 mb-5'>
                         <h2 className='title-left my-3'>Usuarios</h2>
 
                         <select onChange={handleSelect} className='main-input input-reg'>
@@ -149,6 +150,12 @@ export function Users() {
                                         }
                                     </>)
                             }
+                        </div>
+                        <div className='elements-row display-btt mb-3'>
+                            <div className='main-big-bttn green-bttn cursor display-btt'
+                                onClick={handleNav}>
+                                <div className='emoji'>👈🏻</div>
+                            </div>
                         </div>
                     </Col>
                 </Row>

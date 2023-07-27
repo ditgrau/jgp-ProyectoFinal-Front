@@ -51,7 +51,7 @@ export function Podium() {
                             }
                         </div>
                         <div className='elements-row display-btt mb-3'>
-                            <div className='main-big-bttn pink-bttn cursor display-btt'
+                            <div className='main-big-bttn yellow-bttn cursor display-btt'
                                 onClick={handleNav}>
                                 <div className='emoji'>👈🏾</div>
                             </div>
