@@ -9,6 +9,7 @@ import { deleteResult, getMyResults, getResultById } from "../../services/apiCal
 import { Header } from "../../common/Header/Header";
 import { useNavigate } from "react-router-dom";
 import { Navigation } from "../../common/Navigation/Navigation";
+import { checkRole } from "../../hooks/useNavigateRole";
 
 export function DetailResult() {
     useBackgroundChanger({ color: '#FFEDAE' })
@@ -23,6 +24,7 @@ export function DetailResult() {
     const [restore, setRestore] = useState([])
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    checkRole(1)
 
     useEffect(() => {
         const dataResult = async () => {

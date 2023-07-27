@@ -10,6 +10,7 @@ import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 import '../Control/Admin.css'
 import { useNavigate } from "react-router-dom";
+import { checkRole } from "../../hooks/useNavigateRole";
 
 
 export function DetailUser() {
@@ -33,6 +34,7 @@ export function DetailUser() {
     const [roleSelector, setRoleSelector] = useState([])
     const [roleId, setRoleId] = useState({})
     const [groupId, setGroupId] = useState({})
+    checkRole(3)
 
     useEffect(() => {
         const dataUser = async () => {

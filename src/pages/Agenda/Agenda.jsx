@@ -9,6 +9,7 @@ import { NavAdmin } from '../../common/Navigation/NavAdmin';
 import { useNavigate } from 'react-router-dom';
 
 import '../Control/Admin.css'
+import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Agenda() {
     const { token } = useAuth();
@@ -17,7 +18,8 @@ export function Agenda() {
     const [restore, setRestore] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-
+    checkRole(3)
+    
     useEffect(() => {
         const getEvents = async () => {
             try {

@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 import { saveId } from '../../redux/detailEventSlice';
 
 import './Calendar.css'
+import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Calendar() {
     useBackgroundChanger({ color: '#FFE2FB' })
@@ -19,6 +20,7 @@ export function Calendar() {
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    checkRole(1)
 
     useEffect(() => {
         const getEvents = async () => {

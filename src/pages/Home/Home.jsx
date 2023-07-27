@@ -9,6 +9,7 @@ import { getAverage, myLastResults, getClubAverage, getMyEvents } from '../../se
 import { Header } from '../../common/Header/Header';
 
 import './Home.css'
+import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Home() {
     const [bestResults, setBestResults] = useState([]);
@@ -19,6 +20,7 @@ export function Home() {
     const navigate = useNavigate();
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#B7DDFF' })
+    checkRole(1)
 
 // llamadas a la API para renderizado inicial
 

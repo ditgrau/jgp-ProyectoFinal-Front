@@ -6,6 +6,7 @@ import { getAllEventTypes, getAllGroups, getUserById, newEvent, usersByGroupId }
 import '../Control/Admin.css'
 import { Link, useNavigate } from 'react-router-dom';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
+import { checkRole } from '../../hooks/useNavigateRole';
 
 export function NewEvent() {
     const { token } = useAuth();
@@ -21,7 +22,7 @@ export function NewEvent() {
     const [isActive, setIsActive] = useState(false);
     const [selected, setSelected] = useState([]);
     const [names, setNames] = useState([]);
-
+    checkRole(3)
 
     //de inicio: llamada a la api para el renderizado de los dos selectores 
     useEffect(() => {

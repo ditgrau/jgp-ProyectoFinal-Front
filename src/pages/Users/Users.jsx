@@ -8,6 +8,7 @@ import '../Control/Admin.css'
 import { saveId } from '../../redux/detailUserSlice';
 import { useNavigate } from 'react-router-dom';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
+import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Users() {
     useBackgroundChanger({ color: '#F1F1F1' })
@@ -20,6 +21,7 @@ export function Users() {
     const [isActive, setIsActive] = useState(false);
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    checkRole(3)
 
     useEffect(() => {
         const getUsers = async () => {

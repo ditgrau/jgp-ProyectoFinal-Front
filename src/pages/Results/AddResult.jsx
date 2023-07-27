@@ -8,6 +8,7 @@ import { addResult } from "../../services/apiCalls";
 
 import './Results.css'
 import { Link, useNavigate } from "react-router-dom";
+import { checkRole } from "../../hooks/useNavigateRole";
 
 
 
@@ -16,6 +17,7 @@ export function AddResult() {
     const [data, setData] = useState({})
     const { token } = useAuth();
     const navigate = useNavigate()
+    checkRole(1)
 
     const inputHandler = (e) => {
         setData((prevState) => ({

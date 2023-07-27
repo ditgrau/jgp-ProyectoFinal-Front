@@ -6,9 +6,10 @@ import { updateConfirmation, userUnconfirmed } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
 import { Header } from '../../common/Header/Header';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
-
-import './Admin.css'
 import { useNavigate } from 'react-router-dom';
+import { checkRole } from '../../hooks/useNavigateRole';
+import './Admin.css'
+
 
 export function Control() {
     const { token, nameUser } = useAuth();
@@ -18,6 +19,7 @@ export function Control() {
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate()
+    checkRole(3)
 
     useEffect(() => {
         const getUnconfirmed = async () => {
