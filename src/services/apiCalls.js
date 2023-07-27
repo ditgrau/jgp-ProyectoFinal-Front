@@ -350,3 +350,16 @@ export const myEventById = async (id, token) => {
     const res = await axios.get(`${ENDPOINT}/myEventById/${id}`, configToken);
     return res.data.data
 }
+
+
+
+export const getEventById = async (id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.get(`${ENDPOINT}/getEventById/${id}`, configToken);
+    return res.data.data
+}

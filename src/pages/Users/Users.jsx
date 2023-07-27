@@ -87,12 +87,11 @@ export function Users() {
     const inputHandler = (e) => {
         setUserFilter(e.target.value)
     };
-    console.log(userFilter)
-    console.log(users)
+    
     return (
         <>
             <Container className='p-0'>
-                <Row className='main-row mb-5'>
+                <Row className='main-row mb-2'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4} className='my-5'>
                         <h2 className='title-left my-3'>Usuarios</h2>
 
@@ -120,7 +119,7 @@ export function Users() {
                             {
                                 users.length > 0
                                     ? (<>{users.map((user) => (
-                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={() => { detailHandler(user.id) }}>
+                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={()=>{detailHandler(user.id)}}>
                                             <span className='span-bold '>{user.name} {user.surname}</span>
                                             <div className='elements-row ms-3'>
                                                 {

@@ -7,11 +7,11 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { eventDetail } from "../../redux/detailEventSlice";
 import { Navigation } from "../../common/Navigation/Navigation";
-import { myEventById } from "../../services/apiCalls";
+import { getEventById, myEventById } from "../../services/apiCalls";
 
 export function DetailCalendar() {
     useBackgroundChanger({ color: '#FFE2FB' })
-    const { token } = useAuth();
+    const { token, role } = useAuth();
     const dataSlice = useSelector(eventDetail)
     const eventId = dataSlice.data.id
     const [event, setEvent] = useState({})
@@ -20,8 +20,13 @@ export function DetailCalendar() {
     useEffect(() => {
         const getDetail = async () => {
             try {
-                const res = await myEventById(eventId, token)
-                setEvent(res.event)
+                if (role === 1) {
+                    const res = await getEventById(eventId, token)
+                    setEvent(res)
+                } else {
+                    const res = await myEventById(eventId, token)
+                    setEvent(res.event)
+                }
             } catch (error) {
                 console.error(error)
             }

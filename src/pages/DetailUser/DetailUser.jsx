@@ -6,9 +6,10 @@ import { userDetail } from "../../redux/detailUserSlice";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from '../../utils/functions';
 import { getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
+import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 import '../Control/Admin.css'
-import { NavAdmin } from "../../common/Navigation/NavAdmin";
+
 
 export function DetailUser() {
     useBackgroundChanger({ color: '#F1F1F1' })

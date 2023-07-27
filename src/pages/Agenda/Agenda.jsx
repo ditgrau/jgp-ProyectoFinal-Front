@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useAuth } from '../../hooks/useAuth';
+import { useDispatch } from "react-redux";
+import { saveId } from '../../redux/detailEventSlice';
 import { getAllEvents, getEventsByType } from '../../services/apiCalls';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import '../Control/Admin.css'
 
@@ -14,6 +16,7 @@ export function Agenda() {
     const [events, setEvents] = useState([])
     const [restore, setRestore] = useState(false)
     const navigate = useNavigate()
+    const dispatch = useDispatch()
 
     useEffect(() => {
         const getEvents = async () => {
@@ -39,6 +42,12 @@ export function Agenda() {
     const resetHandler = () => {
         setRestore(!restore)
         console.log(restore)
+    }
+
+    const detailHandler = (eventId) => {
+        dispatch(saveId({ id: eventId }))
+        console.log(eventId)
+        navigate('/detailCalendar')
     }
 
     const navigateHandler = () => navigate('/newEvent')
@@ -71,7 +80,7 @@ export function Agenda() {
                                 events.length > 0
                                 && (<>
                                     {events.map((event) => (
-                                        <div className='elements-column my-2 mx-2' key={event.id}>
+                                        <div className='elements-column my-2 mx-2 cursor' key={event.id} onClick={()=>{detailHandler(event.id)}}>
                                             <span className='span-bold'>{event.name}</span>
                                             <span>{event.start_date} / {event.end_date}</span>
                                         </div>
