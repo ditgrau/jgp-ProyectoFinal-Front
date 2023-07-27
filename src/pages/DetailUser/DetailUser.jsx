@@ -10,7 +10,7 @@ import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 import '../Control/Admin.css'
 import { useNavigate } from "react-router-dom";
-import { checkRole } from "../../hooks/useNavigateRole";
+
 
 
 export function DetailUser() {
@@ -18,9 +18,9 @@ export function DetailUser() {
     const dataSlice = useSelector(userDetail)
     const userId = dataSlice.data.id
     const navigate = useNavigate()
-    const { token } = useAuth();
+    const { token , role } = useAuth();
     const [data, setData] = useState({});
-    const [role, setRole] = useState({});
+    const [roleUser, setRoleUser] = useState({});
     const [event, setEvent] = useState({});
     const [group, setGroup] = useState({});
     const [result, setResult] = useState({});
@@ -34,14 +34,15 @@ export function DetailUser() {
     const [roleSelector, setRoleSelector] = useState([])
     const [roleId, setRoleId] = useState({})
     const [groupId, setGroupId] = useState({})
-    checkRole(3)
+
 
     useEffect(() => {
+        (role === 3) && navigate('/home')
         const dataUser = async () => {
             try {
                 const res = await getUserById(userId, token);
                 setData(res)
-                setRole(res.role)
+                setRoleUser(res.role)
                 setEvent(res.event)
                 setGroup(res.group)
                 setResult(res.result)
@@ -126,7 +127,7 @@ export function DetailUser() {
                             </div>
                         </>)
                             : (<>
-                                <span className='title-left' key={role.id}>{role.name}</span>
+                                <span className='title-left' key={roleUser.id}>{roleUser.name}</span>
                                 <div className='elements-row display-btt'>
                                     <div className='main-big-bttn green-bttn cursor' onClick={handleClic}>
                                         <div className='emoji'>✏️</div>

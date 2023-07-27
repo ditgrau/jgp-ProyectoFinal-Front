@@ -5,16 +5,15 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { useNavigate } from 'react-router-dom';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
 import { getAllResults } from '../../services/apiCalls';
-import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Podium() {
     useBackgroundChanger({ color: '#F1F1F1' });
-    const { token } = useAuth();
+    const { token , role } = useAuth();
     const [results, setResults] = useState([]);
     const navigate = useNavigate()
-    checkRole(3)
 
     useEffect(() => {
+        (role === 3) && navigate('/home')
         const getResults = async () => {
             try {
                 const res = await getAllResults(token);

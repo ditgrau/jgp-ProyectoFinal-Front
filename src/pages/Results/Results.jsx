@@ -10,10 +10,9 @@ import { saveId } from '../../redux/detailResultSlice';
 import { Header } from '../../common/Header/Header';
 
 import './Results.css'
-import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Results() {
-    const { token } = useAuth();
+    const { token , role } = useAuth();
     const [results, setResults] = useState([])
     const [stadistics, setStadistics] = useState({
         average: null,
@@ -22,11 +21,11 @@ export function Results() {
     const [message, setMessage] = useState('')
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    checkRole(1)
 
     useBackgroundChanger({ color: '#FFEDAE' })
 
     useEffect(() => {
+        (role === 1) && navigate('/control')
         const getResults = async () => {
             try {
                 const res = await getMyResults(token)

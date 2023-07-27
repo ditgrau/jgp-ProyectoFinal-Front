@@ -9,18 +9,18 @@ import { NavAdmin } from '../../common/Navigation/NavAdmin';
 import { useNavigate } from 'react-router-dom';
 
 import '../Control/Admin.css'
-import { checkRole } from '../../hooks/useNavigateRole';
+
 
 export function Agenda() {
-    const { token } = useAuth();
+    const { token , role} = useAuth();
     useBackgroundChanger({ color: '#F1F1F1' })
     const [events, setEvents] = useState([])
     const [restore, setRestore] = useState(false)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    checkRole(3)
-    
+
     useEffect(() => {
+        (role === 3) && navigate('/home')
         const getEvents = async () => {
             try {
                 const res = await getAllEvents(token);

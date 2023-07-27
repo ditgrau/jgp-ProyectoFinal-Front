@@ -9,11 +9,10 @@ import { deleteResult, getMyResults, getResultById } from "../../services/apiCal
 import { Header } from "../../common/Header/Header";
 import { useNavigate } from "react-router-dom";
 import { Navigation } from "../../common/Navigation/Navigation";
-import { checkRole } from "../../hooks/useNavigateRole";
 
 export function DetailResult() {
     useBackgroundChanger({ color: '#FFEDAE' })
-    const { token } = useAuth();
+    const { token , role } = useAuth();
     const dataSlice = useSelector(resultDetail)
     const resultId = dataSlice.data.id
     const [data, setData] = useState({})
@@ -24,9 +23,9 @@ export function DetailResult() {
     const [restore, setRestore] = useState([])
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    checkRole(1)
 
     useEffect(() => {
+        (role === 1) && navigate('/control')
         const dataResult = async () => {
             try {
                 const res = await getResultById(resultId, token);

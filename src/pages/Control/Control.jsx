@@ -7,21 +7,20 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 import { Header } from '../../common/Header/Header';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
 import { useNavigate } from 'react-router-dom';
-import { checkRole } from '../../hooks/useNavigateRole';
 import './Admin.css'
 
 
 export function Control() {
-    const { token, nameUser } = useAuth();
+    const { token, nameUser, role} = useAuth();
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#F1F1F1' })
     const [confirming, setConfirming] = useState(false);
     const [users, setUsers] = useState([]);
     const [message, setMessage] = useState('');
     const navigate = useNavigate()
-    checkRole(3)
 
     useEffect(() => {
+        (role === 3) && navigate('/home')
         const getUnconfirmed = async () => {
             try {
                 const res = await userUnconfirmed(token);

@@ -10,19 +10,19 @@ import { useDispatch } from 'react-redux';
 import { saveId } from '../../redux/detailEventSlice';
 
 import './Calendar.css'
-import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Calendar() {
     useBackgroundChanger({ color: '#FFE2FB' })
-    const { token } = useAuth();
+    const { token , role } = useAuth();
     const [events, setEvents] = useState([]);
     const [groups, setGroups] = useState([]);
     const [message, setMessage] = useState('');
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    checkRole(1)
+
 
     useEffect(() => {
+        (role === 1) && navigate('/control')
         const getEvents = async () => {
             try {
                 const res = await getMyEvents(token);

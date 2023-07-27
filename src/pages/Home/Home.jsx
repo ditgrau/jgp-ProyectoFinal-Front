@@ -9,22 +9,21 @@ import { getAverage, myLastResults, getClubAverage, getMyEvents } from '../../se
 import { Header } from '../../common/Header/Header';
 
 import './Home.css'
-import { checkRole } from '../../hooks/useNavigateRole';
 
 export function Home() {
     const [bestResults, setBestResults] = useState([]);
     const [average, setAverage] = useState([]);
     const [clubAvg, setClubAvg] = useState([]);
     const [three, setThree] = useState([]);
-    const { token, nameUser } = useAuth();
+    const { token , nameUser , role} = useAuth();
     const navigate = useNavigate();
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#B7DDFF' })
-    checkRole(1)
 
 // llamadas a la API para renderizado inicial
 
     useEffect(() => {
+        (role === 1) && navigate('/control')
         const getResults = async () => {
             try {
                 const result = await myLastResults(token)

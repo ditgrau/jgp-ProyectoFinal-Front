@@ -42,12 +42,6 @@ export function Profile() {
     }
 
     useEffect(() => {
-        if (!token) {
-            navigate('/login')
-        }
-    }, [])
-
-    useEffect(() => {
         const getMyProfile = async () => {
             try {
                 const res = await profile(token);
