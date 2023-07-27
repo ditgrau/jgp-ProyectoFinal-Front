@@ -17,6 +17,7 @@ import { DetailUser } from "../DetailUser/DetailUser";
 import { DetailResult } from "../Results/DetailResult";
 import { AddResult } from "../Results/AddResult";
 import { DetailCalendar } from "../Calendar/DetailCalendar";
+import { Podium } from "../Podium/Podium";
 
 export function Body() {
     const { token, role } = useAuth();
@@ -55,6 +56,7 @@ export function Body() {
             <Route path="/agenda" element={<Agenda />} />
             <Route path="/newEvent" element={<NewEvent/>} />
             <Route path="/detailUser" element={<DetailUser/>} />
+            <Route path="/podium" element={<Podium/>} />
 
         </Routes>
 

@@ -117,7 +117,7 @@ export function Users() {
                         </div>
                         <div className='main-card my-4'>
                             {
-                                users.length > 0
+                                (users && users.length > 0)
                                     ? (<>{users.map((user) => (
                                         <div className='elements-column my-2 division cursor' key={user.id} onClick={()=>{detailHandler(user.id)}}>
                                             <span className='span-bold '>{user.name} {user.surname}</span>

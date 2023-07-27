@@ -96,6 +96,10 @@ export function Control() {
                                             <div className='emoji'>🙂</div>
                                             <span className='title-left small-text mt-2'>Usuarios</span>
                                         </div>
+                                        <div className='main-big-bttn blue-bttn cursor elements-column m-3' onClick={navUsers}>
+                                            <div className='emoji'>🏅</div>
+                                            <span className='title-left small-text mt-2'>Podium</span>
+                                        </div>
                                     </div>
                                 </>)
                         }
