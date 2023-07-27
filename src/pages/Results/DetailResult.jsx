@@ -5,7 +5,7 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { resultDetail } from "../../redux/detailResultSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { saveId } from '../../redux/detailResultSlice';
-import { getMyResults, getResultById } from "../../services/apiCalls";
+import { deleteResult, getMyResults, getResultById } from "../../services/apiCalls";
 import { Header } from "../../common/Header/Header";
 import { useNavigate } from "react-router-dom";
 import { Navigation } from "../../common/Navigation/Navigation";
@@ -79,6 +79,11 @@ export function DetailResult() {
 
     const handleClick = () => navigate('/results')
 
+    const deleteHandler = (id) => {
+        deleteResult(id, token)
+            .then(() => navigate('/results'))
+    }
+
     return (
         <>
             <Container className='p-0'>
@@ -113,12 +118,15 @@ export function DetailResult() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="elements-row">
+                            <div className="row-delete">
                                 <div className="elements-column">
                                     <h3 className="title-left">Ranking</h3>
                                     <div className='main-card small-card yellow-shadow'>
                                         <h1>{data.ranking}</h1>
                                     </div>
+                                </div>
+                                <div className='main-big-bttn green-bttn cursor mb-2' onClick={() => { deleteHandler(resultId) }}>
+                                        <div className='emoji'>🗑️</div>
                                 </div>
                             </div>
                         </section>

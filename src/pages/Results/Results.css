@@ -14,3 +14,10 @@
 .input-yellow-shadow {
     box-shadow: 0 .2rem 0 .05rem var(--color-yellow-shadow);
 }
+
+.row-delete {
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+    gap: 7rem;
+}
