@@ -9,10 +9,11 @@ import { capitalizeFirstLetter } from '../../utils/functions';
 import './Profile.css'
 import { Navigation } from '../../common/Navigation/Navigation';
 import { Header } from '../../common/Header/Header';
+import { NavAdmin } from '../../common/Navigation/NavAdmin';
 
 
 export function Profile() {
-    const { token } = useAuth();
+    const { token, role } = useAuth();
     const [user, setUser] = useState({
         info: {
             birth_date: '',
@@ -35,7 +36,11 @@ export function Profile() {
     const [message, setMessage] = useState('');
     const navigate = useNavigate()
 
-    useBackgroundChanger({ color: '#c8edbb' })
+    if (role === 1) {
+        useBackgroundChanger({ color: '#F1F1F1' })
+    } else {
+        useBackgroundChanger({ color: '#c8edbb' })
+    }
 
     useEffect(() => {
         if (!token) {
@@ -68,7 +73,7 @@ export function Profile() {
 
     const handleClic = () => setEditing(true);
     const handleNavigate = () => navigate('/credentials');
-    
+
     const handleUpdate = async () => {
         try {
             const res = await updateProfile(body, token)
@@ -221,7 +226,15 @@ export function Profile() {
                     </Col>
                 </Row>
             </Container>
-            <Navigation color='green' />
+            {
+                role === 1
+                    ? (<>
+                        <NavAdmin />
+                    </>)
+                    : (<>
+                        <Navigation color='green' />
+                    </>)
+            }
         </>
     )
 }
