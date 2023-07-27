@@ -114,6 +114,8 @@ export function NewEvent() {
         }
     }
 
+    const navigateHandler = () => navigate('/agenda')
+
     return (
         <>
             <Container className='p-0'>
@@ -173,20 +175,24 @@ export function NewEvent() {
 
                         </form>
                         <div className='elements-row display-btt me-3'>
-                            <Link>
-                                <div className='main-big-bttn pink-bttn cursor display-btt'
+                            <div className='main-big-bttn pink-bttn cursor display-btt'
                                 onClick={handleSubmit}
-                                ></div>
-                            </Link>
+                            ><div className='emoji'>👍🏽</div>
+                            </div>
+                            <div className='main-big-bttn pink-bttn cursor display-btt'
+                                onClick={navigateHandler}
+                            >
+                                <div className='emoji'>👈🏿</div>
+                            </div>
                         </div>
                         <span className='span-bold'>{message}</span>
                         <>
                             {
                                 names.length > 0
                                 && (<>
-                                {names.map((name, i)=>(
-                                    <span className='tag mx-1' key={i}>{name}</span>
-                                ))}
+                                    {names.map((name, i) => (
+                                        <span className='tag mx-1' key={i}>{name}</span>
+                                    ))}
                                 </>)
                             }
                         </>

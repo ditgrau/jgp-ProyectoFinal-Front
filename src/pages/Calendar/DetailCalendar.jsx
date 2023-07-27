@@ -8,14 +8,20 @@ import { useSelector } from "react-redux";
 import { eventDetail } from "../../redux/detailEventSlice";
 import { Navigation } from "../../common/Navigation/Navigation";
 import { getEventById, myEventById } from "../../services/apiCalls";
+import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 export function DetailCalendar() {
-    useBackgroundChanger({ color: '#FFE2FB' })
     const { token, role } = useAuth();
     const dataSlice = useSelector(eventDetail)
     const eventId = dataSlice.data.id
     const [event, setEvent] = useState({})
     const navigate = useNavigate()
+
+    if (role === 1) {
+        useBackgroundChanger({ color: '#F1F1F1' })
+    } else {
+        useBackgroundChanger({ color: '#FFE2FB' })
+    }
 
     useEffect(() => {
         const getDetail = async () => {
@@ -34,14 +40,26 @@ export function DetailCalendar() {
         getDetail()
     }, [])
 
-    const handleClick = () => navigate('/calendar')
+    const handleClick = () => {
+        if (role === 1) {
+            navigate('/agenda')
+        } else {
+            navigate('/calendar')
+        }
+    }
 
     return (
         <>
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
                     <Col xs={11} sm={8} md={7} lg={5} xl={4} className="mb-5">
-                        <Header />
+                        {
+                            role !== 1
+                                && (<>
+                                    <Header />
+                                </>)
+                        }
+                        
                         <h1 className='title-left my-3'>{event.name}</h1>
                         <div className='main-card pink-shadow'>
                             <div className="division my-3 mx-3">
@@ -65,7 +83,15 @@ export function DetailCalendar() {
                     </Col>
                 </Row>
             </Container>
-            <Navigation color='pink' />
+            {
+                role === 1
+                    ? (<>
+                        <NavAdmin />
+                    </>)
+                    : (<>
+                        <Navigation color='pink' />
+                    </>)
+            }
         </>
     )
 }

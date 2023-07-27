@@ -5,12 +5,11 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { profile, updateProfile } from '../../services/apiCalls';
 import { capitalizeFirstLetter } from '../../utils/functions';
-
-import './Profile.css'
 import { Navigation } from '../../common/Navigation/Navigation';
 import { Header } from '../../common/Header/Header';
 import { NavAdmin } from '../../common/Navigation/NavAdmin';
 
+import './Profile.css'
 
 export function Profile() {
     const { token, role } = useAuth();

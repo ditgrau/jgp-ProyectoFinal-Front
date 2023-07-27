@@ -35,7 +35,7 @@ export function Calendar() {
     }, [])
 
     useEffect(() => {
-        if (events.length === 0) {
+        if (events && events.length === 0) {
             setMessage('¡Aquí aparecerán tus próximos eventos!')
         } else {
             setMessage('')
