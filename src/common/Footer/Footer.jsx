@@ -1,8 +1,7 @@
 import React from "react"
-import { Navbar, Container, Nav, Offcanvas } from "react-bootstrap"
+import { Navbar } from "react-bootstrap"
 
 import './Footer.css'
-import { Link } from "react-router-dom"
 
 export function Footer() {
     return (
@@ -12,14 +11,9 @@ export function Footer() {
                     <span>Designed by Ditgrau</span>
                 </div>
                 <div>
-                    <Link to='https://www.linkedin.com/in/ditgrau/' className="mx-2">
-                        Linkedin
-                    </Link>
-                    <Link to='https://github.com/ditgrau' className="mx-2">
-                        Github
-                    </Link>
+                    <a href='https://www.linkedin.com/in/ditgrau/' target="_blank" rel="noopener noreferrer" className="mx-2">Linkedin</a>
+                    <a href='https://github.com/ditgrau' target="_blank" rel="noopener noreferrer" className="mx-2">Github</a>
                 </div>
-
             </Navbar>
         </>
     )
