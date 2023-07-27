@@ -80,7 +80,7 @@ export function Calendar() {
                             emoji'>🎉</div></div>
                         </div>
                         {
-                            events.length > 0
+                            (events && events.length > 0)
                                 ? (<>{events.map((event) => (
                                     <div className='elements-row my-1' key={event.id}>
                                         <div className='main-big-bttn pink-bttn cursor' onClick={()=>{detailHandler(event.event.id)}} >

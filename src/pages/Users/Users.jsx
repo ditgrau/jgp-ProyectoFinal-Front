@@ -87,8 +87,8 @@ export function Users() {
     const inputHandler = (e) => {
         setUserFilter(e.target.value)
     };
-console.log(userFilter)
-console.log(users)
+    console.log(userFilter)
+    console.log(users)
     return (
         <>
             <Container className='p-0'>
@@ -111,25 +111,26 @@ console.log(users)
                                 onChange={(e) => inputHandler(e)}
                             />
                             <div className='elements-row'>
-                                <div className='main-small-bttn green-bttn cursor' onClick={searchHandler} />
-                                <div className='main-small-bttn green-bttn cursor' />
+                                <div className='main-small-bttn green-bttn cursor' onClick={searchHandler}>
+                                    <div className='emoji-xs'>🔎</div>
+                                </div>
                             </div>
                         </div>
                         <div className='main-card my-4'>
                             {
                                 users.length > 0
                                     ? (<>{users.map((user) => (
-                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={()=>{detailHandler(user.id)}}>
+                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={() => { detailHandler(user.id) }}>
                                             <span className='span-bold '>{user.name} {user.surname}</span>
                                             <div className='elements-row ms-3'>
-                                            {
-                                                (user.group && user.group.length > 0)
-                                                && (<>{
-                                                    (user.group).map((group, i) => (
-                                                        <span key={i}>{group.name}</span>
-                                                    ))
-                                                }</>)
-                                            }
+                                                {
+                                                    (user.group && user.group.length > 0)
+                                                    && (<>{
+                                                        (user.group).map((group, i) => (
+                                                            <span key={i}>{group.name}</span>
+                                                        ))
+                                                    }</>)
+                                                }
                                             </div>
                                         </div>
                                     ))
@@ -140,7 +141,7 @@ console.log(users)
                                             members.length > 0
                                                 ? (<>
                                                     {members[0].map((mem) => (
-                                                        <div className='my-2 division cursor' key={mem.id} onClick={()=>{detailHandler(mem.id)}}>
+                                                        <div className='my-2 division cursor' key={mem.id} onClick={() => { detailHandler(mem.id) }}>
                                                             <span>{mem.name}{mem.surname}</span>
                                                         </div>
                                                     ))}
