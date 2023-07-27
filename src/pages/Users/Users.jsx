@@ -26,6 +26,7 @@ export function Users() {
             try {
                 const res = await getAllUsers(token)
                 setUsers(res)
+                console.log(res)
             }
             catch (error) {
                 console.error(error);
@@ -68,9 +69,11 @@ export function Users() {
     };
 
     const searchHandler = async () => {
+
         try {
             const res = await getUserByName(userFilter, token)
             console.log(res.data)
+            setUsers(res.data)
         } catch (error) {
             console.error(error);
         }
@@ -84,7 +87,8 @@ export function Users() {
     const inputHandler = (e) => {
         setUserFilter(e.target.value)
     };
-
+console.log(userFilter)
+console.log(users)
     return (
         <>
             <Container className='p-0'>
@@ -119,7 +123,7 @@ export function Users() {
                                             <span className='span-bold '>{user.name} {user.surname}</span>
                                             <div className='elements-row ms-3'>
                                             {
-                                                (user.group).length > 0
+                                                (user.group && user.group.length > 0)
                                                 && (<>{
                                                     (user.group).map((group, i) => (
                                                         <span key={i}>{group.name}</span>
