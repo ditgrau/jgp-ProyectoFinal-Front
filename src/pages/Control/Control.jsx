@@ -39,18 +39,22 @@ export function Control() {
         }
     }, [users])
 
+    //confirmacion de usuarios con el click
     const confirmHandler = (id) => {
         updateConfirmation({ confirmed: true }, id, token)
             .then(res => setConfirming(!confirming))
     }
 
-    const handleClic = () => navigate('/newEvent')
+    // navegacion de los botones
+    const navCalendar = () => navigate('/agenda');
+    const navNewEvent = () => navigate('/newEvent');
+    const navUsers = () => navigate('/users');
 
     return (
         <>
             <Container className='p-0'>
                 <Row className='main-row mb-5'>
-                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mb-4'>
+                    <Col xs={11} sm={8} md={7} lg={5} xl={4} className='mb-5'>
                         <Header />
                         <h1 className='title-left my-4'> Hola, {formattedName}</h1>
                         <h2 className='title-left mx-2 my-3'>Usuarios por confirmar</h2>
@@ -68,7 +72,6 @@ export function Control() {
                                                 ))}
                                                 </>)
                                             }
-
                                             <span>{user.group.name}</span>
                                         </div>
                                         <div className='main-small-bttn green-bttn cursor' onClick={() => { confirmHandler(user.id) }}>
@@ -76,20 +79,26 @@ export function Control() {
                                         </div>
                                     </div>
                                 ))
-
                                 }
                                 </>)
-                                : (<><h3 className='form-block'>{message}</h3></>)
+                                : (<>
+                                    <h3>{message}</h3>
+                                    <div className='register-row mt-3 ms-3 centered'>
+                                        <div className='main-big-bttn blue-bttn cursor elements-column m-3' onClick={navCalendar}>
+                                            <div className='emoji'>🗓️</div>
+                                            <span className='title-left small-text mt-2'>Eventos</span>
+                                        </div>
+                                        <div className='main-big-bttn blue-bttn cursor elements-column m-3' onClick={navNewEvent}>
+                                            <div className='emoji'>➕</div>
+                                            <span className='title-left small-text mt-2'>Nuevo</span>
+                                        </div>
+                                        <div className='main-big-bttn blue-bttn cursor elements-column m-3' onClick={navUsers}>
+                                            <div className='emoji'>🙂</div>
+                                            <span className='title-left small-text mt-2'>Usuarios</span>
+                                        </div>
+                                    </div>
+                                </>)
                         }
-                        <h2 className='title-left mx-2 mt-4'>Crear nuevo</h2>
-                        <div className='register-row mt-3 ms-3'>
-                            {/* <div className='main-big-bttn blue-bttn cursor' onClick={()=>{handleClic(1)}}>
-                                <div className='emoji'>🙂</div>
-                            </div> */}
-                            <div className='main-big-bttn blue-bttn cursor' onClick={handleClic}>
-                                <div className='emoji'>🗓️</div>
-                            </div>
-                        </div>
                     </Col>
                 </Row>
             </Container>

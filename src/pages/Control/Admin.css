@@ -23,3 +23,11 @@
 .input-green-shadow {
     box-shadow: 0 .2rem 0 .05rem var(--color-green-shadow);
 }
+
+.small-text{
+    font-size: .7rem;
+}
+
+.centered {
+    justify-content: center;
+}
