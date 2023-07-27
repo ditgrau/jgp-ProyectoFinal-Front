@@ -20,6 +20,8 @@ export function Home() {
     const formattedName = capitalizeFirstLetter(nameUser)
     useBackgroundChanger({ color: '#B7DDFF' })
 
+// llamadas a la API para renderizado inicial
+
     useEffect(() => {
         const getResults = async () => {
             try {
@@ -61,6 +63,8 @@ export function Home() {
         getMyAverage()
     }, [])
 
+// en funcion del ID que trae el boton redirige
+
     const handleClick = (id) => {
         if (id === 1) {
             navigate('/results')
@@ -68,8 +72,6 @@ export function Home() {
             navigate('/calendar')
         }
     }
-
-    console.log(three)
 
     return (
         <>
@@ -82,7 +84,7 @@ export function Home() {
                         {
                             (three && three.length > 0)
                                 ? (<>{three.map((e) => (
-                                    <div className='small-card blue-shadow my-3' key={e.event.id}>
+                                    <div className='small-target blue-shadow my-3' key={e.event.id}>
                                         <span className='span-bold ms-2'>{e.event.name}</span>
                                         <span className='ms-4'>{e.event.start_date} / {e.event.end_date}</span>
                                     </div>
@@ -97,13 +99,13 @@ export function Home() {
                         <div className='elements-row'>
                             <div className='elements-column'>
                                 <h2 className='title-left'>Mi media</h2>
-                                <div className='main-card small-card blue-shadow py-2 px-3'>
+                                <div className='main-card small-card blue-shadow'>
                                     <h1>{average}</h1>
                                 </div>
                             </div>
                             <div className='elements-column'>
                                 <h2 className='title-left'>La del club</h2>
-                                <div className='main-card small-card blue-shadow py-2 px-3'>
+                                <div className='main-card small-card blue-shadow'>
                                     <h1>{clubAvg.club}</h1>
                                 </div>
                             </div>
