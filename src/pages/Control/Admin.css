@@ -1,6 +1,7 @@
 .grey-shadow {
     box-shadow: 0 .2rem 0 .05rem var(--color-grey-shadow);
 }
+
 .space {
     justify-content: space-between;
 }

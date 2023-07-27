@@ -115,8 +115,9 @@ export function Users() {
                             {
                                 users.length > 0
                                     ? (<>{users.map((user) => (
-                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={() => { detailHandler(user.id) }}>
+                                        <div className='elements-column my-2 division cursor' key={user.id} onClick={()=>{detailHandler(user.id)}}>
                                             <span className='span-bold '>{user.name} {user.surname}</span>
+                                            <div className='elements-row ms-3'>
                                             {
                                                 (user.group).length > 0
                                                 && (<>{
@@ -125,6 +126,7 @@ export function Users() {
                                                     ))
                                                 }</>)
                                             }
+                                            </div>
                                         </div>
                                     ))
                                     }
@@ -134,8 +136,8 @@ export function Users() {
                                             members.length > 0
                                                 ? (<>
                                                     {members[0].map((mem) => (
-                                                        <div className='my-2 division' key={mem.id}>
-                                                            <span className='span-bold'>{mem.name}{mem.surname}</span>
+                                                        <div className='my-2 division cursor' key={mem.id} onClick={()=>{detailHandler(mem.id)}}>
+                                                            <span>{mem.name}{mem.surname}</span>
                                                         </div>
                                                     ))}
                                                 </>)
