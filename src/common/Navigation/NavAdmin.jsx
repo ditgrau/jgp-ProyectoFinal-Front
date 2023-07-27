@@ -21,7 +21,7 @@ export function NavAdmin() {
 
     return (
         <>
-            <Navbar key='lg' expand='lg' className='grey-navbar' fixed="bottom">
+            <Navbar key='lg' expand='lg' className='grey-navbar mb-3' fixed="bottom">
                 <Container fluid>
                     <Navbar.Brand href="/home">
                         <div className="emoji">🏠</div>

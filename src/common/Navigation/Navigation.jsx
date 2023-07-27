@@ -22,8 +22,8 @@ export function Navigation({ color }) {
 
     return (
         <>
-            <Navbar key='lg' expand='lg' className={colorNavbar} fixed="bottom">
-                <Container fluid>
+            <Navbar key='lg' expand='lg' className="mb-3" fixed="bottom">
+                <Container fluid className={colorNavbar}>
                     <Navbar.Brand href="/home">
                         <div className="emoji">🏠</div>
                     </Navbar.Brand>
