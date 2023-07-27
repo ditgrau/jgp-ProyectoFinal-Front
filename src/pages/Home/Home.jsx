@@ -5,7 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { capitalizeFirstLetter } from '../../utils/functions';
 import { Navigation } from '../../common/Navigation/Navigation';
-import { getAverage, myLastResults, getClubAverage } from '../../services/apiCalls';
+import { getAverage, myLastResults, getClubAverage, getMyEvents } from '../../services/apiCalls';
 import { Header } from '../../common/Header/Header';
 
 import './Home.css'
@@ -14,6 +14,7 @@ export function Home() {
     const [bestResults, setBestResults] = useState([]);
     const [average, setAverage] = useState([]);
     const [clubAvg, setClubAvg] = useState([]);
+    const [three, setThree] = useState([]);
     const { token, nameUser } = useAuth();
     const navigate = useNavigate();
     const formattedName = capitalizeFirstLetter(nameUser)
@@ -24,6 +25,16 @@ export function Home() {
             try {
                 const result = await myLastResults(token)
                 setBestResults(result.data)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        const getMyThreeEvents = async () => {
+            try {
+                const res = await getMyEvents(token)
+                const reverse = res.data.reverse()
+                const threeEvents = reverse.slice(0, 3);
+                setThree(threeEvents)
             } catch (error) {
                 console.error(error)
             }
@@ -44,6 +55,7 @@ export function Home() {
                 console.error(error)
             }
         }
+        getMyThreeEvents()
         clubAverage()
         getResults()
         getMyAverage()
@@ -57,6 +69,8 @@ export function Home() {
         }
     }
 
+    console.log(three)
+
     return (
         <>
             <Container>
@@ -65,20 +79,31 @@ export function Home() {
                         <Header />
                         <h1 className='title-left my-4'> Hola, {formattedName}</h1>
                         <h2 className='title-left my-3'>Calendario</h2>
-                        <div className='main-card blue-shadow'></div>
-                        <div className=' main-big-bttn blue-bttn my-4'>
-                            <div className='emoji cursor' onClick={()=>{handleClick(2)}}>🗓️</div>
-                        </div>
+                        {
+                            (three && three.length > 0)
+                                ? (<>{three.map((e) => (
+                                    <div className='small-card blue-shadow my-3' key={e.event.id}>
+                                        <span className='span-bold ms-2'>{e.event.name}</span>
+                                        <span className='ms-4'>{e.event.start_date} / {e.event.end_date}</span>
+                                    </div>
+                                ))}</>)
+                                : (<><span className='span-bold'>¡No hay eventos todavía!</span></>)
+                        }
+                        <section className=" display-btt">
+                            <div className=' main-big-bttn blue-bttn mb-4'>
+                                <div className='emoji cursor' onClick={() => { handleClick(2) }}>🗓️</div>
+                            </div>
+                        </section>
                         <div className='elements-row'>
                             <div className='elements-column'>
                                 <h2 className='title-left'>Mi media</h2>
-                                <div className='main-card small-card blue-shadow'>
+                                <div className='main-card small-card blue-shadow py-2 px-3'>
                                     <h1>{average}</h1>
                                 </div>
                             </div>
                             <div className='elements-column'>
                                 <h2 className='title-left'>La del club</h2>
-                                <div className='main-card small-card blue-shadow'>
+                                <div className='main-card small-card blue-shadow py-2 px-3'>
                                     <h1>{clubAvg.club}</h1>
                                 </div>
                             </div>
@@ -97,9 +122,11 @@ export function Home() {
                                 )
                             }
                         </div>
-                        <div className=' main-big-bttn blue-bttn mt-4'>
-                            <div className='emoji cursor' onClick={()=>{handleClick(1)}}>🏅</div>
-                        </div>
+                        <section className="display-btt">
+                            <div className='main-big-bttn blue-bttn mt-4'>
+                                <div className='emoji cursor' onClick={() => { handleClick(1) }}>🏅</div>
+                            </div>
+                        </section>
                     </Col>
                 </Row>
             </Container>
