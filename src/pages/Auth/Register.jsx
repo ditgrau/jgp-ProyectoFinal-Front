@@ -60,7 +60,7 @@ export function Register() {
         <Container className='p-0'>
             <Row className='main-row mb-5'>
                 <Col xs={11} md={8} lg={6} xl={4}>
-                <p className='supertitle'>clabs</p>
+                    <p className='supertitle'>clabs</p>
                     <h2>Registro</h2>
                     <form className='main-form'>
                         <div className='register-row'>
@@ -141,9 +141,9 @@ export function Register() {
                             placeholder='Contraseña'
                             name={'password'}
                             onChange={(e) => inputHandler(e)} />
-                        <Link>
-                            <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}></div>
-                        </Link>
+                        <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}>
+                            <span className='emoji-sm'>👍🏽</span>
+                        </div>
                         <h3>{message}</h3>
                     </form>
                 </Col>

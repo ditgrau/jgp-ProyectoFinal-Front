@@ -33,6 +33,7 @@ export function Login() {
         e.preventDefault()
         if (data.email && data.password) {
             logUser();
+            navigate('/')
         } else {
             setError('Rellene todos los campos')
         }
@@ -54,7 +55,7 @@ export function Login() {
             });
     }
 
-    let hidden = (error === '' )? 'hidden' :'' 
+    let hidden = (error === '') ? 'hidden' : ''
 
     return (
         <Container>
@@ -64,7 +65,7 @@ export function Login() {
                     <h2>Login</h2>
                     <form className='main-form mt-4'>
                         <div className='elements-row'>
-                            <div className='main-big-bttn purple-bttn' />
+                            <div className='main-big-bttn purple-bttn'><span className='emoji-sm'>✉️</span></div>
                             <input
                                 type='email'
                                 className='main-input input-purple-shadow'
@@ -75,7 +76,8 @@ export function Login() {
                             </input>
                         </div>
                         <div className='elements-row'>
-                            <div className='main-big-bttn purple-bttn' />
+                            <div className='main-big-bttn purple-bttn'>
+                                <span className='emoji-sm'>🔐</span></div>
                             <input
                                 type='password'
                                 className='main-input input-purple-shadow'
@@ -85,9 +87,9 @@ export function Login() {
                                 onChange={(e) => inputHandler(e)}>
                             </input>
                         </div>
-                        <Link>
-                            <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}></div>
-                        </Link>
+                        <div className='main-big-bttn check-bttn cursor' onClick={handleSubmit}>
+                            <span className='emoji-sm'>👍🏽</span>
+                        </div>
                         <Link to='/register'><span className='link-text'>Regístrate aquí</span></Link>
                         <div className={`infoMessage px-3 mt-4 ${hidden}`}>{error}</div>
                     </form>
