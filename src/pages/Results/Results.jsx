@@ -12,7 +12,7 @@ import { Header } from '../../common/Header/Header';
 import './Results.css'
 
 export function Results() {
-    const { token , role } = useAuth();
+    const { token, role } = useAuth();
     const [results, setResults] = useState([])
     const [stadistics, setStadistics] = useState({
         average: null,
@@ -84,9 +84,11 @@ export function Results() {
                             </div>
                         </div>
                         <h2 className='title-left mt-5 mb-0'>Mis resultados</h2>
-                        <div className=' main-big-bttn yellow-bttn my-4'>
-                            <div className='emoji cursor' onClick={handleClick}>➕</div>
-                        </div>
+                        <section className=" display-btt me-3">
+                            <div className=' main-big-bttn yellow-bttn my-2'>
+                                <div className='emoji cursor' onClick={handleClick}>➕</div>
+                            </div>
+                        </section>
                         {
                             results.length > 0
                                 ? (<>{results.map((result) => (

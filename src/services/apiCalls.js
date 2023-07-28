@@ -383,3 +383,15 @@ export const deleteResult = async (id, token) => {
     const res = await axios.delete(`${ENDPOINT}/deleteResult/${id}`, configToken);
     return res
 }
+
+
+export const myEventsByType = async (id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.get(`${ENDPOINT}/myEventsByType/${id}`, configToken);
+    return res.data
+}

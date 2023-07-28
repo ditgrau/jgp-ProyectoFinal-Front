@@ -46,7 +46,7 @@ export function AddResult() {
                     <Col xs={11} sm={8} md={7} lg={5} xl={4}>
                         <Header />
                         <h2 className='title-left mt-5'>Nuevo resultado</h2>
-                        <form className='main-form'>
+                        <form className='results-form'>
                             <div className='elements-column input-reg'>
                                 <h3 className="mt-3 title-left">Nombre de la competición</h3>
                                 <input
@@ -90,12 +90,12 @@ export function AddResult() {
                                     />
                                 </div>
                             </div>
-                            <div className='elements-column'>
+                            <div className='elements-column '>
                                 <h3 className="mt-3 title-left">Posición ranking</h3>
                                 <input
                                     type='name'
-                                    className='main-input input-yellow-shadow input-reg'
-                                    placeholder='Ranking'
+                                    className='main-input input-yellow-shadow input-reg ranking-input'
+                                    placeholder='Pos'
                                     name={'ranking'}
                                     onChange={(e) => inputHandler(e)}
                                 />

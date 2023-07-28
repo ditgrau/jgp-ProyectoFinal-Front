@@ -9,12 +9,6 @@ export function Unconfirmed() {
     useBackgroundChanger({ color: '#E3D7F8' })
     const { token } = useAuth();
 
-    useEffect(() => {
-        if (!token) {
-            navigate('/login')
-        }
-    }, [])
-
     return (<>
         <Container className='p-0'>
             <Row className='main-row mb-5'>

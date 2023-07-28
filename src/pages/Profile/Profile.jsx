@@ -65,7 +65,7 @@ export function Profile() {
     };
 
     const handleClic = () => setEditing(true);
-    const handleNavigate = () => navigate('/credentials');
+    const handleNavigate = () => navigate('/home');
 
     const handleUpdate = async () => {
         try {
@@ -209,7 +209,7 @@ export function Profile() {
                                         <div className='emoji'>✏️</div>
                                     </div>
                                     <div className='main-big-bttn green-bttn cursor' onClick={handleNavigate}>
-                                        <div className='emoji'>🔐</div>
+                                        <div className='emoji'>👈🏻</div>
                                     </div>
                                 </div>
                             </>
