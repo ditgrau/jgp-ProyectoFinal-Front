@@ -5,7 +5,7 @@ import { useBackgroundChanger } from '../../hooks/useBackgroundChanger';
 import { userDetail } from "../../redux/detailUserSlice";
 import { useSelector } from "react-redux";
 import { capitalizeFirstLetter } from '../../utils/functions';
-import { deleteUserById, getAllGroups, getAllRoles, getUserById } from "../../services/apiCalls";
+import { deleteUserById, getAllGroups, getAllRoles, getUserById, updateUserRole } from "../../services/apiCalls";
 import { NavAdmin } from "../../common/Navigation/NavAdmin";
 
 import '../Control/Admin.css'
@@ -18,7 +18,7 @@ export function DetailUser() {
     const dataSlice = useSelector(userDetail)
     const userId = dataSlice.data.id
     const navigate = useNavigate()
-    const { token , role } = useAuth();
+    const { token, role } = useAuth();
     const [data, setData] = useState({});
     const [roleUser, setRoleUser] = useState({});
     const [event, setEvent] = useState({});
@@ -84,11 +84,9 @@ export function DetailUser() {
     const handleRole = (e) => {
         setRoleId((prevState) => ({
             ...prevState,
-            [e.target.name]: e.target.value,
-            "user_id": userId
+            'role_id': e.target.value,
         }))
     }
-    const roleClick = () => console.log(e.target.value)
 
     const handleGroup = (e) => {
         setGroupId((prevState) => ({
@@ -97,14 +95,22 @@ export function DetailUser() {
             "user_id": userId
         }))
     }
-    const groupClick = () => console.log(e.target.value)
+
+    const checkClick = () => {
+        console.log(roleId)
+        console.log(userId)
+        console.log(token)
+        updateUserRole(roleId, userId, token)
+            .then((res) => console.log(res))
+    }
+
     const handleNav = () => navigate('/users')
 
     const deleteHandler = (id) => {
         deleteUserById(id, token)
             .then(() => navigate('/users'))
     }
-    
+
     return (<>
         <Container className='p-0'>
             <Row className='main-row mb-5'>
@@ -112,6 +118,11 @@ export function DetailUser() {
                     <div className="elements-column">
                         <h1 className='title-left'>{fullname.name} {fullname.surname}</h1>
                         {editing ? (<>
+                            <div className='elements-row display-btt mt-2'>
+                                <div className='main-big-bttn green-bttn cursor' onClick={checkClick}>
+                                    <div className='emoji-sm'>✔️</div>
+                                </div>
+                            </div>
                             <select
                                 onChange={handleRole}
                                 className='main-input input-green-shadow input-reg mt-3'>
@@ -120,11 +131,6 @@ export function DetailUser() {
                                     return <option key={role.id} value={role.id} name={'role_id'}>{role.name}</option>
                                 })}
                             </select>
-                            <div className='elements-row display-btt mt-3'>
-                                <div className='main-small-bttn green-bttn cursor' onClick={roleClick}>
-                                    <div className='emoji-xs'>✔️</div>
-                                </div>
-                            </div>
                         </>)
                             : (<>
                                 <span className='title-left' key={roleUser.id}>{roleUser.name}</span>
@@ -178,11 +184,7 @@ export function DetailUser() {
                                     return <option key={group.id} value={group.id} name={'group_id'}>{group.name}</option>
                                 })}
                             </select>
-                            <div className='elements-row display-btt mt-2'>
-                                <div className='main-small-bttn green-bttn cursor' onClick={groupClick}>
-                                    <div className='emoji-xs'>✔️</div>
-                                </div>
-                            </div>
+
                         </>)
                         : (<>
                             <div className='main-card my-4'>

@@ -395,3 +395,15 @@ export const myEventsByType = async (id, token) => {
     const res = await axios.get(`${ENDPOINT}/myEventsByType/${id}`, configToken);
     return res.data
 }
+
+
+export const updateUserRole = async (data, id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.put(`${ENDPOINT}/updateUserRole/${id}`, data, configToken);
+    return res.data
+}
