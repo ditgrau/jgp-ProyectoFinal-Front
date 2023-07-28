@@ -8,7 +8,7 @@ export function Footer() {
         <>
             <Navbar key='lg' expand='lg' className='footer px-3' fixed="bottom">
                 <div>
-                    <span>Designed by Ditgrau</span>
+                    <span>Designed and developed by Ditgrau</span>
                 </div>
                 <div>
                     <a href='https://www.linkedin.com/in/ditgrau/' target="_blank" rel="noopener noreferrer" className="mx-2">Linkedin</a>
