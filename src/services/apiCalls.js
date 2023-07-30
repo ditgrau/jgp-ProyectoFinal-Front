@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const ENDPOINT = "https://jgp-proyecto-final-back-bybj-jivmpigu0-juditgraup-gmailcom.vercel.app/api/api"
+const ENDPOINT = "https://backend-proyectofinal.vercel.app/api"
 const config = {
     headers: {
         "Content-Type": "application/json",
