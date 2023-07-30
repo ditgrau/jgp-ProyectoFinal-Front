@@ -1,10 +1,12 @@
 __<p align="center">Proyecto final - Semana 12</p>__
 <h2 align="center">🤸‍♀️ · CLABS · 🤸‍♀️</h2>
+<p align="center">FRONTEND CON REACT</p>
 
 <details>
   <summary><b>Contenido</b> 📝</summary>
   <ol>
-    <li><a href="#sobre-el-proyecto">Sobre el proyecto</a></li>
+     <li><a href="#sobre-el-proyecto">Sobre el proyecto</a></li>
+    <li><a href="#sobre-clabs">Sobre clabs</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#objetivospersonales">Objetivos personales</a></li>
     <li><a href="#funcionalidades">Funcionalidades</a></li>
@@ -16,18 +18,22 @@ __<p align="center">Proyecto final - Semana 12</p>__
 </details>
 
 
+#### Sobre el proyecto
+Frontend del proyecto final del bootcamp Full Stack Developer de GeeksHubs Academy.
+Este proyecto ha sido íntegramente desarrollado, tanto frontend como backend, en 12 días. Será maravilloso seguir desarrollando este proyecto más allá de su fecha de entrega.
+
+> **Nota**
+> Seguiré desarrollando está app, para mejorar el diseño y añadir funcionalidades nuevas.
+
+#### Sobre clabs
+Mi aplicación nace de la idea de digitalizar ciertos procedimientos que se realizan en los clubes de gimnasia rítmica y como sitio donde las mismas gimnastas pueden recoger sus puntuaciones, tener sus estadísticas e información relevante para el desempeño de su práctica deportiva.
+
 #### Stack
 
 PHP Laravel proporciona la API RESTful, React el frontend y el acceso a la API, Redux se utiliza para el manejo del estado y la base de datos es MySQL.
 
 #####Tecnologías utilizadas:
 <div align="center">
-<a href="https://www.php.net/">
-    <img src= "https://img.shields.io/badge/php-%23777BB4.svg?style=for-the-badge&logo=php&logoColor=white"/>
-</a>
-<a href="https://laravel.com/">
-    <img src= "https://img.shields.io/badge/laravel-%23FF2D20.svg?style=for-the-badge&logo=laravel&logoColor=white"/>
-</a>
 <a href="/">
     <img src= "https://img.shields.io/badge/react-%23E34F26.svg?style=for-the-badge&logo=react&logoColor=white"/>
 </a>
@@ -38,7 +44,29 @@ PHP Laravel proporciona la API RESTful, React el frontend y el acceso a la API, 
 </a>
 </div>
 
-####aplicacion
+### Licencia
+📝 La licencia utilizada es una MIT License. Este proyecto ha sido realizado por mí, Judit Grau Puigdollers, inéditamente para la tarea 'Proyecto Final' en la edición de abril 2023 de GeeksHubs Academy.
 
-> **Note**
-> Seguiré desarrollando está app, para mejorar el diseño y añadir funcionalidades nuevas.
+``` js
+ const developer = "ditGrau";
+ console.log("Desarrollado por: " + developer);
+```  
+
+### Agradecimientos:
+
+Como siempre, agradezco a mis compañeros y docentes. En esta ocasión, Mara ha ido disipando dudas y ayudándonos a abrir el camino.
+**MARA:** <a href="https://github.com/MaraScampini" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=lime" target="_blank"></a> 
+
+Pero a la persona que más le agradezco es a Coral, porque lo más duro no ha sido aprender, que siempre gusta, si no la gestión del tiempo, de la frustración, del estrés, y sin duda, ella ha hecho que sea más llevadero, con nuestras risotas y esas cosas. 
+Además es más grande de lo que cree, comprobadlo: 
+
+**CORAL:**  <a href="https://github.com/Coral-JM" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=lime" target="_blank"></a> 
+
+<h3 align="center">Contacto</h3>
+
+<div align="center">
+ 📩 <a href = "mailto:juditgraup@gmail.com"><img src="https://img.shields.io/badge/Gmail-C6362C?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>👋🏼<a href="https://www.linkedin.com/in/linkedinUser/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+</p>
+</div>
+
+
