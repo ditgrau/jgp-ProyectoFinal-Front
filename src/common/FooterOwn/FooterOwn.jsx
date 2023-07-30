@@ -1,9 +1,9 @@
 import React from "react"
 import { Navbar } from "react-bootstrap"
 
-import './Footer.css'
+import './FooterOwn.css'
 
-export function Footer() {
+export function FooterOwn() {
     return (
         <>
             <Navbar key='lg' expand='lg' className='footer px-3' fixed="bottom">

@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const ENDPOINT = "http://localhost:8000/api"
+const ENDPOINT = "https://jgp-proyecto-final-back-bybj.vercel.app/"
 const config = {
     headers: {
         "Content-Type": "application/json",
