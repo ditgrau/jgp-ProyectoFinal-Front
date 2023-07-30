@@ -396,7 +396,6 @@ export const myEventsByType = async (id, token) => {
     return res.data
 }
 
-
 export const updateUserRole = async (data, id, token) => {
     const configToken = {
         headers: {
@@ -407,3 +406,31 @@ export const updateUserRole = async (data, id, token) => {
     const res = await axios.put(`${ENDPOINT}/updateUserRole/${id}`, data, configToken);
     return res.data
 }
+
+
+///// implementar en user detail 
+export const updateUserGroup = async (data, id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.put(`${ENDPOINT}/updateUserGroup/${id}`, data, configToken);
+    return res.data
+}
+
+/////////////////////////// implementar en newEvent
+
+export const addUserToEvent = async (data, id, token) => {
+    const configToken = {
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        }
+    };
+    const res = await axios.post(`${ENDPOINT}/addUserToEvent/${id}`, data, configToken);
+    return res.data
+}
+
+/////////////////////////////////////////////////////////////////////////////////
