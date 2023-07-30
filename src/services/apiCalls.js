@@ -9,7 +9,7 @@ const config = {
 };
 
 export const login = async (data) => {
-    let res = await axios.post(`${ENDPOINT}/login`, data)
+    let res = await axios.post(`${ENDPOINT}/api/login`, data)
     return res.data;
 }
 
