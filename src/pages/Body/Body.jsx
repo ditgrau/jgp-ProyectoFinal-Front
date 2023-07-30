@@ -12,7 +12,7 @@ import { Credentials } from "../Credentials/Credentials";
 import { useAuth } from '../../hooks/useAuth';
 import { Agenda } from "../Agenda/Agenda";
 import { Unconfirmed } from "../Auth/Unconfirmed";
-import { NewEvent } from "../newEvent/newEvent";
+import { NewEvent } from "../NewEvent/NewEvent";
 import { DetailUser } from "../DetailUser/DetailUser";
 import { DetailResult } from "../Results/DetailResult";
 import { AddResult } from "../Results/AddResult";
