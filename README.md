@@ -9,9 +9,7 @@ __<p align="center">Proyecto final - Semana 12</p>__
      <li><a href="#sobre-el-proyecto">Sobre el proyecto</a></li>
     <li><a href="#sobre-clabs">Sobre clabs</a></li>
     <li><a href="#stack">Stack</a></li>
-    <li><a href="#objetivospersonales">Objetivos personales</a></li>
-    <li><a href="#funcionalidades">Funcionalidades</a></li>
-    <li><a href="#pequeñapresentaciondefuncionalidad">Pequeña presentación de funcionalidad</a></li>
+    <li><a href="#stack">Credenciales</a></li>
     <li><a href="#licencia">Licencia</a></li>
     <li><a href="#agradecimientos">Agradecimientos</a></li>
     <li><a href="#contacto">Contacto</a></li>
@@ -22,12 +20,13 @@ __<p align="center">Proyecto final - Semana 12</p>__
 #### Sobre el proyecto
 Frontend del proyecto final del bootcamp Full Stack Developer de GeeksHubs Academy.
 Este proyecto ha sido íntegramente desarrollado, tanto frontend como backend, en 12 días. Será maravilloso seguir desarrollando este proyecto más allá de su fecha de entrega.
+Si quieres ver una demo de uso de la app, aquí la tienes: <a href="https://www.youtube.com/watch?v=bnfJuO0o6iQ">Demo Clabs</a>
 
 > **Nota**
 > Seguiré desarrollando está app, para mejorar el diseño y añadir funcionalidades nuevas.
 
 #### Sobre clabs
-Mi aplicación nace de la idea de digitalizar ciertos procedimientos que se realizan en los clubes de gimnasia rítmica y como sitio donde las mismas gimnastas pueden recoger sus puntuaciones, tener sus estadísticas e información relevante para el desempeño de su práctica deportiva.
+Mi aplicación nace de la idea de digitalizar ciertos procedimientos que se realizan en los clubes de gimnasia rítmica y como herramienta donde las mismas gimnastas pueden recoger sus puntuaciones, tener sus estadísticas e información relevante para el desempeño de su práctica deportiva.
 
 #### Stack
 
@@ -44,6 +43,15 @@ PHP Laravel proporciona la API RESTful, React el frontend y el acceso a la API, 
     <img src= "https://img.shields.io/badge/bootstrap-%23323330.svg?style=for-the-badge&logo=bootstrap&logoColor=white"/>
 </a>
 </div>
+
+### Credenciales
+**ADMIN**
+admin@admin.com
+Admin-1234
+
+**GIMNASTA**
+gimnasta@gimnasta.com
+Gimnasta-1234
 
 ### Licencia
 📝 La licencia utilizada es una MIT License. Este proyecto ha sido realizado por mí, Judit Grau Puigdollers, inéditamente para la tarea 'Proyecto Final' en la edición de abril 2023 de GeeksHubs Academy.
